@@ -1,0 +1,43 @@
+# -*- coding: utf-8 -*-
+#: settings for liquidluck
+
+#: site information
+#: all variables can be accessed in template with ``site`` namespace.
+#: for instance: {{site.name}}
+site:
+    name: Arale # your module name
+    url: "http://aralejs.org/"
+
+#: this config defined information of your site
+#: 1. where the resources  2. how should the site be generated
+config:
+    source: .
+    output: .
+    static: ./static
+    static_prefix: /static/
+    permalink: "{{folder}}/{{filename}}.html"
+    relative_url: true
+
+
+author:
+    default: lepture
+    vars:
+        # key: value
+
+#: active readers
+reader:
+    active:
+        - liquidluck.readers.markdown.MarkdownReader
+        - liquidluck.readers.restructuredtext.RestructuredTextReader
+    vars:
+        post_class: chiang.ChiangPost
+
+#: active writers
+writer:
+    active:
+        - liquidluck.writers.core.PostWriter
+        - liquidluck.writers.core.PageWriter
+
+#: theme variables
+theme:
+    name: chiang

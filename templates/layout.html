@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="{{theme.lang}}">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{{site.name}}{% endblock %}</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
+    <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
+    {% include "snippet/ga.html" %}
+  </head>
+  <body>
+    <header id="header-wrapper">{% block header %}{% endblock %}</header>
+    <nav id="navigation">
+      {%- block navigation %}
+      {%- if theme.mainnav %}
+      <ul>
+        {%- for item in theme.mainnav %}
+        <li><a href="{{item.link}}">{{item.title}}</a></li>
+        {%- endfor %}
+        {%- for item in theme.sidenav %}
+        <li class="side"><a href="{{item.link}}">{{item.title}}</a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+      {%- endblock %}
+    </nav>
+    <div id="content-wrapper">
+      <div id="content">{% block content %}{% endblock %}</div>
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered">Powered by <a href="{{system.homepage}}">{{system.name}}</a> {{system.version}} with theme {{theme.name}} {{theme.version}}</p>
+      </footer>
+    </div>
+  </body>
+</html>

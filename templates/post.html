@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block header %}<h1>{{site.name}}</h1>{% endblock %}
+
+{% block content %}
+<article class="hentry">
+  <h1 class="entry-title">{{post.title}}</h1>
+  <div class="meta">{{post.date.strftime('%Y-%m-%d')}}</div>
+  <div class="entry-content">
+    {{ post.content }}
+  </div>
+</article>
+{% endblock %}
