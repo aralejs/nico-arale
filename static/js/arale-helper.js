@@ -73,32 +73,6 @@
       map: mapRules
     })
   }
-
-  var aliasIsParsed = false
-  var _use = seajs.use
-
-  seajs.use = function(ids, callback) {
-    // 确保 package.json 加载前，plugin-json 已加载完成
-    _use(['seajs/plugin-json'], function() {
-      _use(PAGE_ROOT + '/package.json', function(data) {
-
-        if (aliasIsParsed === false) {
-          PACKAGE = data
-          // 有可能存在 { '$': '$' } 配置，需排除掉
-          data.dependencies && (delete data.dependencies['$'])
-          data.devDependencies && (delete data.devDependencies['$'])
-
-          seajs.config({ alias: data.dependencies })
-          seajs.config({ alias: data.devDependencies })
-
-          aliasIsParsed = true
-          seajs.use = _use
-        }
-
-        _use(ids, callback)
-      })
-    })
-  }
 })();
 
 seajs.use(['jquery'], function($) {

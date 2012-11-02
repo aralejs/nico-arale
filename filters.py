@@ -36,3 +36,12 @@ def src_js(ctx, files):
         if 'src/' in f and '/' not in name and name.endswith('.js'):
             dct[name[:-3]] = '%s/src/%s' % (base, name)
     return dct
+
+
+def json_dumps(dct):
+    try:
+        import json
+    except ImportError:
+        import simplejson
+        json = simplejson
+    return json.dumps(dct)

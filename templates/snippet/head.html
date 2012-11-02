@@ -12,7 +12,13 @@
 </script>
 {%- endif %}
 <script>
-  seajs.config({
-    alias: {{resource.files|src_js}}
-  })
+  (function() {
+    var data = {{resource.package|json_dumps}}
+    data.dependencies && (delete data.dependencies['$'])
+    data.devDependencies && (delete data.devDependencies['$'])
+
+    seajs.config({ alias: data.dependencies })
+    seajs.config({ alias: data.devDependencies })
+    seajs.config({ alias: {{resource.files|src_js}} })
+  })();
 </script>
