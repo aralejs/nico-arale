@@ -50,14 +50,13 @@
   seajs.config({
     base: GITHUB_BASE,
     alias: {
-      '$': 'jquery/1.7.2/jquery',
-      '$-debug': 'jquery/1.7.2/jquery-debug',
+      '$': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery.js',
+      '$-debug': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery-debug.js',
 
-      'jquery': 'jquery/1.7.2/jquery',
-      'jquery-debug': 'jquery/1.7.2/jquery-debug',
+      'jquery': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery',
+      'jquery-debug': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery-debug.js',
 
-      'zepto': 'https://a.alipayobjects.com/static/handy/zepto/0.9.0/zepto.js',
-      '_': 'underscore/1.3.3/underscore'
+      'zepto': 'https://a.alipayobjects.com/static/handy/zepto/0.9.0/zepto.js'
 
     },
     preload: [

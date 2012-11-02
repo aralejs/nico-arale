@@ -11,3 +11,8 @@
   })();
 </script>
 {%- endif %}
+<script>
+  seajs.config({
+    alias: {{resource.files|src_js}}
+  })
+</script>
