@@ -36,7 +36,7 @@ reader:
 writer:
     active:
         - liquidluck.writers.core.PostWriter
-        - liquidluck.writers.core.PageWriter
+        - liquidluck.writers.core.StaticWriter
 
 #: theme variables
 theme:
