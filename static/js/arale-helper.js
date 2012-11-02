@@ -36,7 +36,7 @@
       url = url.replace(GITHUB_BASE, PAGE_ROOT + '/src/')
     }
 
-    // 如果访问 alipay.im 则从 git.alipay.im 加载
+    // 如果访问 alipay.im 则从 alipay.im 加载
     if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
         && url.indexOf(GITHUB_BASE) != -1) {
           // 链接转换成 http://arale.alipay.im/source/overlay/0.9.9/overlay.js
@@ -77,36 +77,32 @@
   var aliasIsParsed = false
   var _use = seajs.use
 
-  if (location.href.indexOf('/tests/runner.html') > -1 ||
-      location.href.indexOf('/examples') > -1) {
+  seajs.use = function(ids, callback) {
+    // 确保 package.json 加载前，plugin-json 已加载完成
+    _use(['seajs/plugin-json'], function() {
+      _use(PAGE_ROOT + '/package.json', function(data) {
 
-    seajs.use = function(ids, callback) {
-      // 确保 package.json 加载前，plugin-json 已加载完成
-      _use(['seajs/plugin-json'], function() {
-        _use(PAGE_ROOT + '/package.json', function(data) {
+        if (aliasIsParsed === false) {
+          PACKAGE = data
+          // 有可能存在 { '$': '$' } 配置，需排除掉
+          data.dependencies && (delete data.dependencies['$'])
+          data.devDependencies && (delete data.devDependencies['$'])
 
-          if (aliasIsParsed === false) {
-            PACKAGE = data
-            // 有可能存在 { '$': '$' } 配置，需排除掉
-            data.dependencies && (delete data.dependencies['$'])
-            data.devDependencies && (delete data.devDependencies['$'])
+          seajs.config({ alias: data.dependencies })
+          seajs.config({ alias: data.devDependencies })
 
-            seajs.config({ alias: data.dependencies })
-            seajs.config({ alias: data.devDependencies })
+          aliasIsParsed = true
+          seajs.use = _use
+        }
 
-            aliasIsParsed = true
-            seajs.use = _use
-          }
-
-          _use(ids, callback)
-        })
+        _use(ids, callback)
       })
-    }
+    })
   }
 })();
 
 seajs.use(['jquery'], function($) {
   $(function(){
-    $('h4 em').parent().addClass('doc-api')
+    $('h4 em, h3 em').parent().addClass('doc-api')
   });
 })
