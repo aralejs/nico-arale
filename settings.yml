@@ -12,8 +12,8 @@ site:
 #: 1. where the resources  2. how should the site be generated
 config:
     source: .
-    output: .
-    static: ./static
+    output: _site
+    static: _site/static
     static_prefix: /static/
     permalink: "{{folder}}/{{filename}}.html"
     relative_url: true
@@ -37,7 +37,9 @@ writer:
     active:
         - liquidluck.writers.core.PostWriter
         - liquidluck.writers.core.StaticWriter
+        - liquidluck.writers.core.FileWriter
+        - chiang.PackageWriter
 
 #: theme variables
 theme:
-    name: chiang
+    name: arale2

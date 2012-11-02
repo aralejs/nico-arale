@@ -1,8 +1,18 @@
 {% extends "layout.html" %}
 
-{% block header %}<h1>{{site.name}}</h1>{% endblock %}
+{%- block title -%}
+{{site.name}}.{{resource.package.name|title}} - {{post.title}}
+{%- endblock -%}
 
 {% block content %}
+{%- set items = resource.posts|same_category(post.category) %}
+{%- if items|length > 1 %}
+<ol id="sidenav">
+  {%- for item in items %}
+  <li><a href="{{item|permalink}}">{{item.title}}</a></li>
+  {%- endfor %}
+</ol>
+{%- endif %}
 <article class="hentry">
   <h1 class="entry-title">{{post.title}}</h1>
   <div class="meta">{{post.date.strftime('%Y-%m-%d')}}</div>

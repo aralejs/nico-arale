@@ -62,9 +62,19 @@ body {
     background-color: #FFF;
 }
 #content {
+    position: relative;
     padding: 10px 30px 30px;
     border: 1px solid #D6D4CE;
     border-radius: 1px;
+}
+#content #sidenav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    margin: 0;
+    padding: 4px 28px;
+    background-color: #eee;
+    font-size: 14px;
 }
 #content .entry-title {
     margin-bottom: 12px;
@@ -94,6 +104,12 @@ body {
     padding-bottom: 10px;
     border-bottom: 2px solid #eee;
 }
+#content hr {
+    display: block;
+    border: 0;
+    height: 4px;
+    background-color: #ddd;
+}
 #content pre {
     border: 1px solid #ccc;
     padding: 6px 10px;
@@ -112,4 +128,15 @@ body {
 #footer-wrapper a {
     color: #9C9C9C;
     text-decoration: none;
+}
+
+/* other */
+#content .doc-api {
+    color: #790000;
+}
+#content .doc-api em {
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 4px;
+    color: #999;
 }
