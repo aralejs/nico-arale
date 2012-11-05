@@ -5,6 +5,16 @@
 {%- endblock -%}
 
 {% block content %}
+<article class="hentry">
+  <h1 class="entry-title">{{post.title}}</h1>
+  <div class="meta">{{post.date.strftime('%Y-%m-%d')}}</div>
+  <div class="entry-content">
+    {{ post.content }}
+  </div>
+</article>
+{% endblock %}
+
+{% block subsidebar %}
 {%- set items = resource.posts|same_category(post.category) %}
 {%- if items|length > 1 %}
 <ol id="sidenav">
@@ -13,11 +23,4 @@
   {%- endfor %}
 </ol>
 {%- endif %}
-<article class="hentry">
-  <h1 class="entry-title">{{post.title}}</h1>
-  <div class="meta">{{post.date.strftime('%Y-%m-%d')}}</div>
-  <div class="entry-content">
-    {{ post.content }}
-  </div>
-</article>
 {% endblock %}

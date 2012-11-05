@@ -15,27 +15,39 @@
     {%- include "snippet/head.html" %}
   </head>
   <body>
-    <header id="header-wrapper">
-      <h1><span class="color-gray">{{site.name}}.</span>{{resource.package.name|title}}</h1>
-    </header>
-    <nav id="navigation">
-      {%- block navigation %}
-      <ul>
-        <li><a href="{{content_url('index.html')}}">首页</a></li>
-        {%- set item = resource.posts|first_category('docs') %}
-        {%- if item %}
-        <li><a href="{{item|permalink}}">文档</a></li>
+    <div id="body-wrapper">
+      <aside id="sidebar-wrapper">
+        <h1><a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a></h1>
+        <p class="version">当前版本：<span>{{resource.package.version}}</span></p>
+        <p class="description">{{resource.package.description}}</p>
+        {%- if resource.package.repository %}
+        <a class="source" href="{{resource.package.repository.url}}" target="_blank">View the Project</a>
         {%- endif %}
-        {%- set item = resource.posts|first_category('examples') %}
-        {%- if item %}
-        <li><a href="{{item|permalink}}">演示</a></li>
-        {%- endif %}
-        <li class="side"><a target="_blank" href="{{content_url('tests/runner.html')}}">用例</a></li>
-      </ul>
-      {%- endblock %}
-    </nav>
-    <div id="content-wrapper">
-      <div id="content">{% block content %}{% endblock %}</div>
+        {%- block sidebar %}
+        <ul id="navigation" role="navigation">
+          {%- set example = resource.posts|first_category('examples') %}
+          {%- if example %}
+          <li><a href="{{example|permalink}}">演示</a></li>
+          {%- endif %}
+          {%- set doc = resource.posts|first_category('docs') %}
+          {%- if doc %}
+          <li><a href="{{doc|permalink}}">文档</a></li>
+          {%- endif %}
+          {%- if resource.history %}
+          <li><a href="">历史</a></li>
+          {%- endif %}
+          <li><a target="_blank" href="{{content_url('tests/runner.html')}}">用例</a></li>
+          {%- if resource.package.bugs %}
+          <li><a href="{{resource.package.bugs.url}}" target="_blank">讨论</a></li>
+          {%- endif %}
+        </ul>
+        {%- endblock %}
+        {%- block subsidebar %}
+        {%- endblock %}
+      </aside>
+      <div id="content-wrapper">
+        <div id="content">{% block content %}{% endblock %}</div>
+      </div>
     </div>
     <div id="footer-wrapper">
       <footer>

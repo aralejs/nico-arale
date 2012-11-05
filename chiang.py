@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import logging
 from liquidluck.writers.base import BaseWriter
 from liquidluck.readers.base import Post
 from liquidluck.options import g
@@ -24,6 +25,8 @@ class ChiangPost(Post):
     @property
     def filename(self):
         name = super(ChiangPost, self).filename.lower()
+        if name == 'history':
+            g.resource['history'] = True
         if name == 'readme':
             return 'index'
         return name
