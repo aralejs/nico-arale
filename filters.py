@@ -25,15 +25,19 @@ def first_category(posts, category):
 
 @contextfilter
 def src_js(ctx, files):
+    import os
+    from liquidluck.options import g
     from liquidluck.utils import get_relative_base
 
     writer = ctx.get('writer')
     base = get_relative_base(writer['filepath'])
+    src = os.path.abspath(os.path.join(g.source_directory, 'src'))
 
     dct = {}
     for f in files:
-        name = f[f.find('src/') + 4:]
-        if 'src/' in f and '/' not in name and name.endswith('.js'):
+        f = os.path.abspath(f)
+        name = f[len(src) + 1:]
+        if src in f and name.endswith('.js') and '/' not in name:
             dct[name[:-3]] = '%s/src/%s' % (base, name)
     return dct
 

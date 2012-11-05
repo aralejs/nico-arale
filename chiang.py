@@ -16,6 +16,8 @@ except ImportError:
 class ChiangPost(Post):
     @property
     def category(self):
+        if self.relative_filepath == 'README.md':
+            return 'docs'
         return self.folder
 
     @property

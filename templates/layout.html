@@ -25,13 +25,10 @@
         {%- endif %}
         {%- block sidebar %}
         <ul id="navigation" role="navigation">
+          <li><a href="{{content_url('index.html')}}">文档</a></li>
           {%- set example = resource.posts|first_category('examples') %}
           {%- if example %}
           <li><a href="{{example|permalink}}">演示</a></li>
-          {%- endif %}
-          {%- set doc = resource.posts|first_category('docs') %}
-          {%- if doc %}
-          <li><a href="{{doc|permalink}}">文档</a></li>
           {%- endif %}
           {%- if resource.history %}
           <li><a href="">历史</a></li>
