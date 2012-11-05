@@ -39,6 +39,7 @@ writer:
         - liquidluck.writers.core.StaticWriter
         - liquidluck.writers.core.FileWriter
         - chiang.PackageWriter
+        - chiang.TestWriter
 
 #: theme variables
 theme:

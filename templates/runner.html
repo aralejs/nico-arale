@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>{% block title %}{{site.name}}.{{resource.package.name|title}} Jasmine Runner{% endblock %}</title>
+    <script src="{{static_url('seajs/sea.js')}}"></script>
+    <script src="{{static_url('js/arale-helper.js')}}"></script>
+    <script>
+      seajs.use(['jasmine/1.1.0/jasmine-html', "{{static_url('js/jasmine-jquery.js')}}"], function() {
+
+        var data = {{resource.package|json_dumps}}
+        data.dependencies && (delete data.dependencies['$'])
+        data.devDependencies && (delete data.devDependencies['$'])
+
+        seajs.config({ alias: data.dependencies })
+        seajs.config({ alias: data.devDependencies })
+
+        var jasmineEnv = getJasmineEnv()
+
+        // jasmine-jquery 配置
+        jasmine.getFixtures().fixturesPath = 'fixtures'
+
+        // 让 Jasmine 从文艺青年变成普通青年
+        this.test = it
+        this.xtest = xit
+
+        // Go
+        runSpecs()
+
+
+        function getJasmineEnv() {
+          var env = jasmine.getEnv()
+          env.updateInterval = 1000
+
+          var trivialReporter = new jasmine.TrivialReporter()
+          env.addReporter(trivialReporter)
+
+          env.specFilter = function(spec) {
+            return trivialReporter.specFilter(spec)
+          }
+          return env
+        }
+
+
+        function runSpecs() {
+          var tests = data['tests'] || []
+
+          // Get the default test from path: path/to/xxx/tests/runner.html
+          if (tests.length === 0) {
+            tests.push(location.href.replace(/.+\/([\w-]+)\/tests\/runner.+/, '$1'))
+          }
+
+          var specs = []
+          for (var i = 0; i < tests.length; i++) {
+            specs[i] = './' + tests[i] + '-spec.js'
+          }
+
+          seajs.use(specs, function() {
+            jasmineEnv.execute()
+          })
+        }
+
+      })
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

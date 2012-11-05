@@ -44,3 +44,11 @@ class PackageWriter(BaseWriter):
 
     def start(self):
         pass
+
+
+class TestWriter(BaseWriter):
+    writer_name = 'test'
+
+    def start(self):
+        dest = os.path.join(g.output_directory, 'tests', 'runner.html')
+        self.render({}, 'runner.html', dest)
