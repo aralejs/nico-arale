@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <title>{% block title %}{{site.name}}.{{resource.package.name|title}} Jasmine Runner{% endblock %}</title>
     <script src="{{static_url('seajs/sea.js')}}"></script>
+    {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script>
       seajs.use(['jasmine/1.1.0/jasmine-html', "{{static_url('js/jasmine-jquery.js')}}", "{{static_url('js/console-runner.js')}}"], function() {
