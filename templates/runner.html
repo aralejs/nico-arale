@@ -7,7 +7,7 @@
     <script src="{{static_url('seajs/sea.js')}}"></script>
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script>
-      seajs.use(['jasmine/1.1.0/jasmine-html', "{{static_url('js/jasmine-jquery.js')}}"], function() {
+      seajs.use(['jasmine/1.1.0/jasmine-html', "{{static_url('js/jasmine-jquery.js')}}", "{{static_url('js/console-runner.js')}}"], function() {
 
         var data = {{resource.package|json_dumps}}
         data.dependencies && (delete data.dependencies['$'])
@@ -35,6 +35,9 @@
 
           var trivialReporter = new jasmine.TrivialReporter()
           env.addReporter(trivialReporter)
+          
+          console_reporter = new jasmine.ConsoleReporter()
+          env.addReporter(console_reporter)
 
           env.specFilter = function(spec) {
             return trivialReporter.specFilter(spec)
