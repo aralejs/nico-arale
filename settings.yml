@@ -27,7 +27,7 @@ author:
 #: active readers
 reader:
     active:
-        - liquidluck.readers.markdown.MarkdownReader
+        - iframe.MarkdownReader
         - liquidluck.readers.restructuredtext.RestructuredTextReader
     vars:
         post_class: chiang.ChiangPost
@@ -35,11 +35,12 @@ reader:
 #: active writers
 writer:
     active:
+        - chiang.IframeWriter
+        - chiang.PackageWriter
+        - chiang.TestWriter
         - liquidluck.writers.core.PostWriter
         - liquidluck.writers.core.StaticWriter
         - liquidluck.writers.core.FileWriter
-        - chiang.PackageWriter
-        - chiang.TestWriter
 
 #: theme variables
 theme:

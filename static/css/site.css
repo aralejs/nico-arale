@@ -15,11 +15,11 @@ body {
     position: fixed;
     color: #9c9277;
     text-shadow: 0 1px 0 #fff;
-    width: 220px;
+    width: 210px;
 }
 #content-wrapper {
     float: right;
-    width: 730px;
+    width: 740px;
     font-size: 14px;
 }
 #sidebar-wrapper h1 {
@@ -77,14 +77,13 @@ body {
     color: #48b;
 }
 #content-wrapper {
-    border: 3px solid #E6E6E6;
+    border: 1px solid #D6D4CE;
+    border-radius: 4px;
     background-color: #FFF;
 }
 #content {
     position: relative;
     padding: 10px 30px 30px;
-    border: 1px solid #D6D4CE;
-    border-radius: 1px;
 }
 #content .entry-title {
     margin-bottom: 12px;
@@ -112,8 +111,9 @@ body {
 }
 #content h2 {
     margin-top: 40px;
-    padding-bottom: 10px;
+    padding-bottom: 4px;
     border-bottom: 2px solid #eee;
+    font-family: "Marcellus", sans-serif;
 }
 #content hr {
     display: block;
@@ -156,6 +156,9 @@ body {
     font-size: 14px;
     margin-left: 4px;
     color: #999;
+}
+#content .ff-iframe {
+    width: 100%;
 }
 
 #sidenav {

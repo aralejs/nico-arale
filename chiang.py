@@ -16,6 +16,8 @@ except ImportError:
 class ChiangPost(Post):
     @property
     def category(self):
+        if self.relative_filepath == 'README.md':
+            return 'docs'
         return self.folder
 
     @property
@@ -55,3 +57,15 @@ class TestWriter(BaseWriter):
     def start(self):
         dest = os.path.join(g.output_directory, 'tests', 'runner.html')
         self.render({}, 'runner.html', dest)
+
+
+class IframeWriter(BaseWriter):
+    writer_name = 'iframe'
+
+    def start(self):
+        if 'iframe' not in g.resource:
+            return
+        items = g.resource['iframe']
+        for key in items:
+            dest = os.path.join(g.output_directory, 'iframe', key) + '.html'
+            self.render({'iframe': items[key]}, 'iframe.html', dest)

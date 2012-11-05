@@ -9,7 +9,7 @@
   <h1 class="entry-title">{{post.title}}</h1>
   <div class="meta">{{post.date.strftime('%Y-%m-%d')}}</div>
   <div class="entry-content">
-    {{ post.content }}
+    {{ post.content|iframe }}
   </div>
 </article>
 {% endblock %}
