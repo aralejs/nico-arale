@@ -42,6 +42,24 @@ def src_js(ctx, files):
     return dct
 
 
+@contextfilter
+def iframe(ctx, content):
+    #: together with IframeWriter
+    import re
+    from liquidluck.utils import get_relative_base
+    writer = ctx.get('writer')
+    base = get_relative_base(writer['filepath'])
+    regex = ur'\[\[iframe:(\S*?)\]\]'
+
+    def repl(m):
+        name = m.group(1)
+        src = '%s/iframe/%s.html' % (base, name.lower())
+        return ('<iframe src="%s" allowtransparency="true" '
+                'frameborder="0" scrolling="0"></iframe>') % src
+
+    return re.sub(regex, repl, content)
+
+
 def json_dumps(dct):
     try:
         import json
