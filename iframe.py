@@ -25,7 +25,7 @@ _ARALE_BEFORE_FILE = None
 _ARALE_CURRENT_FILE = None
 
 
-def generate_iframe(text):
+def generate_iframe(text, height=None):
     if 'iframe' not in g.resource:
         g.resource['iframe'] = {}
 
@@ -38,7 +38,7 @@ def generate_iframe(text):
     _ARALE_IFRAME_COUNT += 1
     key = os.path.splitext(_ARALE_CURRENT_FILE)[0]
     key = '%s-%s' % (key.replace(os.path.sep, '-'), _ARALE_IFRAME_COUNT)
-    g.resource['iframe'][key] = text
+    g.resource['iframe'][key] = {'text': text, 'height': height}
     return key
 
 
@@ -123,8 +123,14 @@ class AraleRender(JuneRender):
         #: special handle for iframe
         # ````iframe
         if lang.startswith('iframe'):
+            height = None
+            if ':' in lang:
+                try:
+                    height = int(lang.split(':')[1])
+                except:
+                    height = None
             lang = 'html'
-            key = generate_iframe(text)
+            key = generate_iframe(text, height)
             html = '[[iframe:%s]]' % key
 
         if hide and inject:

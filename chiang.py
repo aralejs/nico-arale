@@ -68,4 +68,4 @@ class IframeWriter(BaseWriter):
         items = g.resource['iframe']
         for key in items:
             dest = os.path.join(g.output_directory, 'iframe', key) + '.html'
-            self.render({'text': items[key]}, 'iframe.html', dest)
+            self.render({'iframe': items[key]}, 'iframe.html', dest)

@@ -157,6 +157,9 @@ body {
     margin-left: 4px;
     color: #999;
 }
+#content .ff-iframe {
+    width: 100%;
+}
 
 #sidenav {
     border-top: 1px dashed #D6D4CD;
