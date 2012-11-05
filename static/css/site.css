@@ -20,6 +20,7 @@ body {
 #content-wrapper {
     float: right;
     width: 730px;
+    font-size: 14px;
 }
 #sidebar-wrapper h1 {
     margin: 0;
@@ -69,11 +70,11 @@ body {
     margin-left: 8px;
 }
 #sidebar-wrapper a {
-    color: #666;
+    color: #6c97c2;
     text-decoration: none;
 }
 #sidebar-wrapper a:hover {
-    color: #A39E8A;
+    color: #48b;
 }
 #content-wrapper {
     border: 3px solid #E6E6E6;
