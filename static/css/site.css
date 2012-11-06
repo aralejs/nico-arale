@@ -7,7 +7,7 @@ body {
 #body-wrapper {
     margin-left: auto;
     margin-right: auto;
-    max-width: 980px;
+    max-width: 1040px;
     padding-top: 20px;
 }
 #sidebar-wrapper {
@@ -20,7 +20,7 @@ body {
 }
 #content-wrapper {
     float: right;
-    width: 740px;
+    width: 800px;
     font-size: 14px;
 }
 #sidebar-wrapper h1 {
@@ -70,6 +70,10 @@ body {
 #navigation li + li {
     margin-left: 8px;
 }
+#navigation a:hover,
+#sidenav a:hover {
+    border-bottom: 1px dotted #769FD0;
+}
 #sidebar-wrapper a {
     color: #6c97c2;
     text-decoration: none;
@@ -88,6 +92,7 @@ body {
 }
 #content .entry-title {
     margin-bottom: 12px;
+    font-family: "Marcellus", sans-serif;    
 }
 #content .meta {
     color: #BCBCBD;
@@ -130,6 +135,7 @@ body {
     background-color: #F8F8F8;
     line-height: 19px;
     font-size: 13px;
+    white-space: pre;
 }
 #content code {
     font-size: 13px;
@@ -137,6 +143,15 @@ body {
     background-color: #fee9cc;
     padding: 1px 3px;
     border-radius: 3px;
+}
+#content pre code {
+    background-color: transparent;
+}
+#content blockquote {
+    border-left: 0.4em solid #ddd;
+    color: #777;
+    margin: 15px 0;
+    padding: 0 15px;
 }
 #footer-wrapper {
     clear: both;
