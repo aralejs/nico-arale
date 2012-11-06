@@ -7,7 +7,7 @@ body {
 #body-wrapper {
     margin-left: auto;
     margin-right: auto;
-    max-width: 980px;
+    max-width: 1040px;
     padding-top: 20px;
 }
 #sidebar-wrapper {
@@ -20,7 +20,7 @@ body {
 }
 #content-wrapper {
     float: right;
-    width: 740px;
+    width: 800px;
     font-size: 14px;
 }
 #sidebar-wrapper h1 {
