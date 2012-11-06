@@ -28,7 +28,7 @@ var result = tmpl.render({
         debug: true
     }
 });
-fs.writeFileSync(fs.realpathSync('tests/runner.html'), result);
+fs.writeFileSync('tests/runner.html', result);
 
 // server
 var file = new static.Server(fs.realpathSync('.'));
