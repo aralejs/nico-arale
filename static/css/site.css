@@ -131,6 +131,13 @@ body {
     line-height: 19px;
     font-size: 13px;
 }
+#content code {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.75);
+    background-color: #fee9cc;
+    padding: 1px 3px;
+    border-radius: 3px;
+}
 #footer-wrapper {
     clear: both;
     color: #9C9C9C;
