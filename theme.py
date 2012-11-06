@@ -6,17 +6,7 @@ version = '0.1'
 website = 'https://github.com/alipay/liquidluck-theme-arale2'
 author = {
     'name': 'Hsiaoming Yang',
-    'website': 'http://lepture.com',
+    'website': 'http://aralejs.org',
 }
 
-mainnav = [
-    {'title': u'Home', 'link': '/'},
-]
-
-sidenav = [
-    {'title': u'Twitter', 'link': 'https://twitter.com/lepture'},
-]
-
 lang = 'en'
-disqus = None
-analytics = None
