@@ -88,10 +88,9 @@ seajs.use(['jquery'], function($) {
     $('.highlight').append('<a class="code-toggle" href="#">收起</a>')
     $('.highlight').each(function(i, item) {
       var $item = $(item)
-      console.log($item.height())
       if ($item.height() > 400) {
         $item.addClass('collapse')
-        $('.highlight .code-toggle').text('展开')
+        $item.find('.code-toggle').text('展开')
       }
     });
   });
