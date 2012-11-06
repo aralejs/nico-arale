@@ -64,8 +64,11 @@ def iframe(ctx, content):
         else:
             logging.warn('Iframe not found: %s' % name)
         src = '%s/iframe/%s.html' % (base, name.lower())
-        return ('<iframe src="%s" class="ff-iframe" allowtransparency="true" '
-                'frameborder="0" scrolling="0" %s></iframe>') % (src, h)
+        return ('<div class="ff-iframe">'
+                '<iframe src="%s" allowtransparency="true" '
+                'frameborder="0" scrolling="0" %s></iframe>'
+                '</div>'
+               ) % (src, h)
 
     return re.sub(regex, repl, content)
 

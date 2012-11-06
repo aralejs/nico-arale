@@ -188,7 +188,35 @@ body {
     color: #999;
 }
 #content .ff-iframe {
+    position: relative;
+}
+#content .ff-iframe iframe {
     width: 100%;
+}
+#content .ff-iframe .ui-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+#content .highlight {
+    position: relative;
+}
+#content .highlight pre {
+    min-height: 40px;
+}
+#content .collapse pre {
+    overflow: hidden;
+    height: 40px;
+}
+#content .highlight .ui-toggle {
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    padding: 2px 4px;
+    background: rgba(0, 0, 0, 0.08);
+    border-radius: 0 4px 0 4px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 #sidenav {
