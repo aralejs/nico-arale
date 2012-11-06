@@ -81,21 +81,21 @@ seajs.use(['jquery'], function($) {
     // 给 iframe 加链接
     $('.ff-iframe').each(function(i, item) {
       var src = $(item).find('iframe').attr('src')
-      var html = '<a class="ui-button" target="_blank" href="' + src + '">新窗口打开</a>'
+      var html = '<a class="new-window" target="_blank" href="' + src + '">新窗口打开</a>'
       $(item).append(html)
     });
     // 给 code 加收起和展开
-    $('.highlight').append('<a class="ui-toggle" href="#">收起</a>')
+    $('.highlight').append('<a class="code-toggle" href="#">收起</a>')
     $('.highlight').each(function(i, item) {
       var $item = $(item)
       console.log($item.height())
-      if ($item.height() > 300) {
-        $('.highlight .ui-toggle').text('展开')
+      if ($item.height() > 400) {
         $item.addClass('collapse')
+        $('.highlight .code-toggle').text('展开')
       }
     });
   });
-  $('.highlight').on('click', '.ui-toggle', function() {
+  $('.highlight').on('click', '.code-toggle', function() {
     var pre = $(this).parents('.highlight')
     if (pre.hasClass('collapse')) {
       pre.removeClass('collapse')

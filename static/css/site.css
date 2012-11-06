@@ -154,9 +154,12 @@ body {
     background-color: #fee9cc;
     padding: 1px 3px;
     border-radius: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 #content pre code {
     background-color: transparent;
+    margin: auto;
 }
 #content blockquote {
     border-left: 0.4em solid #ddd;
@@ -197,10 +200,11 @@ body {
 #content .ff-iframe iframe {
     width: 100%;
 }
-#content .ff-iframe .ui-button {
+#content .ff-iframe .new-window {
     position: absolute;
     top: 0;
     right: 0;
+    font-size: 12px;
 }
 #content .highlight {
     position: relative;
@@ -212,15 +216,16 @@ body {
     overflow: hidden;
     height: 40px;
 }
-#content .highlight .ui-toggle {
+#content .highlight .code-toggle {
     position: absolute;
     top: 1px;
     right: 1px;
+    font-size: 12px;
     padding: 2px 4px;
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 0 4px 0 4px;
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.9);
+    color: #fff;
 }
 
 #sidenav {
