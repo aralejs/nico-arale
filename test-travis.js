@@ -12,7 +12,10 @@ swig.init({
         }
     }
 });
+
 var package = require(fs.realpathSync('package.json'))
+console.log('read package.json');
+
 var tmpl = swig.compileFile(fs.realpathSync('tests/templates/runner.html'));
 var result = tmpl.render({
     static_url: function(url) {
@@ -29,6 +32,7 @@ var result = tmpl.render({
     }
 });
 fs.writeFileSync('tests/runner.html', result);
+console.log('generate tests/runner.html');
 
 // server
 var file = new static.Server(fs.realpathSync('.'));
@@ -37,4 +41,4 @@ http.createServer(function(request, response) {
         file.serve(request, response);
     });
 }).listen(8000);
-
+console.log('Server start http://127.0.0.1:8000');
