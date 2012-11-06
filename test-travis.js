@@ -7,13 +7,12 @@ swig.init({
     autoescape: false,
     filters: {
         json_dumps: function(input) {
-            console.log(JSON.stringify(input))
             return JSON.stringify(input);
         }
     }
 });
 
-var package = require(fs.realpathSync('package.json'))
+var package = require(fs.realpathSync('package.json'));
 console.log('read package.json');
 
 var tmpl = swig.compileFile(fs.realpathSync('tests/templates/runner.html'));
@@ -34,7 +33,7 @@ var result = tmpl.render({
 fs.writeFileSync('tests/runner.html', result);
 console.log('generate tests/runner.html');
 
-// server
+// Server Start
 var file = new static.Server(fs.realpathSync('.'));
 http.createServer(function(request, response) {
     request.addListener('end', function() {
