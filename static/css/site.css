@@ -72,7 +72,7 @@ body {
 }
 #navigation a:hover,
 #sidenav a:hover {
-    border: 1px dotted #769FD0;
+    border-bottom: 1px dotted #769FD0;
 }
 #sidebar-wrapper a {
     color: #6c97c2;
