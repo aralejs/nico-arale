@@ -17,7 +17,7 @@
 
         $ sudo pip install -U tornado
 
-3. 安装 arale2 主题
+3. 安装 arale2 主题 (更新主题也是该命令)
 
         $ liquidluck install alipay/arale2 -g
 
