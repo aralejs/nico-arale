@@ -53,6 +53,13 @@ server:
 分割线一定得有的哦，分割线下面是内容。
 ```
 
+### package.json
+
+请参考 [spm package.json](https://github.com/seajs/spm/wiki/package.json)。
+
+其中 ``repository.url`` 用来生成 View the Project 链接， ``bugs.url`` 用来生成讨论链接。
+
+
 ### 特性
 
 代码高亮 (三个 `)
