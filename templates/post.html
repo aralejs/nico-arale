@@ -24,3 +24,20 @@
 </ol>
 {%- endif %}
 {% endblock %}
+
+{%- block sidebar %}
+<ul id="navigation" role="navigation">
+  <li{%if post.category == 'docs'%} class="active"{%endif%}><a href="{{content_url('index.html')}}">文档</a></li>
+  {%- set example = resource.posts|first_category('examples') %}
+  {%- if example %}
+  <li{%if post.category == 'examples'%} class="active"{%endif%}><a href="{{example|permalink}}">演示</a></li>
+  {%- endif %}
+  {%- if resource.history %}
+  <li{%if post.filename == 'history'%} class="active"{%endif%}><a href="{{content_url('history.html')}}">历史</a></li>
+  {%- endif %}
+  <li><a target="_blank" href="{{content_url('tests/runner.html')}}">用例</a></li>
+  {%- if resource.package.bugs %}
+  <li><a href="{{resource.package.bugs.url}}" target="_blank">讨论</a></li>
+  {%- endif %}
+</ul>
+{%- endblock %}

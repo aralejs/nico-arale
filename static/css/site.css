@@ -88,6 +88,10 @@ body {
 #sidebar-wrapper a:hover {
     color: #48b;
 }
+#navigation .active a {
+    color: #48d;
+    font-weight: bold;
+}
 #content-wrapper {
     border: 1px solid #D6D4CE;
     border-radius: 4px;
