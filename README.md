@@ -146,3 +146,36 @@ README.md
 ```
 $ make server
 ```
+
+
+# Windows 用户
+
+## 安装 Cygwin
+
+去 [cygwin](http://www.cygwin.com) 下载安装，选择以下包安装：
+
+1. python interpreters 2.6
+2. make （Devel -- the GNU version of 'make')
+3. gcc (gcc-core 和 gcc-g++)
+4. git （Devel -- Fast Version Control …)
+5. ca-certificates
+
+## 安装 liquidluck
+
+1. 下载 [setuptools](pypi.python.org/pypi/setuptools) py2.6.egg 这个
+2. 打开 cygwin terminal 执行 ``sh setuptools-xxx.egg`` (建议将 setuptools 放到 ~ 下)
+3. 安装 pip (easy_install pip)
+4. 安装 liquidluck (pip install -U liquidluck)
+5. 如果要有 livereload 功能，需要安装 tornado (pip install -U tornado)
+6. 如果要写 rst 需要安装 docutils (pip install docutils)
+
+## 跑起来
+
+1. 安装主题 liquidluck install alipay/arale2 -g
+2. git clone git://github.com/aralejs/calendar.git
+3. cd calendar
+4. make server
+
+查看一下 Makefile
+
+另外， ``spm install`` 一下，用 ``make debug`` 可加速。
