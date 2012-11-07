@@ -26,10 +26,12 @@ _ARALE_CURRENT_FILE = None
 
 
 def generate_iframe(text, height=None):
-    if 'iframe' not in g.resource:
-        g.resource['iframe'] = {}
-
     global _ARALE_CURRENT_FILE, _ARALE_BEFORE_FILE, _ARALE_IFRAME_COUNT
+
+    if 'iframe' not in g.resource:
+        _ARALE_IFRAME_COUNT = 0
+        _ARALE_BEFORE_FILE = None
+        g.resource['iframe'] = {}
 
     if _ARALE_CURRENT_FILE != _ARALE_BEFORE_FILE:
         _ARALE_BEFORE_FILE = _ARALE_CURRENT_FILE
