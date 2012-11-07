@@ -16,7 +16,7 @@ body {
     color: #9c9277;
     text-shadow: 0 1px 0 #fff;
     font-size: 14px;
-    width: 210px;
+    width: 220px;
 }
 #content-wrapper {
     float: right;
@@ -103,7 +103,7 @@ body {
 }
 #content .entry-title {
     margin-bottom: 12px;
-    font-family: "Marcellus", sans-serif;    
+    font-family: "Marcellus", sans-serif;
 }
 #content .meta {
     color: #BCBCBD;
@@ -112,8 +112,9 @@ body {
 }
 #content p, #content h1, #content h2, #content h3, #content h4 {
     font-family: Georgia,'Xin Gothic','PT Sans','Hiragino Sans GB','Helvetica Neue',Helvetica,Arial,sans-serif;
+    color: #454545;
 }
-#content p, #content ul, #content ol, #content blockquote {
+#content p, #content ul, #content ol {
     color: #666;
 }
 #content li {
@@ -211,11 +212,11 @@ body {
     position: relative;
 }
 #content .highlight pre {
-    min-height: 40px;
+    min-height: 60px;
 }
 #content .collapse pre {
     overflow: hidden;
-    height: 40px;
+    height: 60px;
 }
 #content .highlight .code-toggle {
     position: absolute;

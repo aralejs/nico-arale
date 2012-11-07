@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
     <title>{% block title %}{{site.name}}.{{resource.package.name|title}} Jasmine Runner{% endblock %}</title>
     <link href="{{static_url('css/jasmine.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
-    <script src="{{static_url('seajs/sea.js')}}"></script>
+    <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.1/sea.js"></script>
     {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script src="{{static_url('js/jasmine.js')}}"></script>
