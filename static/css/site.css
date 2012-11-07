@@ -131,7 +131,7 @@ body {
 #content h2 {
     margin-top: 40px;
     padding-bottom: 4px;
-    border-bottom: 2px solid #eee;
+    border-bottom: 1px solid #ccc;
     font-family: "Marcellus", sans-serif;
 }
 #content hr {
@@ -218,11 +218,11 @@ body {
 }
 #content .highlight .code-toggle {
     position: absolute;
-    top: -17px;
+    top: -18px;
     right: 1px;
     font-size: 12px;
     padding: 3px 5px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.16);
     border-radius: 4px 4px 0 0;
     text-decoration: none;
     color: #fff;
