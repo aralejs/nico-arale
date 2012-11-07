@@ -162,7 +162,7 @@ $ make server
 
 ## 安装 liquidluck
 
-1. 下载 [setuptools](pypi.python.org/pypi/setuptools) py2.6.egg 这个
+1. 下载 [setuptools](http://pypi.python.org/pypi/setuptools) py2.6.egg 这个
 2. 打开 cygwin terminal 执行 ``sh setuptools-xxx.egg`` (建议将 setuptools 放到 ~ 下)
 3. 安装 pip (easy_install pip)
 4. 安装 liquidluck (pip install -U liquidluck)
