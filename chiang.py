@@ -15,10 +15,18 @@ except ImportError:
 
 class ChiangPost(Post):
     @property
+    def order(self):
+        if self.relative_filepath == 'README.md':
+            return 0
+        return int(self.meta.get('order', 9))
+
+    @property
     def category(self):
         if self.relative_filepath == 'README.md':
             return 'docs'
-        return self.folder
+        if self.folder:
+            return self.folder.split(os.path.sep)[0]
+        return ''
 
     @property
     def date(self):
