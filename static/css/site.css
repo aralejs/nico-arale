@@ -61,6 +61,7 @@ body {
     list-style-type: none;
     font-size: 14px;
     border-top: 1px dashed #D6D4CD;
+    border-bottom: 1px dashed #D6D4CD;    
     margin: 20px 0 0 0;
     padding: 10px 0;
     zoom: 1;
@@ -112,7 +113,7 @@ body {
 }
 #content p, #content h1, #content h2, #content h3, #content h4 {
     font-family: Georgia,'Xin Gothic','PT Sans','Hiragino Sans GB','Helvetica Neue',Helvetica,Arial,sans-serif;
-    color: #454545;
+    color: #555;
 }
 #content p, #content ul, #content ol {
     color: #666;
@@ -220,18 +221,17 @@ body {
 }
 #content .highlight .code-toggle {
     position: absolute;
-    top: 1px;
+    top: -17px;
     right: 1px;
     font-size: 12px;
-    padding: 2px 4px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 0 4px 0 4px;
+    padding: 2px 5px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 4px 4px 0 0;
     text-decoration: none;
     color: #fff;
 }
 
 #sidenav {
-    border-top: 1px dashed #D6D4CD;
     padding-top: 10px;
     margin-top: 0;
     font-size: 14px;
