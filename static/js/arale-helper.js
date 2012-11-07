@@ -1,10 +1,4 @@
 ;(function() {
-  if (location.href.indexOf('examples') > 0 || location.href.indexOf('tests') > 0 ||
-      location.href.indexOf('docs') > 0) {
-    var PAGE_ROOT = '..'
-  } else {
-    var PAGE_ROOT = '.'
-  }
   var CDN_MODULES = [
     'jquery', 'zepto', 'json', 'jasmine', 'underscore', 'handlebars',
     'seajs', 'moment', 'async', 'store', 'swfobject', 'backbone', 'raphael'
@@ -29,12 +23,6 @@
 
     // 将 "/1.0.2/xxx.js" 转换成 "/1.0.2/dist/xxx.js"
     url = url.replace(/\/([\d\.]+)\/([^\/]+\.js)$/, '/$1/dist/$2')
-
-    // 本地开发中的文件，直接从本地加载
-    if (url.indexOf('src') < 0 && url.indexOf('dist') < 0) {
-      var module = url.replace(GITHUB_BASE, '')
-      url = url.replace(GITHUB_BASE, PAGE_ROOT + '/src/')
-    }
 
     // 如果访问 alipay.im 则从 alipay.im 加载
     if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
@@ -85,12 +73,11 @@ seajs.use(['jquery'], function($) {
       $(item).append(html)
     });
     // 给 code 加收起和展开
-    $('.highlight').append('<a class="code-toggle" href="#">收起</a>')
     $('.highlight').each(function(i, item) {
       var $item = $(item)
       if ($item.height() > 400) {
+        $item.append('<a class="code-toggle" href="#">展开</a>')
         $item.addClass('collapse')
-        $item.find('.code-toggle').text('展开')
       }
     });
   });

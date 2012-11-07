@@ -137,6 +137,7 @@ body {
     border: 0;
     height: 4px;
     background-color: #ddd;
+    margin-top: 20px;
 }
 #content pre {
     border: 1px solid #ccc;
