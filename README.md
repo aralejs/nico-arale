@@ -9,6 +9,12 @@
 
 如果没有 pip，请用 ``easy_install`` 代替 ``pip install``。
 
+Mac 用户需要安装 Xcode 以及 Xcode 里的 command line tools。
+
+Linux 用户请注意，如果系统没带 python-dev，请自行安装，例如：
+``sudo apt-get install python-dev``
+
+
 1. 安装 liquidluck
 
         $ sudo pip install -U liquidluck
