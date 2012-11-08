@@ -11,6 +11,11 @@
   var mapRules = []
   mapRules.push(function(url) {
 
+    // https://raw.github.com/aralejs/arale/popup/0.9.9/dist/popup.js
+    // url = url.replace(GITHUB_BASE + 'arale/', GITHUB_BASE);
+    // 线上还没有 gallery 目录，定位到 arale 中去
+    url = url.replace(GITHUB_BASE + 'gallery/', GITHUB_BASE);
+
     // CDN_MODULES 直接从 alipay 的 cdn 上加载
     for (var i = 0; i < CDN_MODULES.length; i++) {
       if (url.indexOf(CDN_MODULES[i] + '/') > 0) {
