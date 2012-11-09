@@ -13,7 +13,17 @@ body {
     margin-left: auto;
     margin-right: auto;
     max-width: 1040px;
+    *width: 1040px;
     padding-top: 20px;
+    zoom: 1;
+}
+#body-wrapper:after {
+    display: block;
+    clear: both;
+    content: " ";
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
 }
 #sidebar-wrapper {
     float: left;
@@ -79,9 +89,10 @@ body {
 }
 #navigation li {
     float: left;
-}
-#navigation li + li {
     margin-left: 8px;
+}
+#navigation li:first-of-type {
+    margin-left: 0;
 }
 #navigation a:hover,
 #sidenav a:hover {
@@ -165,7 +176,7 @@ body {
     margin-left: 3px;
     margin-right: 3px;
 }
-#content pre code {
+#content pre code, #content .highlight code {
     background-color: transparent;
     margin: auto;
 }
@@ -184,6 +195,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     max-width: 980px;
+    *width: 980px;
     padding: 10px 0;
     text-align: right;
 }
@@ -215,6 +227,8 @@ body {
     font-size: 12px;
 }
 #content .highlight {
+    background-color: transparent;
+    padding-top: 1px;
     position: relative;
 }
 #content .collapse pre {
