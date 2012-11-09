@@ -34,9 +34,10 @@ class ChiangPost(Post):
 
     @property
     def filename(self):
+        name = self.meta.get('filename', None)
+        if name:
+            return name
         name = super(ChiangPost, self).filename.lower()
-        if name == 'history':
-            g.resource['history'] = True
         if name == 'readme':
             return 'index'
         return name
@@ -46,6 +47,11 @@ class PackageWriter(BaseWriter):
     writer_name = 'package'
 
     def __init__(self):
+        for f in os.listdir(os.path.join(g.source_directory)):
+            if f.lower() == 'history.md':
+                g.resource['history'] = True
+                break
+
         path = os.path.join(g.source_directory, 'package.json')
         if os.path.exists(path):
             f = open(path)
