@@ -50,7 +50,8 @@ class PackageWriter(BaseWriter):
         for f in os.listdir(os.path.join(g.source_directory)):
             if f.lower() == 'history.md':
                 g.resource['history'] = True
-                break
+            if f == 'tests':
+                g.resource['tests'] = True
 
         path = os.path.join(g.source_directory, 'package.json')
         if os.path.exists(path):
