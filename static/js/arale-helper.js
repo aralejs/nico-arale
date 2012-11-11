@@ -11,6 +11,16 @@
   var mapRules = []
   mapRules.push(function(url) {
 
+    // 线上还没有 gallery 目录，定位到 arale 中去
+    url = url.replace(GITHUB_BASE + 'gallery/', GITHUB_BASE);
+
+    // CDN_MODULES 直接从 alipay 的 cdn 上加载
+    for (var i = 0; i < CDN_MODULES.length; i++) {
+      if (url.indexOf(CDN_MODULES[i] + '/') > 0) {
+        return url.replace(GITHUB_BASE, ALIPAY_BASE)
+      }
+    }
+
     // 如果访问 alipay.im 则从 alipay.im 加载
     if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
         && url.indexOf(GITHUB_BASE) != -1) {
@@ -23,15 +33,6 @@
 
     // https://raw.github.com/aralejs/arale/popup/0.9.9/dist/popup.js
     url = url.replace(GITHUB_BASE + 'arale/', GITHUB_BASE);
-    // 线上还没有 gallery 目录，定位到 arale 中去
-    url = url.replace(GITHUB_BASE + 'gallery/', GITHUB_BASE);
-
-    // CDN_MODULES 直接从 alipay 的 cdn 上加载
-    for (var i = 0; i < CDN_MODULES.length; i++) {
-      if (url.indexOf(CDN_MODULES[i] + '/') > 0) {
-        return url.replace(GITHUB_BASE, ALIPAY_BASE)
-      }
-    }
 
     // 将 "/master/xxx.js" 转换成 "/master/dist/xxx.js"
     url = url.replace(/\/master\/([^\/]+\.js)$/, '/master/dist/$1')
@@ -53,7 +54,6 @@
       'jquery-debug': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery-debug.js',
 
       'zepto': 'https://a.alipayobjects.com/static/handy/zepto/0.9.0/zepto.js'
-
     },
     preload: [
       'seajs/plugin-json',
