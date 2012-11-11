@@ -237,7 +237,7 @@ body {
 }
 #content .highlight .code-toggle {
     position: absolute;
-    top: -18px;
+    top: -4px;
     right: 1px;
     font-size: 12px;
     padding: 3px 5px;

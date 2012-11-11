@@ -11,8 +11,18 @@
   var mapRules = []
   mapRules.push(function(url) {
 
+    // 如果访问 alipay.im 则从 alipay.im 加载
+    if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
+        && url.indexOf(GITHUB_BASE) != -1) {
+        // 链接转换成 http://arale.alipay.im/source/overlay/0.9.9/overlay.js
+        url = url.replace(GITHUB_BASE, 'http://arale2.alipay.im/source/')
+        return url;
+    } 
+
+    // 如果是线上demo，则走下面的流程
+
     // https://raw.github.com/aralejs/arale/popup/0.9.9/dist/popup.js
-    // url = url.replace(GITHUB_BASE + 'arale/', GITHUB_BASE);
+    url = url.replace(GITHUB_BASE + 'arale/', GITHUB_BASE);
     // 线上还没有 gallery 目录，定位到 arale 中去
     url = url.replace(GITHUB_BASE + 'gallery/', GITHUB_BASE);
 
@@ -29,15 +39,8 @@
     // 将 "/1.0.2/xxx.js" 转换成 "/1.0.2/dist/xxx.js"
     url = url.replace(/\/([\d\.]+)\/([^\/]+\.js)$/, '/$1/dist/$2')
 
-    // 如果访问 alipay.im 则从 alipay.im 加载
-    if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
-        && url.indexOf(GITHUB_BASE) != -1) {
-          // 链接转换成 http://arale.alipay.im/source/overlay/0.9.9/overlay.js
-          url = url.replace(GITHUB_BASE, 'http://arale2.alipay.im/source/')
-          url = url.replace('dist/', '')
-        }
+    return url
 
-        return url
   })
 
   seajs.config({
