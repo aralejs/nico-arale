@@ -10,6 +10,7 @@ body {
     background-image: url(bg.gif);    
     text-rendering: optimizelegibility;
 }
+
 #body-wrapper {
     margin-left: auto;
     margin-right: auto;
