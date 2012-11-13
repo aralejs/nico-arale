@@ -5,7 +5,7 @@
   ]
 
   var ALIPAY_BASE = 'http://static.alipayobjects.com/static/arale/'
-  var ARALE_BASE = 'http://aralejs.org:7000/'
+  var ARALE_BASE = 'http://aralejs.org/source/'
   var PACKAGE = {}
 
   var mapRules = []
