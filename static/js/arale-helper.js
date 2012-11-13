@@ -106,7 +106,7 @@ seajs.use(['jquery'], function($) {
 // Rewritten version
 // By @mathias, @cheeaun and @jdalton
 // Source url: https://gist.github.com/901295
-(function(doc) {
+;(function(doc) {
   var addEvent = 'addEventListener',
       type = 'gesturestart',
       qsa = 'querySelectorAll',
