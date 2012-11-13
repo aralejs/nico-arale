@@ -25,7 +25,7 @@
     if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
         && url.indexOf(GITHUB_BASE) != -1) {
         // 链接转换成 http://arale.alipay.im/source/overlay/0.9.9/overlay.js
-        url = url.replace(GITHUB_BASE, 'http://arale2.alipay.im/source/')
+        url = url.replace(GITHUB_BASE, 'http://aralejs.alipay.im/source/')
         return url;
     } 
 
