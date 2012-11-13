@@ -121,4 +121,4 @@ seajs.use(['jquery'], function($) {
     scales = [0.25, 1.6];
     doc[addEvent](type, fix, true);
   }
-}(document));
+})(document);
