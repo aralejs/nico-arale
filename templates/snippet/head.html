@@ -13,7 +13,8 @@
 {%- endif %}
 <script>
   (function() {
-    var data = {{resource.package|json_dumps}}
+    var data;
+    seajs._package = data = {{resource.package|json_dumps}}
     data.dependencies && (delete data.dependencies['$'])
     data.devDependencies && (delete data.devDependencies['$'])
 

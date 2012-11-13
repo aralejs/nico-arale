@@ -5,34 +5,35 @@
   ]
 
   var ALIPAY_BASE = 'http://static.alipayobjects.com/static/arale/'
-  var GITHUB_BASE = 'https://raw.github.com/aralejs/'
+  var ARALE_BASE = 'http://aralejs.org:7000/'
   var PACKAGE = {}
 
   var mapRules = []
   mapRules.push(function(url) {
 
     // 线上还没有 gallery 目录，定位到 arale 中去
-    url = url.replace(GITHUB_BASE + 'gallery/', GITHUB_BASE);
+    url = url.replace(ARALE_BASE + 'gallery/', ARALE_BASE);
 
     // CDN_MODULES 直接从 alipay 的 cdn 上加载
     for (var i = 0; i < CDN_MODULES.length; i++) {
       if (url.indexOf(CDN_MODULES[i] + '/') > 0) {
-        return url.replace(GITHUB_BASE, ALIPAY_BASE)
+        return url.replace(ARALE_BASE, ALIPAY_BASE)
       }
     }
 
     // 如果访问 alipay.im 则从 alipay.im 加载
-    if ((location.hostname.indexOf('alipay.im') != -1 || location.hostname.indexOf('127.0.0.1') != -1 || location.hash == '#gitlab')
-        && url.indexOf(GITHUB_BASE) != -1) {
+    if ((location.hostname.indexOf('alipay.im') != -1 || location.hash == '#alipay' || seajs._package.root !== 'arale')
+        && url.indexOf(ARALE_BASE) != -1) {
         // 链接转换成 http://arale.alipay.im/source/overlay/0.9.9/overlay.js
-        url = url.replace(GITHUB_BASE, 'http://aralejs.alipay.im/source/')
+        url = url.replace(ARALE_BASE, 'http://aralejs.alipay.im/source/')
         return url;
     } 
 
     // 如果是线上demo，则走下面的流程
+    
+    /* 原来转换 github 的链接地址的，现在不需要了
 
-    // https://raw.github.com/aralejs/arale/popup/0.9.9/dist/popup.js
-    url = url.replace(GITHUB_BASE + 'arale/', GITHUB_BASE);
+    url = url.replace(ARALE_BASE + 'arale/', ARALE_BASE);
 
     // 将 "/master/xxx.js" 转换成 "/master/dist/xxx.js"
     url = url.replace(/\/master\/([^\/]+\.js)$/, '/master/dist/$1')
@@ -40,12 +41,14 @@
     // 将 "/1.0.2/xxx.js" 转换成 "/1.0.2/dist/xxx.js"
     url = url.replace(/\/([\d\.]+)\/([^\/]+\.js)$/, '/$1/dist/$2')
 
+    */
+
     return url
 
   })
 
   seajs.config({
-    base: GITHUB_BASE,
+    base: ARALE_BASE,
     alias: {
       '$': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery.js',
       '$-debug': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery-debug.js',
