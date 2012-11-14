@@ -107,6 +107,7 @@ liquidluck 还会用到模块根目录下的 package.json 文件，具体项的�
 
 4. 插入 iframe
 
+    ```
     ````iframe
     <link rel="stylesheet" href="css/some.css">
     <button>click</button>
@@ -116,11 +117,14 @@ liquidluck 还会用到模块根目录下的 package.json 文件，具体项的�
         });
     </script>
     ````
+    ```
 
     还可以设置 iframe 的高度
 
+    ```
     ````iframe:400
     ````
+    ```
 
     生成 iframe 的模板是 templates/iframe.html，不用写头写尾。
 
