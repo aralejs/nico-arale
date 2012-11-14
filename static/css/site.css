@@ -119,6 +119,7 @@ body {
 #content {
     position: relative;
     padding: 10px 30px 30px;
+    line-height: 1.5;
 }
 #content .entry-title {
     margin-bottom: 12px;
