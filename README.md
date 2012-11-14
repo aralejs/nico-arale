@@ -1,53 +1,72 @@
-# Arale2 theme for Felix Felicis
+# Theme for Arale Documentation
 
-------------
+---
 
-为 [aralejs](http://aralejs.org) 文档设计的主题。
+这是一个为 [aralejs.org](http://aralejs.org) 文档设计的 liquidluck 主题。
+
+liquidluck 是一个文档生成和预览工具，官方首页：<http://lab.lepture.com/liquidluck/>
+
 
 
 ## 安装
 
-如果没有 pip，请用 ``easy_install`` 代替 ``pip install``。
+### 准备工作
 
-Mac 用户需要安装 Xcode 以及 Xcode 里的 command line tools。
+1. Mac 用户需要安装 Xcode 以及 Xcode 里的 Command Line Tools：[安装方法](http://stackoverflow.com/questions/9329243/xcode-4-4-command-line-tools)
+2. Linux 用户需要安装 python-dev，例如：`sudo apt-get install python-dev`
+3. 如果没有 pip，请先安装，或用 `easy_install` 代替 `pip install`
 
-Linux 用户请注意，如果系统没带 python-dev，请自行安装，例如：
-``sudo apt-get install python-dev``
-
-
-1. 安装 liquidluck
-
-        $ sudo pip install -U liquidluck
-
-2. 安装 tornado (live preview server)
-
-        $ sudo pip install -U tornado
-
-3. 安装 arale2 主题 (更新主题也是该命令)
-
-        $ liquidluck install aralejs/arale2 -g
-
-
-## 命名别名
-
-建议在项目下创建 Makefile
+### 安装 liquidluck
 
 ```
-build:
-    liquidluck build -s ~/.liquidluck-themes/arale2/settings.yml
+$ sudo pip install -U liquidluck
+```
+
+为了让文档预览功能可用，还需要安装 tornado：
+
+```
+$ sudo pip install -U tornado
+```
+
+### 安装 aralejs theme
+
+```
+$ liquidluck install aralejs/ -g
+```
+
+这样，aralejs theme 就安装到了用户目录：`~/.liquidluck-themes/aralejs/`
+
+当主题有更新时，可以通过该命名直接更新。
+
+
+
+## 使用说明
+
+建议在需要使用 liquidluck 的模块下创建 Makefile 文件，包含以下命令：
+
+```
+$(THEME) = $(HOME)/.liquidluck-themes/aralejs
+
+doc:
+    liquidluck build -s $(THEME)/settings.yml
 
 server:
-    liquidluck server -d -s ~/.liquidluck-themes/arale2/settings.yml
+    liquidluck server -s $(THEME)/settings.yml
+
+debug:
+    liquidluck server -d -s $(THEME)/settings.yml
 ```
 
-然后用 make build 和 make server 就可以了。
+- `make doc` 用于生成文档。
+- `make server` 是开启本地服务器，可用来预览文档，并提供自动构建和 live reload 支持。
+- `make debug` 是开启本地服务器的调试模式，可直接从本地加载依赖的文件。
 
 
-## 编辑
+## 文档编辑
 
-文档写作支持标题、元信息以及内容。
+liquidluck 支持将 Markdown 文档转换成 HTML 文件，支持的语法请参考：[Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
 
-例如:
+liquidluck 还支持一些扩展语法，包括标题、元信息等。
 
 ```
 # 标题
@@ -59,55 +78,56 @@ server:
 分割线一定得有的哦，分割线下面是内容。
 ```
 
-### package.json
-
-请参考 [spm package.json](https://github.com/seajs/spm/wiki/package.json)。
+liquidluck 还会用到模块根目录下的 package.json 文件，具体项的含义请参考：[spm package.json](https://github.com/seajs/spm/wiki/package.json)
 
 其中 ``repository.url`` 用来生成 View the Project 链接， ``bugs.url`` 用来生成讨论链接。
 
 
-### 特性
+### 特有功能
 
-代码高亮 (三个 `)
+1. 用三个 ` 会高亮显示代码
 
     ```js
     function something() {
     }
     ```
 
-既高亮显示代码，又将代码插入到页面中 (四个 `)
+2. 用四个 ` 会高亮显示代码，还会将代码插入到生成的 HTML 页面中
 
     ````js
     function something() {
     }
     ````
 
-跨文档链接 ([[title]])
+3. 跨文档链接 ([[title]])
 
     可查看 [[另一篇文章的标题]]
 
 
-插入 iframe
+4. 插入 iframe
 
     ````iframe
-    <link rel="stylesheet" href="css/some.css" />
+    <link rel="stylesheet" href="css/some.css">
     <button>click</button>
-    <script type="text/javascript">
+    <script>
         seajs.use('jquery', function($) {
             $('button').click(function() { alert('hello'); })
         });
     </script>
+    ````
 
 还可以设置 iframe 的高度
 
     ````iframe:400
     ````
 
-生成 iframe 的模板是 templates/iframe.html，你不用写头写尾。
+生成 iframe 的模板是 templates/iframe.html，不用写头写尾。
 
-## 生成文档
 
-arale 目录结构：
+
+## 输出
+
+假设模块的目录结构为：
 
 ```
 package.json
@@ -121,7 +141,7 @@ docs/
 README.md
 ```
 
-执行 ``make build`` 后生成：
+执行 `make doc` 后会生成：
 
 ```
 package.json
@@ -143,20 +163,12 @@ docs/
 README.md
 ```
 
-请在 .gitignore 中忽略掉 ``_site`` 目录。
-
-## 测试
-
-你可以使用 ``make server`` 来启动一个服务，这个 server 有 livereload 的功能，当你保存 markdown 文件时，浏览器会自动刷新。
-
-```
-$ make server
-```
+所有生成的文件都在 _site 目录下。
 
 
-# Windows 用户
+## 写给 Windows 用户
 
-## 安装 Cygwin
+### 安装 Cygwin
 
 去 [cygwin](http://www.cygwin.com) 下载安装，选择以下包安装：
 
@@ -166,22 +178,19 @@ $ make server
 4. git （Devel -- Fast Version Control …)
 5. ca-certificates
 
-## 安装 liquidluck
+### 安装 liquidluck
 
 1. 下载 [setuptools](http://pypi.python.org/pypi/setuptools) py2.6.egg 这个
 2. 打开 cygwin terminal 执行 ``sh setuptools-xxx.egg`` (建议将 setuptools 放到 ~ 下)
 3. 安装 pip (easy_install pip)
 4. 安装 liquidluck (pip install -U liquidluck)
-5. 如果要有 livereload 功能，需要安装 tornado (pip install -U tornado)
-6. 如果要写 rst 需要安装 docutils (pip install docutils)
+5. 安装 tornado (pip install -U tornado)
 
-## 跑起来
+### 跑起来
 
-1. 安装主题 liquidluck install aralejs/arale2 -g
-2. git clone git://github.com/aralejs/calendar.git
-3. cd calendar
-4. make server
+1. 安装主题 liquidluck install aralejs/ -g
+2. 和上面一样，增加 Makefile 文件
+3. 然后就可以用 `make doc` 和 `make server` 等命令了
 
-查看一下 Makefile
 
-另外， ``spm install`` 一下，用 ``make debug`` 可加速。
+有任何使用上的疑问，请通过 Issue 反馈给我们。
