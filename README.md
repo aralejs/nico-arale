@@ -25,7 +25,7 @@ Linux 用户请注意，如果系统没带 python-dev，请自行安装，例如
 
 3. 安装 arale2 主题 (更新主题也是该命令)
 
-        $ liquidluck install alipay/arale2 -g
+        $ liquidluck install aralejs/arale2 -g
 
 
 ## 命名别名
@@ -177,7 +177,7 @@ $ make server
 
 ## 跑起来
 
-1. 安装主题 liquidluck install alipay/arale2 -g
+1. 安装主题 liquidluck install aralejs/arale2 -g
 2. git clone git://github.com/aralejs/calendar.git
 3. cd calendar
 4. make server
