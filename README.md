@@ -10,13 +10,13 @@ liquidluck 是一个文档生成和预览工具，官方首页：<http://lab.lep
 
 ## 安装
 
-### 准备工作
+### 1. 准备工作
 
 1. Mac 用户需要安装 Xcode 以及 Xcode 里的 Command Line Tools：[安装方法](http://stackoverflow.com/questions/9329243/xcode-4-4-command-line-tools)
 2. Linux 用户需要安装 python-dev，例如：`sudo apt-get install python-dev`
 3. 如果没有 pip，请先安装，或用 `easy_install` 代替 `pip install`
 
-### 安装 liquidluck
+### 2. 安装 liquidluck
 
 ```
 $ sudo pip install -U liquidluck
@@ -28,7 +28,7 @@ $ sudo pip install -U liquidluck
 $ sudo pip install -U tornado
 ```
 
-### 安装 aralejs theme
+### 3. 安装 aralejs theme
 
 ```
 $ liquidluck install aralejs/ -g
@@ -101,8 +101,9 @@ liquidluck 还会用到模块根目录下的 package.json 文件，具体项的�
 
 3. 跨文档链接 ([[title]])
 
+   ```
     可查看 [[另一篇文章的标题]]
-
+   ```
 
 4. 插入 iframe
 
@@ -116,12 +117,12 @@ liquidluck 还会用到模块根目录下的 package.json 文件，具体项的�
     </script>
     ````
 
-还可以设置 iframe 的高度
+    还可以设置 iframe 的高度
 
     ````iframe:400
     ````
 
-生成 iframe 的模板是 templates/iframe.html，不用写头写尾。
+    生成 iframe 的模板是 templates/iframe.html，不用写头写尾。
 
 
 
