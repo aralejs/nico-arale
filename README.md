@@ -85,29 +85,26 @@ liquidluck 还会用到模块根目录下的 package.json 文件，具体项的�
 
 ### 特有功能
 
-1. 用三个 ` 会高亮显示代码
+用三个 ` 会高亮显示代码
 
     ```js
     function something() {
     }
     ```
 
-2. 用四个 ` 会高亮显示代码，还会将代码插入到生成的 HTML 页面中
+用四个 ` 会高亮显示代码，还会将代码插入到生成的 HTML 页面中
 
     ````js
     function something() {
     }
     ````
 
-3. 跨文档链接 ([[title]])
+跨文档链接 ([[title]])
 
-   ```
     可查看 [[另一篇文章的标题]]
-   ```
 
-4. 插入 iframe
+插入 iframe
 
-    ```
     ````iframe
     <link rel="stylesheet" href="css/some.css">
     <button>click</button>
@@ -117,16 +114,13 @@ liquidluck 还会用到模块根目录下的 package.json 文件，具体项的�
         });
     </script>
     ````
-    ```
 
-    还可以设置 iframe 的高度
+还可以设置 iframe 的高度
 
-    ```
     ````iframe:400
     ````
-    ```
 
-    生成 iframe 的模板是 templates/iframe.html，不用写头写尾。
+生成 iframe 的模板是 `templates/iframe.html`，不用写头写尾。
 
 
 
