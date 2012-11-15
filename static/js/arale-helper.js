@@ -4,7 +4,7 @@
     'seajs', 'moment', 'async', 'store', 'swfobject', 'backbone', 'raphael'
   ]
 
-  var ALIPAY_BASE = 'https://a.alipayobjects.com/static/arale/'
+  var ALIPAY_BASE = 'http://static.alipayobjects.com/static/arale/'
   var ARALE_BASE = 'http://aralejs.org/source/'
   var PACKAGE = {}
 
