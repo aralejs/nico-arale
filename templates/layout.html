@@ -3,9 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>{% block title %}{{resource.package.name|title}}{% endblock %}</title>
-    <meta name="HandheldFriendly" content="True">
-    <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="{{system.name}} {{system.version}}" />
     <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
@@ -52,7 +51,12 @@
     </div>
     <div id="footer-wrapper">
       <footer>
-        <p class="powered"><a href="http://seajs.org">SeaJS</a> • <a href="https://github.com/seajs/spm">spm</a> • <a href="{{system.homepage}}">{{system.name}}</a> {{system.version}} ({{theme.version}})</p>
+        <p class="powered">
+        <a href="http://aralejs.org">Arale</a> •
+        <a href="http://seajs.org">SeaJS</a> •
+        <a href="https://github.com/seajs/spm">spm</a> •
+        <a href="{{system.homepage}}">{{system.name}}</a>
+        </p>
       </footer>
     </div>
   </body>
