@@ -183,6 +183,7 @@ body {
 #content pre code, #content .highlight code {
     background-color: transparent;
     margin: auto;
+    padding: 0;
 }
 #content blockquote {
     border-left: 0.4em solid #ddd;
@@ -212,11 +213,14 @@ body {
 #content .doc-api {
     color: #784942;
 }
-#content .doc-api em {
+#content .doc-api em, #content .doc-api code {
+    font-family: Georgia, serif;
     font-weight: normal;
     font-size: 14px;
     margin-left: 4px;
     color: #999;
+    background: transparent;
+    font-style: italic;
 }
 #content .ff-iframe {
     position: relative;
