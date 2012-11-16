@@ -182,6 +182,7 @@ body {
 #content pre code, #content .highlight code {
     background-color: transparent;
     margin: auto;
+    padding: 0;
 }
 #content blockquote {
     border-left: 0.4em solid #ddd;
