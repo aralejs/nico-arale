@@ -37,7 +37,8 @@ writer:
     active:
         - chiang.IframeWriter
         - chiang.PackageWriter
-        - chiang.JasmineTestWriter
+        #- chiang.JasmineTestWriter
+        - chiang.MochaTestWriter
         - liquidluck.writers.core.PostWriter
         - liquidluck.writers.core.StaticWriter
         - liquidluck.writers.core.FileWriter
