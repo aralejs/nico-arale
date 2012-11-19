@@ -31,10 +31,10 @@ $ sudo pip install -U tornado
 ### 3. 安装 aralejs theme
 
 ```
-$ liquidluck install aralejs/ -g
+$ liquidluck install aralejs/arale2 -g
 ```
 
-这样，aralejs theme 就安装到了用户目录：`~/.liquidluck-themes/aralejs/`
+这样，arale2 theme 就安装到了用户目录：`~/.liquidluck-themes/arale2/`
 
 当主题有更新时，可以通过该命名直接更新。
 
