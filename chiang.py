@@ -66,12 +66,20 @@ class PackageWriter(BaseWriter):
         pass
 
 
-class TestWriter(BaseWriter):
-    writer_name = 'test'
+class JasmineTestWriter(BaseWriter):
+    writer_name = 'jasmine'
 
     def start(self):
         dest = os.path.join(g.output_directory, 'tests', 'runner.html')
         self.render({}, 'runner.html', dest)
+
+
+class MochaTestWriter(BaseWriter):
+    writer_name = 'mocha'
+
+    def start(self):
+        dest = os.path.join(g.output_directory, 'tests', 'runner.html')
+        self.render({}, 'mocha-runner.html', dest)
 
 
 class IframeWriter(BaseWriter):

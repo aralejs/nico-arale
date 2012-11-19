@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <title>{% block title %}{{resource.package.name|title}} Mocha Runner{% endblock %}</title>
+    <link href="{{static_url('css/mocha.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
+    <script src="https://a.alipayobjects.com/static/arale/seajs/1.2.1/sea.js"></script>
+    {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
+    <script src="{{static_url('js/arale-helper.js')}}"></script>
+    <script src="{{static_url('js/mocha.js')}}"></script>
+    <script src="{{static_url('js/chai.js')}}"></script>
+  </head>
+  <body>
+    <div id="mocha"></div>
+    <script>
+      (function() {
+        mocha.setup('bdd');
+        var data = {{resource.package|json_dumps}}
+        data.dependencies && (delete data.dependencies['$'])
+        data.devDependencies && (delete data.devDependencies['$'])
+
+        seajs.config({ alias: data.dependencies })
+        seajs.config({ alias: data.devDependencies })
+
+        var tests = data['tests'] || []
+
+        if (tests.length === 0) {
+          tests.push(data.name)
+        }
+
+        var specs = []
+        for (var i = 0; i < tests.length; i++) {
+          specs[i] = './' + tests[i] + '-spec.js'
+        }
+
+        seajs.use(specs, function() {
+          if (window.mochaPhantomJS) {
+            mochaPhantomJS.run()
+          } else {
+            mocha.run()
+          }
+        })
+      })();
+    </script>
+  </body>
+</html>
