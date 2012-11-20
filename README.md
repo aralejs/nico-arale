@@ -78,7 +78,7 @@ liquidluck 还支持一些扩展语法，包括标题、元信息等。
 分割线一定得有的哦，分割线下面是内容。
 ```
 
-liquidluck 还会用到模块根目录下的 package.json 文件，具体项的含义请参考：[spm package.json](https://github.com/seajs/spm/wiki/package.json)
+liquidluck 还会用到模块根目录下的 package.json 文件，具体项的含义请参考：[spm package.json](https://github.com/spmjs/spm/wiki/package.json)
 
 其中 ``repository.url`` 用来生成 View the Project 链接， ``bugs.url`` 用来生成讨论链接。
 
