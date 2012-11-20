@@ -2028,7 +2028,7 @@ function HTML(runner, root) {
   });
 
   runner.on('test end', function(test){
-    window.scrollTo(0, document.body.scrollHeight);
+    //window.scrollTo(0, document.body.scrollHeight);
 
     // TODO: add to stats
     var percent = stats.tests / this.total * 100 | 0;
