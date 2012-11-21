@@ -128,11 +128,9 @@ body {
     padding: 10px 30px 30px;
     line-height: 1.5;
 }
-#content h1 {
-    font-family: "Marcellus", sans-serif;
-}
 #content .entry-title {
     margin-bottom: 12px;
+    font-family: "Marcellus", sans-serif;
 }
 #content .meta {
     color: #BCBCBD;
