@@ -198,6 +198,9 @@ body {
     margin: 15px 0;
     padding: 0 15px;
 }
+#content blockquote p {
+    color: #777;
+}
 #footer-wrapper {
     clear: both;
     color: #9C9C9C;
