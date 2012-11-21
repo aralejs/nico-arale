@@ -73,7 +73,13 @@ body {
     top: -14px;
     left: 4px;
     font-size: 12px;
+}
+#sidebar-wrapper .package-root a {
     color: rgba(0, 0, 0, 0.2);
+}
+#sidebar-wrapper .package-root a:hover {
+    color: rgba(0, 0, 0, 0.33);    
+
 }
 #navigation {
     list-style-type: none;

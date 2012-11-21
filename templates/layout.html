@@ -21,7 +21,7 @@
   <body>
     <div id="body-wrapper">
       <aside id="sidebar-wrapper">
-        <h1><a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a><sup class="package-root">{{resource.package.root}}</sup></h1>
+        <h1><a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a><sup class="package-root"><a href="/">{{resource.package.root}}</a></sup></h1>
         <p class="version">当前版本：<span>{{resource.package.version}}</span></p>
         <p class="description">{{resource.package.description}}</p>
         {%- if resource.package.repository %}
