@@ -22,6 +22,9 @@ class ChiangPost(Post):
 
     @property
     def category(self):
+        cat = self.meta.get('category', None)
+        if cat:
+            return cat
         if self.relative_filepath == 'README.md':
             return 'docs'
         if self.folder:
