@@ -46,6 +46,7 @@ def src_js(ctx, files):
 def iframe(ctx, content):
     #: together with IframeWriter
     import re
+    import os
     import logging
     from liquidluck.options import g
     from liquidluck.utils import get_relative_base
@@ -54,16 +55,18 @@ def iframe(ctx, content):
     regex = ur'\[\[iframe:(\S*?)\]\]'
 
     def repl(m):
-        name = m.group(1)
-        item = g.resource['iframe'].get(name)
+        key = m.group(1)
+        item = g.resource['iframe'].get(key)
         h = ''
         if item:
             height = item.get('height')
             if height:
                 h = 'height="%s"' % height
         else:
-            logging.warn('Iframe not found: %s' % name)
-        src = '%s/iframe/%s.html' % (base, name.lower())
+            logging.warn('Iframe not found: %s' % key)
+
+        path, name = os.path.split(key)
+        src = '%s/%s/iframe-%s.html' % (base, path, name.lower())
         return ('<div class="ff-iframe">'
                 '<iframe src="%s" allowtransparency="true" '
                 'frameborder="0" scrolling="0" %s></iframe>'

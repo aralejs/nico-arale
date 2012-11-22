@@ -39,7 +39,7 @@ def generate_iframe(text, height=None):
 
     _ARALE_IFRAME_COUNT += 1
     key = os.path.splitext(_ARALE_CURRENT_FILE)[0]
-    key = '%s-%s' % (key.replace(os.path.sep, '-'), _ARALE_IFRAME_COUNT)
+    key = '%s-%s' % (key, _ARALE_IFRAME_COUNT)
     g.resource['iframe'][key] = {'text': text, 'height': height}
     return key
 
