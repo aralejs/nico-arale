@@ -10,13 +10,15 @@
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script src="{{static_url('js/es5-safe.js')}}"></script>
     <script src="{{static_url('js/mocha.js')}}"></script>
-    <script src="{{static_url('js/expect.js')}}"></script>
+    <script src="{{static_url('js/sinon.js')}}"></script>
+    <script src="{{static_url('js/puerh.js')}}"></script>
   </head>
   <body>
     <div id="mocha"></div>
     <script>
       (function() {
         mocha.setup('bdd');
+        puerh.use('expect');
         var data = {{resource.package|json_dumps}}
         data.dependencies && (delete data.dependencies['$'])
         data.devDependencies && (delete data.devDependencies['$'])
