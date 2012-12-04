@@ -14,15 +14,23 @@
 </article>
 <script>
 seajs.use('$', function($) {
-  $('code').each(function(index, item) {
+  $('#content code').each(function(index, item) {
       item = $(item);
-      var matcher = item.html().match(/^tag:(.+)/);
-      if (matcher[1]) {
+      var matcher = item.html().match(/^tag:(.+)/i);
+      if (matcher) {
           item.replaceWith('<span class="tag tag-'+matcher[1]+'">'+matcher[1]+'</span>');
       }
   });
 });
 </script>
+<style>
+#content p {
+    font-size: 16px;
+}
+#content h3 {
+    margin-top: 50px;
+}
+</style>
 {% endblock %}
 
 {% block subsidebar %}
