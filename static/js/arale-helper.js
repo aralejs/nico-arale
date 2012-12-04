@@ -4,7 +4,7 @@
     'seajs', 'moment', 'async', 'store', 'swfobject', 'backbone', 'raphael'
   ]
 
-  var ALIPAY_BASE = 'https://a.alipayobjects.com/static/arale/'
+  var ALIPAY_BASE = 'https://a.alipayobjects.com/'
   var ARALE_BASE = 'http://aralejs.org/source/'
   var PACKAGE = {}
 
@@ -51,13 +51,13 @@
   seajs.config({
     base: ARALE_BASE,
     alias: {
-      '$': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery.js',
-      '$-debug': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery-debug.js',
+      '$': 'https://a.alipayobjects.com/gallery/jquery/1.7.2/jquery.js',
+      '$-debug': 'https://a.alipayobjects.com/gallery/jquery/1.7.2/jquery-debug.js',
 
-      'jquery': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery',
-      'jquery-debug': 'https://a.alipayobjects.com/static/arale/jquery/1.7.2/jquery-debug.js',
+      'jquery': 'https://a.alipayobjects.com/gallery/jquery/1.7.2/jquery',
+      'jquery-debug': 'https://a.alipayobjects.com/gallery/jquery/1.7.2/jquery-debug.js',
 
-      'zepto': 'https://a.alipayobjects.com/static/handy/zepto/0.9.0/zepto.js'
+      'zepto': 'https://a.alipayobjects.com/handy/zepto/0.9.0/zepto.js'
     },
     preload: [
       'seajs/plugin-json',
