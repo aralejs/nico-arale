@@ -11,9 +11,6 @@
   var mapRules = []
   mapRules.push(function(url) {
 
-    // 线上还没有 gallery 目录，定位到 arale 中去
-    url = url.replace(ARALE_BASE + 'gallery/', ARALE_BASE);
-
     // CDN_MODULES 直接从 alipay 的 cdn 上加载
     for (var i = 0; i < CDN_MODULES.length; i++) {
       if (url.indexOf(CDN_MODULES[i] + '/') > 0) {
