@@ -15,6 +15,12 @@ except ImportError:
 
 class ChiangPost(Post):
     @property
+    def template(self):
+        if self.relative_filepath.lower() == 'history.md':
+            return 'history.html'
+        return 'post.html'
+
+    @property
     def order(self):
         if self.relative_filepath == 'README.md':
             return 0

@@ -288,3 +288,52 @@ body {
         padding: 0 40px;
     }
 }
+
+/* history tag */
+.tag {
+    background: url("tags.png") no-repeat scroll 0 50% #fff;
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 -1px 0 rgba(0, 0, 0, 0.2) inset;
+    color: #383838;
+    display: inline-block;
+    font-family: "Open Sans",sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    line-height: 20px;
+    min-width: 85px;
+    padding: 0 15px 0 20px;
+    text-align: right;
+    text-shadow: 1px 1px 0 #FFFFFF;
+    text-transform: uppercase;
+    width: 85px;
+    margin: 0 20px 0 6px;
+}
+
+.tag-new {
+    background-color: #FFEDCF;
+}
+.tag-changed {
+    background-color: #E9CFFF;
+    background-position: -150px 50%;
+}
+.tag-fixed {
+    background-color: #F0FFE1;
+    background-position: -300px 50%;
+}
+.tag-html5 {
+    background-color: #F8DFD8;
+    background-position: -450px 50%;
+}
+.tag-improved {
+    background-color: #DCF6FF;
+    background-position: -600px 50%;
+}
+.tag-unresolved {
+    background-color: #FFC8C8;
+    background-position: -750px 50%;
+}
+.tag-developer {
+    background-color: #E7E7E7;
+    background-position: -900px 50%;
+}
