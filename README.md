@@ -45,7 +45,7 @@ $ liquidluck install aralejs/arale2 -g
 建议在需要使用 liquidluck 的模块下创建 Makefile 文件，包含以下命令：
 
 ```
-$(THEME) = $(HOME)/.liquidluck-themes/aralejs
+$(THEME) = $(HOME)/.liquidluck-themes/arale2
 
 doc:
     liquidluck build -s $(THEME)/settings.yml
