@@ -209,14 +209,18 @@ body {
     font-size: 12px;
     margin-left: auto;
     margin-right: auto;
-    max-width: 980px;
-    *width: 980px;
+    max-width: 1040px;
+    *width: 1040px;
     padding: 10px 0;
     text-align: right;
 }
 #footer-wrapper a {
     color: #9C9C9C;
     text-decoration: none;
+}
+#footer-wrapper iframe {
+    position: relative;
+    top: 3px;
 }
 
 /* other */
