@@ -14,13 +14,14 @@
 </article>
 <script>
 seajs.use('$', function($) {
-  $('#content code').each(function(index, item) {
-      item = $(item);
-      var matcher = item.html().match(/^tag:(.+)/i);
-      if (matcher) {
-          item.replaceWith('<span class="tag tag-'+matcher[1]+'">'+matcher[1]+'</span>');
-      }
-  });
+    $('#content code').each(function(index, item) {
+        item = $(item);
+        var matcher = item.html().match(/^tag:(.+)/i);
+        if (matcher) {
+            item.parent().css('padding-left', '150px');
+            item.replaceWith('<span class="tag tag-'+matcher[1]+'">'+matcher[1]+'</span>');
+        }
+    });
 });
 </script>
 <style>
@@ -28,7 +29,7 @@ seajs.use('$', function($) {
     border-top: 1px dashed #CCCCCC;
     font-size: 16px;
     margin: 12px 0;
-    padding: 12px 0 0 150px;
+    padding: 12px 0 0 0;
     position: relative;
 }
 #content h2 {
