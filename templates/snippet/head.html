@@ -1,7 +1,7 @@
-{% if theme.analytics -%}
+{% if config.google -%}
 <script type="text/javascript">
   var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', '{{theme.analytics}}']);
+  _gaq.push(['_setAccount', '{{config.google}}']);
   _gaq.push(['_trackPageview']);
 
   (function() {
@@ -14,12 +14,11 @@
 <script>
   (function() {
     var data;
-    seajs._package = data = {{resource.package|json_dumps}}
+    seajs._package = data = {{config.package|json_encode}}
     data.dependencies && (delete data.dependencies['$'])
     data.devDependencies && (delete data.devDependencies['$'])
 
     seajs.config({ alias: data.dependencies })
     seajs.config({ alias: data.devDependencies })
-    seajs.config({ alias: {{resource.files|src_js}} })
   })();
 </script>

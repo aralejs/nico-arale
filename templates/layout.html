@@ -2,15 +2,13 @@
 <html lang="{{theme.lang}}">
   <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{{resource.package.name|title}}{% endblock %}</title>
+    <title>{%- block title %}{{theme.name|title}}{% endblock -%}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="{{system.name}} {{system.version}}" />
     <link type="image/x-icon" href="{{static_url('css/favicon.ico')}}" rel="icon">
     <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
-    <link rel="stylesheet" href="{{static_url('css/solarized.css')}}" />
     <script src="https://a.alipayobjects.com/seajs/1.2.1/sea.js"></script>
-    {%- if theme.debug %}<script>seajs._nicodebug = true</script>{%- endif %}
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script src="{{static_url('js/site.js')}}"></script>
     {%- include "snippet/head.html" %}
@@ -22,24 +20,16 @@
   <body>
     <div id="body-wrapper">
       <aside id="sidebar-wrapper">
-        <h1><a href="{{content_url('index.html')}}">{{resource.package.name|title}}</a><sup class="package-root"><a href="/">{{resource.package.root}}</a></sup></h1>
-        <p class="version">当前版本：<span>{{resource.package.version}}</span></p>
-        <p class="description">{{resource.package.description}}</p>
-        {%- if resource.package.repository %}
-        <a class="source" href="{{resource.package.repository.url}}" target="_blank">View the Project</a>
+        <h1><a href="{{content_url('index.html')}}">{{config.package.name|title}}</a><sup class="package-root"><a href="/">{{config.package.root}}</a></sup></h1>
+        <p class="version">当前版本：<span>{{config.package.version}}</span></p>
+        <p class="description">{{config.package.description}}</p>
+        {%- if config.package.repository %}
+        <a class="source" href="{{config.package.repository.url}}" target="_blank">View the Project</a>
         {%- endif %}
         {%- block sidebar %}
         <ul id="navigation" role="navigation">
           <li><a href="{{content_url('index.html')}}">文档</a></li>
-          {%- set example = resource.posts|first_category('examples') %}
-          {%- if example %}
-          <li><a href="{{example|permalink}}">演示</a></li>
-          {%- endif %}
-          {%- if resource.history %}
-          <li><a href="{{content_url('history.html')}}">历史</a></li>
-          {%- endif %}
-          <li><a target="_blank" href="{{content_url('tests/runner.html')}}">用例</a></li>
-          {%- if resource.package.bugs %}
+          {%- if config.package.bugs %}
           <li><a href="{{resource.package.bugs.url}}" target="_blank">讨论</a></li>
           {%- endif %}
         </ul>
@@ -55,27 +45,7 @@
     <div id="footer-wrapper">
       <footer>
       <p class="powered">
-        <script type="text/javascript" charset="utf-8">
-        (function(){
-          var _w = 72 , _h = 16;
-          var param = {
-            url:location.href,
-            type:'3',
-            count:'1', /**是否显示分享数，1显示(可选)*/
-            appkey:'', /**您申请的应用appkey,显示分享来源(可选)*/
-            title:'Arale 是支付宝的前端解决方案，基于 SeaJS 和 CMD 规范，是一个开放、简单、易用的前端基础类库。', /**分享的文字内容(可选，默认为所在页面的title)*/
-            pic:'http://aralejs.org/static/arale.png', /**分享图片的路径(可选)*/
-            ralateUid:'', /**关联用户的UID，分享微博会@该用户(可选)*/
-            language:'zh_cn', /**设置语言，zh_cn|zh_tw(可选)*/
-            rnd:new Date().valueOf()
-          }
-          var temp = [];
-          for( var p in param ){
-            temp.push(p + '=' + encodeURIComponent( param[p] || '' ) )
-          }
-          document.write('<iframe allowTransparency="true" frameborder="0" scrolling="no" src="http://hits.sinajs.cn/A1/weiboshare.html?' + temp.join('&') + '" width="'+ _w+'" height="'+_h+'"></iframe>')
-        })()
-        </script>
+        {%- include "snippet/foot.html" %}
         <a href="http://aralejs.org">Arale</a> •
         <a href="http://seajs.org">SeaJS</a> •
         <a href="https://github.com/spmjs/spm">spm</a> •
