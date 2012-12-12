@@ -343,3 +343,12 @@ body {
     background-color: #E7E7E7;
     background-position: -900px 50%;
 }
+
+.popup-install {
+    background: #fefefe;
+    font-size: 12px;
+    font-family: monospace,serif;
+    padding: 6px;
+    color: #777;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
+}
