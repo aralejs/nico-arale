@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 var path = require('path')
-var BaseWriter = require('nico').BaseWriter;
+var nico = require(path.join(process.env.HOME, 'workspace/node/nico', 'index.js'))
+var BaseWriter = nico.BaseWriter;
 
 
 exports.name = 'arale'
