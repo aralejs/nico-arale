@@ -17,7 +17,7 @@ seajs.use('$', function($) {
         var matcher = item.html().match(/^tag:(.+)/i);
         if (matcher) {
             item.parent().css('padding-left', '150px');
-            item.replaceWith('<span class="tag tag-'+matcher[1]+'">'+matcher[1]+'</span>');
+            item.replaceWith('<span class="history-tag history-tag-'+matcher[1]+'">'+matcher[1]+'</span>');
         }
     });
 });

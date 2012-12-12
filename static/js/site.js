@@ -2,7 +2,7 @@ seajs.use(['$', 'popup'], function($, Popup) {
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
     // 给 iframe 加链接
-    $('.ff-iframe').each(function(i, item) {
+    $('.nico-iframe').each(function(i, item) {
       var src = $(item).find('iframe').attr('src')
       var html = '<a class="new-window" target="_blank" href="' + src + '">新窗口打开</a>'
       $(item).append(html)
@@ -40,26 +40,4 @@ seajs.use(['$', 'popup'], function($, Popup) {
         baseXY: [0, '100%+5']
     }
   });
-
 })
-
-// iOS scaling bug fix
-// Rewritten version
-// By @mathias, @cheeaun and @jdalton
-// Source url: https://gist.github.com/901295
-;(function(doc) {
-  var addEvent = 'addEventListener',
-      type = 'gesturestart',
-      qsa = 'querySelectorAll',
-      scales = [1, 1],
-      meta = qsa in doc ? doc[qsa]('meta[name=viewport]') : [];
-  function fix() {
-    meta.content = 'width=device-width,minimum-scale=' + scales[0] + ',maximum-scale=' + scales[1];
-    doc.removeEventListener(type, fix, true);
-  }
-  if ((meta = meta[meta.length - 1]) && addEvent in doc) {
-    fix();
-    scales = [0.25, 1.6];
-    doc[addEvent](type, fix, true);
-  }
-})(document);
