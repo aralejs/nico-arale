@@ -55,7 +55,7 @@ exports.functions = {
       if (path.extname(key) === '.js') {
         key = key.slice(0, -3);
         relative = relative.replace(/\\/g, '/');
-        ret[key] = base + '/' + relative;
+        ret[key] = base + '/src/' + relative;
       }
     });
     return JSON.stringify(ret);

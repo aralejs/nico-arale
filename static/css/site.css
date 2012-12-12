@@ -349,6 +349,7 @@ body {
     font-size: 12px;
     font-family: monospace,serif;
     padding: 6px;
+    border: 1px solid #ddd;
     color: #777;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
 }
