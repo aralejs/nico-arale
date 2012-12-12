@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{{static_url('css/normalize.css')}}" />
     <link rel="stylesheet" href="{{static_url('css/site.css')}}" />
     <script src="https://a.alipayobjects.com/seajs/1.2.1/sea.js"></script>
+    {%- if config.args|debug %}
+    <script>seajs._debug = true</script>
+    {%- endif %}
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script src="{{static_url('js/site.js')}}"></script>
     {%- include "snippet/head.html" %}
@@ -29,8 +32,18 @@
         {%- block sidebar %}
         <ul id="navigation" role="navigation">
           <li><a href="{{content_url('index.html')}}">文档</a></li>
+          {%- set example = resource.pages|find('examples') %}
+          {%- if example %}
+          <li><a href="{{permalink_url(example)}}">演示</a></li>
+          {%- endif %}
+          {%- if config.hasHistory %}
+          <li><a href="{{content_url('history.html')}}">历史</a></li>
+          {%- endif %}
+          {%- if config.hasHistory %}
+          <li><a href="{{content_url('tests/runner.html')}}" target="_blank">用例</a></li>
+          {%- endif %}
           {%- if config.package.bugs %}
-          <li><a href="{{resource.package.bugs.url}}" target="_blank">讨论</a></li>
+          <li><a href="{{config.package.bugs.url}}" target="_blank">讨论</a></li>
           {%- endif %}
         </ul>
         {%- endblock %}

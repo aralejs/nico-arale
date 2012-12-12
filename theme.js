@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 var path = require('path')
-var writer = require('/Users/lepture/workspace/node/nico/lib/writer')
+var BaseWriter = require('nico').BaseWriter;
 
 
 exports.name = 'arale'
 exports.version = '0.1'
 exports.lang = 'zh'
 
-exports.MochaWriter = writer.BaseWriter.extend({
+exports.MochaWriter = BaseWriter.extend({
   writerName: 'MochaWriter',
 
   run: function() {
@@ -20,7 +20,7 @@ exports.MochaWriter = writer.BaseWriter.extend({
 });
 
 
-exports.JasmineWriter = writer.BaseWriter.extend({
+exports.JasmineWriter = BaseWriter.extend({
   writerName: 'JasmineWriter',
 
   run: function() {

@@ -1,9 +1,9 @@
 var path = require('path')
 var fs = require('fs')
 
-var nico = '/Users/lepture/workspace/node/nico'
-var Post = require(nico).Post
+var Post = require('nico').Post
 
+Post.metadata = ['category']
 Object.defineProperty(Post.prototype, 'template', {
   configurable: true,
   get: function() {
@@ -15,7 +15,7 @@ Object.defineProperty(Post.prototype, 'template', {
 Object.defineProperty(Post.prototype, 'filename', {
   configurable: true,
   get: function() {
-    if (this.relative_filepath == 'README.md') return 'index.md';
+    if (this.relative_filepath == 'README.md') return 'index';
     if (this.meta.filename) return this.meta.filename;
     var basename = path.basename(this.relative_filepath);
     return basename.split('.')[0];
@@ -40,12 +40,27 @@ exports.output = path.join(process.cwd(), '_site')
 exports.permalink = '{{directory}}/{{filename}}.html'
 exports.ignore = ['_site']
 exports.writers = [
-  nico + '.PageWriter',
-  nico + '.StaticWriter',
-  nico + '.FileWriter',
+  'nico.PageWriter',
+  'nico.StaticWriter',
+  'nico.FileWriter',
   path.join(__dirname, 'theme') + '.MochaWriter'
 ]
 exports.PostRender = Post
+exports.filters = {
+  debug: function(args) {
+    return args.indexOf('debug') != -1;
+  },
+  find: function(pages, cat) {
+    var ret;
+    pages.some(function(item) {
+      if (item.category == cat) {
+        ret = item;
+        return true;
+      }
+    });
+    return ret;
+  }
+}
 // end settings }}
 
 
