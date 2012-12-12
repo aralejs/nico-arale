@@ -59,6 +59,15 @@ exports.filters = {
       }
     });
     return ret;
+  },
+  find_all: function(pages, cat) {
+    var ret = [];
+    pages.forEach(function(item) {
+      if (item.category == cat) {
+        ret.push(item);
+      }
+    });
+    return ret;
   }
 }
 // end settings }}
