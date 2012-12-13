@@ -35,6 +35,8 @@ curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
 
 复制一份 [Makefile](https://github.com/aralejs/nico-arale/blob/master/Makefile) 到你的项目下：
 
+Windows 用户可使用 [make.bat](https://github.com/aralejs/nico-arale/blob/master/make.bat)。
+
 
 - `make build-doc` 用于生成文档。
 - `make debug` 是开启本地服务器，可用来预览文档，并提供自动构建和 live reload 支持。(从本地 sea-modules 中加载依赖)
@@ -42,9 +44,16 @@ curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
 - `make server` 普通服务器，无自动刷新功能。
 - `make publish` 发布站点到 gh pages，你需要安装 ghp-import
 
+    ```
     sudo easy_install -U ghp-import
+    ```
 
+Windows 用户注意，如果报错，说找不到 nico，请设置环境变量 `NODE_PATH`。
+请根据实际情况自行解决，一般来说应该设置为：
 
+```
+NODE_PATH = C:\Users\{{username}}\AppData\Roaming\npm\node_modules
+```
 
 ## 文档编辑
 
