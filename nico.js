@@ -1,9 +1,7 @@
-var path = require('path')
-var fs = require('fs')
-//var nico = require('nico')
-var nico = require(path.join(process.env.HOME, 'workspace/node/nico', 'index.js'))
-
-var Post = nico.Post
+var path = require('path');
+var fs = require('fs');
+var nico = require('nico');
+var Post = nico.Post;
 
 
 // {{ settings for nico

@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-var path = require('path')
-var nico = require(path.join(process.env.HOME, 'workspace/node/nico', 'index.js'))
+var path = require('path');
+var nico = require('nico');
 var BaseWriter = nico.BaseWriter;
 
 
-exports.name = 'arale'
-exports.version = '0.1'
-exports.lang = 'zh'
+exports.name = 'arale';
+exports.version = '0.1';
+exports.lang = 'zh';
 
 exports.MochaWriter = BaseWriter.extend({
   writerName: 'MochaWriter',

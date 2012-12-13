@@ -4,8 +4,8 @@
 
 {% block content %}
 <article class="hentry">
-<h1 class="entry-title">版本历史</h1>
-  <div class="meta">{{post.updated|date('Y-M-D')}}</div>
+  <h1 class="entry-title">{{post.title}}</h1>
+  <div class="meta">{{post.updated|date('Y-m-d')}}</div>
   <div class="entry-content">
     {{ post.html }}
   </div>
