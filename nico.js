@@ -1,4 +1,5 @@
 var path = require('path');
+var util = require('util');
 var fs = require('fs');
 var nico = require('nico');
 var Post = nico.Post;
@@ -39,24 +40,27 @@ exports.filters = {
       }
     });
     return ret;
+  },
+  replace_code: function(content) {
+    var key, value, regex;
+    var src = findSrc();
+    var p = exports.package;
+    for (key in src) {
+      console.log(key)
+      value = util.format('%s/%s/%s', p.name, p.version, key);
+      console.log(value)
+      var regex = new RegExp(
+        '<span class="string">(\'|\")' + key + '(\'|\")</span>', 'g'
+      );
+      content = content.replace(regex, '<span class="string">$1' + value + '$2</span>');
+    }
+    return content;
   }
 }
 exports.functions = {
   render_src: function(writer) {
-    var ret = {}, key, relative;
     var base = nico.utils.relativeBase(writer.filepath);
-    var src = path.join(process.cwd(), 'src')
-    var files = nico.utils.walkdir(src).files;
-    files.forEach(function(item) {
-      relative = nico.utils.relativePath(item, src);
-      key = path.basename(relative);
-      if (path.extname(key) === '.js') {
-        key = key.slice(0, -3);
-        relative = relative.replace(/\\/g, '/');
-        ret[key] = base + '/src/' + relative;
-      }
-    });
-    return JSON.stringify(ret);
+    return JSON.stringify(findSrc(base));
   }
 }
 // end settings }}
@@ -76,6 +80,23 @@ if (fs.existsSync(path.join(process.cwd(), 'tests'))) {
   exports.hasTest = false
 }
 
+
+function findSrc(base) {
+  base = base || '..';
+  var src = path.join(process.cwd(), 'src');
+  var files = nico.utils.walkdir(src).files;
+  var key, relative, ret = {};
+  files.forEach(function(item) {
+    relative = nico.utils.relativePath(item, src);
+    key = path.basename(relative);
+    if (path.extname(key) === '.js') {
+      key = key.slice(0, -3);
+      relative = relative.replace(/\\/g, '/');
+      ret[key] = base + '/src/' + relative;
+    }
+  });
+  return ret;
+}
 
 Post.metadata = ['category']
 Object.defineProperty(Post.prototype, 'template', {

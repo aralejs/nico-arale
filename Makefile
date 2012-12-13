@@ -29,4 +29,4 @@ coverage:
 	@echo "Build coverage to coverage.html"
 
 
-.PHONY: build-doc debug server
+.PHONY: build-doc debug server publish clean test coverage
