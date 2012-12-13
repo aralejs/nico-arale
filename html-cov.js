@@ -5,7 +5,6 @@ var reporter = require.resolve('mocha/lib/reporters/html-cov');
 var file = path.join(path.dirname(reporter), 'templates/coverage.jade');
 var fn = jade.compile(fs.readFileSync(file, 'utf-8'), {filename: file});
 
-var stdin = process.stdin;
 var data = '';
 
 process.stdin.resume();
