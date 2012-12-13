@@ -7,8 +7,10 @@
 
 ## 安装
 
+
 ### 1. 安装 node
 
+请自己安装 node。
 
 
 ### 2. 安装 nico
@@ -23,31 +25,31 @@ $ npm install socket.io -g
 
 ### 3. 安装 arale theme
 
+Mac 用户一键安装：
 
+```
+curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
+```
 
 ## 使用说明
 
+复制一份 [Makefile](https://github.com/aralejs/nico-arale/blob/master/Makefile) 到你的项目下：
+
 
 - `make build-doc` 用于生成文档。
-- `make debug` 是开启本地服务器，可用来预览文档，并提供自动构建和 live reload 支持。
-- `make server` 是开启本地服务器的调试模式，可直接从本地加载依赖的文件。
+- `make debug` 是开启本地服务器，可用来预览文档，并提供自动构建和 live reload 支持。(从本地 sea-modules 中加载依赖)
+- `make watch` 是开启本地服务器，可用来预览文档，并提供自动构建和 live reload 支持。 (从线上加载依赖)
+- `make server` 普通服务器，无自动刷新功能。
+- `make publish` 发布站点到 gh pages，你需要安装 ghp-import
+
+    sudo easy_install -U ghp-import
+
 
 
 ## 文档编辑
 
-nico 支持将 Markdown 文档转换成 HTML 文件，支持的语法请参考：[Markdown Syntax](http://daringfireball.net/projects/markdown/syntax)
-
-nico 还支持一些扩展语法，包括标题、元信息等。
-
-```
-# 标题
-
-- order: 1
-
----------------
-
-分割线一定得有的哦，分割线下面是内容。
-```
+- http://lab.lepture.com/nico/zh/
+- http://lab.lepture.com/nico/zh/syntax
 
 nico 还会用到模块根目录下的 package.json 文件，具体项的含义请参考：[spm package.json](https://github.com/spmjs/spm/wiki/package.json)
 
@@ -69,10 +71,6 @@ nico 还会用到模块根目录下的 package.json 文件，具体项的含义�
     function something() {
     }
     ````
-
-跨文档链接 ([[title]])
-
-    可查看 [[另一篇文章的标题]]
 
 插入 iframe
 
@@ -111,7 +109,7 @@ docs/
 README.md
 ```
 
-执行 `make doc` 后会生成：
+执行 `make build-doc` 后会生成：
 
 ```
 package.json
@@ -133,4 +131,7 @@ docs/
 README.md
 ```
 
-所有生成的文件都在 _site 目录下。
+所有生成的文件都在 `_site` 目录下。
+
+
+## 测试
