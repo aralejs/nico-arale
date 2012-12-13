@@ -9,6 +9,9 @@ debug:
 server:
 	@nico server -v -C $(THEME)/nico.js
 
+watch:
+	@nico server -v -C $(THEME)/nico.js --watch
+
 publish: clean build-doc
 	@ghp-import _site
 	@git push origin gh-pages
