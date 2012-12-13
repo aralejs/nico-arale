@@ -10,7 +10,7 @@ exports.theme = __dirname
 exports.source = process.cwd()
 exports.output = path.join(process.cwd(), '_site')
 exports.permalink = '{{directory}}/{{filename}}.html'
-exports.ignore = ['_site']
+exports.ignore = ['_site', 'node_modules']
 exports.writers = [
   nico.PageWriter,
   nico.StaticWriter,
