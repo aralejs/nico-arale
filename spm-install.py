@@ -23,7 +23,7 @@ dependencies = None
 def fetch(key, value):
     save = key + '.tgz'
     bits = value.split('/')
-    url = 'http://modules.spmjs.org/' + value + '.tgz'
+    url = 'http://modules.spmjs.org/%s/%s.tgz' % ('/'.join(bits[:-1]), bits[1])
     print 'downloading: %s' % url
     urllib.urlretrieve(url, save)
 
