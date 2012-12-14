@@ -2,6 +2,8 @@ var path = require('path');
 var util = require('util');
 var fs = require('fs');
 var nico = require('nico');
+var urilab = require('nico/lib/utils/uri');
+var pathlib = require('nico/lib/utils/path');
 var Post = nico.Post;
 
 
@@ -46,7 +48,7 @@ exports.filters = {
     var src = findSrc();
     var p = exports.package;
     for (key in src) {
-      value = util.format('%s/%s/%s', p.name, p.version, key);
+      value = util.format('%s/%s/%s/%s', p.root, p.name, p.version, key);
       var regex = new RegExp(
         '<span class="string">(\'|\")' + key + '(\'|\")</span>', 'g'
       );
@@ -57,8 +59,8 @@ exports.filters = {
 }
 exports.functions = {
   render_src: function(writer) {
-    var base = nico.utils.relativeBase(writer.filepath);
-    return JSON.stringify(findSrc(base));
+    var base = urilab.relative(writer.filepath, '');
+    return JSON.stringify(findSrc(base.slice(0, -1)));
   }
 }
 // end settings }}
@@ -82,10 +84,11 @@ if (fs.existsSync(path.join(process.cwd(), 'tests'))) {
 function findSrc(base) {
   base = base || '..';
   var src = path.join(process.cwd(), 'src');
-  var files = nico.utils.walkdir(src).files;
+  var walker = pathlib.walkdir(src);
+  var files = walker.files;
   var key, relative, ret = {};
   files.forEach(function(item) {
-    relative = nico.utils.relativePath(item, src);
+    relative = pathlib.relative(src, item);
     key = path.basename(relative);
     if (path.extname(key) === '.js') {
       key = key.slice(0, -3);
