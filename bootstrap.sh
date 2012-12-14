@@ -18,8 +18,13 @@ fi
 
 if ! which jscoverage > /dev/null; then
     echo "install jscoverage"
-    curl -s $JSC -o jscoverage.rb
-    brew install jscoverage.rb
+
+    if which brew > /dev/null; then
+        curl -s $JSC -o jscoverage.rb
+        brew install jscoverage.rb
+    else
+        echo "please install jscoverage: https://github.com/visionmedia/node-jscoverage"
+    fi
 else
     echo "you have installed jscoverage"
 fi

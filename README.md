@@ -25,7 +25,7 @@ $ npm install socket.io -g
 
 ### 3. 安装 arale theme
 
-Mac 用户一键安装：
+Linux & Mac 用户一键安装：
 
 ```
 curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
