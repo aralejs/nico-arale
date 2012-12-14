@@ -20,8 +20,7 @@ if ! which jscoverage > /dev/null; then
     echo "install jscoverage"
 
     if which brew > /dev/null; then
-        curl -s $JSC -o jscoverage.rb
-        brew install jscoverage.rb
+        brew install $THEME/node-jscoverage.rb
     else
         echo "please install jscoverage: https://github.com/visionmedia/node-jscoverage"
     fi
