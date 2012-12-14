@@ -19,11 +19,13 @@ fi
 if ! which jscoverage > /dev/null; then
     echo "install jscoverage"
 
-    if which brew > /dev/null; then
-        brew install $THEME/node-jscoverage.rb
-    else
-        echo "please install jscoverage: https://github.com/visionmedia/node-jscoverage"
-    fi
+    git clone https://github.com/visionmedia/node-jscoverage.git .jscoverage
+    cd .jscoverage
+    ./configure --prefix=/user/local
+    make
+    make install
+    cd $CWD
+    rm -fr .jscoverage
 else
     echo "you have installed jscoverage"
 fi
