@@ -21,7 +21,7 @@ if ! which jscoverage > /dev/null; then
 
     git clone https://github.com/visionmedia/node-jscoverage.git .jscoverage
     cd .jscoverage
-    ./configure --prefix=/user/local
+    ./configure --prefix=/usr/local
     make
     make install
     cd $CWD
