@@ -31,6 +31,33 @@ Linux & Mac 用户一键安装：
 curl https://raw.github.com/aralejs/nico-arale/master/bootstrap.sh | sh
 ```
 
+Windows 用户安装：
+
+1.切换到.spm目录
+
+2.创建一个`themes`的目录并切换进入
+
+3.从git上拉一份arale的theme
+
+4.重命名`nico-arale`目录为`arale`
+
+5.切换到`arale`目录，把里面的`make.bat`文件复制到一个全局PATH下（保证make命令可用即可）
+
+P.S. __注意千万别把`C:\Users\{{username}}\.spm\themes\arale`目录设置为全局PATH，这样`nico`命令会失效，切记！__
+
+```
+cd C:\Users\{{username}}\.spm
+
+mkdir themes
+cd themes
+
+git clone https://github.com/aralejs/nico-arale.git
+
+rename nico-arale arale
+
+cd arale
+```
+
 ## 使用说明
 
 复制一份 [Makefile](https://github.com/aralejs/nico-arale/blob/master/Makefile) 到你的项目下：
