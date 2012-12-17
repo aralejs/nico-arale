@@ -32,6 +32,7 @@ exports.filters = {
         return true;
       }
     });
+    if (!ret) return null;
     ret = nico.underscore.sortBy(ret, function(i) { return i.meta.order || 0});
     return ret;
   },
