@@ -86,6 +86,7 @@ if (fs.existsSync(path.join(process.cwd(), 'tests'))) {
 function findSrc(base) {
   base = base || '..';
   var src = path.join(process.cwd(), 'src');
+  if (!fs.existsSync(src)) return {};
   var walker = pathlib.walkdir(src);
   var files = walker.files;
   var key, relative, ret = {};
