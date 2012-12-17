@@ -25,16 +25,15 @@ exports.filters = {
     return args.indexOf('debug') != -1;
   },
   find: function(pages, cat) {
-    var ret;
-    pages.some(function(item) {
+    var ret = [];
+    pages.forEach(function(item) {
       if (item.category == cat) {
-        ret = item;
-        return true;
+        ret.push(item);
       }
     });
-    if (!ret) return null;
+    if (!ret.length) return null;
     ret = nico.underscore.sortBy(ret, function(i) { return i.meta.order || 0});
-    return ret;
+    return ret[0];
   },
   find_all: function(pages, cat) {
     var ret = [];
