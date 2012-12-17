@@ -26,17 +26,17 @@ if "%1" == "build-doc" (
 )
 
 if "%1" == "debug" (
-    nico build -v -C %THEME%\nico.js --watch debug
+    nico server -v -C %THEME%\nico.js --watch debug
     goto end
 )
 
 if "%1" == "watch" (
-    nico build -v -C %THEME%\nico.js --watch
+    nico server -v -C %THEME%\nico.js --watch
     goto end
 )
 
 if "%1" == "server" (
-    nico build -v -C %THEME%\nico.js
+    nico server -v -C %THEME%\nico.js
     goto end
 )
 
