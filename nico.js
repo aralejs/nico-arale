@@ -32,6 +32,7 @@ exports.filters = {
         return true;
       }
     });
+    ret = nico.underscore.sortBy(ret, function(i) { return i.meta.order || 0});
     return ret;
   },
   find_all: function(pages, cat) {
@@ -41,6 +42,7 @@ exports.filters = {
         ret.push(item);
       }
     });
+    ret = nico.underscore.sortBy(ret, function(i) { return i.meta.order || 0});
     return ret;
   },
   replace_code: function(content) {
