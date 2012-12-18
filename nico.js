@@ -25,7 +25,7 @@ exports.filters = {
     return args.indexOf('debug') != -1;
   },
   find: function(pages, cat) {
-    var ret = this.find_all(pages, cat);
+    var ret = exports.filters.find_all(pages, cat);
     if (!ret.length) return null;
     return ret[0];
   },
