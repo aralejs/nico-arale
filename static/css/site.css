@@ -11,6 +11,10 @@ body {
     text-rendering: optimizelegibility;
 }
 
+pre, code, tt {
+    font-family: Consolas,"Liberation Mono",Courier,monospace;
+}
+
 #body-wrapper {
     margin-left: auto;
     margin-right: auto;
