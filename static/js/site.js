@@ -34,7 +34,7 @@ seajs.use(['$', 'arale/popup/0.9.9/popup'], function($, Popup) {
     var name = $('#sidebar-wrapper h1 > a').html().toLowerCase();
     var version = $('#sidebar-wrapper .version span').html();
     new Popup({
-      trigger: '#sidebar-wrapper > h1',
+      trigger: '#sidebar-wrapper h1 > a',
       template: '<div class="popup-install">spm install '
           +root+'.'+name+'@'+version+'</div>',
       align: {
