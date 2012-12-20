@@ -16,13 +16,11 @@ var result = tmpl.render({
         return './static/' + url;
     },
     config: {
-        package: package
+        package: package,
+        args: ['debug']
     },
     site: {
         name: package.name
-    },
-    theme: {
-        debug: true
     }
 });
 fs.writeFileSync('tests/runner.html', result);
