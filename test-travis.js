@@ -16,8 +16,7 @@ var result = tmpl.render({
         return './static/' + url;
     },
     config: {
-        package: package,
-        args: ['debug']
+        package: package
     },
     site: {
         name: package.name
