@@ -13,6 +13,7 @@ exports.source = process.cwd()
 exports.output = path.join(process.cwd(), '_site')
 exports.permalink = '{{directory}}/{{filename}}.html'
 exports.ignore = ['_site', 'node_modules']
+exports.google = 'UA-36247332-1'
 exports.writers = [
   nico.PageWriter,
   nico.StaticWriter,
