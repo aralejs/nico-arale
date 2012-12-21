@@ -23,7 +23,7 @@
 
 <ul id="module-output">
   {%- for value in config.package.output %}
-  <li><a data-file="{{value}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
+  <li><a data-file="{{loop.key}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
   {%- endfor %}
 </ul>
 <div id="output-card">
