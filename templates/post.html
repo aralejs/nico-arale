@@ -23,7 +23,11 @@
 
 <ul id="module-output">
   {%- for value in config.package.output %}
-  <li><a href="{{content_url('dist/')}}{{loop.key}}">{{loop.key}}</a></li>
+  <li><a data-file="{{value}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
   {%- endfor %}
 </ul>
+<div id="output-card">
+    <h3>{{config.package.root}}/{{config.package.name}}/{{config.package.version}}/<a target="_blank" id="output-file"></a></h3>
+    <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
+</div>
 {%- endblock %}

@@ -1,4 +1,4 @@
-seajs.use(['$', 'arale/popup/0.9.9/popup'], function($, Popup) {
+seajs.use(['$', 'arale/popup/0.9.11/popup'], function($, Popup) {
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
     // 给 iframe 加链接
@@ -42,6 +42,19 @@ seajs.use(['$', 'arale/popup/0.9.9/popup'], function($, Popup) {
       }
     });
   }
+
+  // output card
+  new Popup({
+    trigger: '#module-output li a',
+    element: '#output-card',
+    effect: 'fade',
+    beforeShow: function() {
+        var file = this.activeTrigger.data('file');
+        file = file.replace('./', '').replace('.js', '');
+        this.element.find('#output-file').html(file)
+                                         .attr('href', this.activeTrigger.attr('href'));
+    }
+  });
 
   // google analytics
   var project = $('#sidebar-wrapper h1 > a').text();
