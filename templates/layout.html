@@ -44,10 +44,10 @@
           <li><a href="{{content_url('history.html')}}">历史</a></li>
           {%- endif %}
           {%- if config.hasTest %}
-          <li><a href="{{content_url('tests/runner.html')}}" target="_blank">用例</a></li>
+          <li><a class="test-link" href="{{content_url('tests/runner.html')}}" target="_blank">用例</a></li>
           {%- endif %}
           {%- if config.package.bugs %}
-          <li><a href="{{config.package.bugs.url}}" target="_blank">讨论</a></li>
+          <li><a class="issue-link" href="{{config.package.bugs.url}}" target="_blank">讨论</a></li>
           {%- endif %}
         </ul>
         {%- endblock %}
