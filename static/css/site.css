@@ -108,7 +108,8 @@ pre, code, tt {
     margin-left: 0;
 }
 #navigation a:hover,
-#sidenav a:hover {
+#sidenav a:hover,
+#module-output a:hover {
     border-bottom: 1px dotted #769FD0;
 }
 #sidebar-wrapper a {
@@ -275,7 +276,7 @@ pre, code, tt {
     line-height: 1;
 }
 
-#sidenav {
+#sidenav, #module-output {
     padding-top: 10px;
     margin-top: 0;
     font-size: 14px;

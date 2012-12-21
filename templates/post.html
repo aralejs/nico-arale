@@ -20,4 +20,10 @@
   {%- endfor %}
 </ol>
 {%- endif %}
+
+<ul id="module-output">
+  {%- for value in config.package.output %}
+  <li><a href="{{content_url('dist/')}}{{loop.key}}">{{loop.key}}</a></li>
+  {%- endfor %}
+</ul>
 {%- endblock %}
