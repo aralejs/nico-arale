@@ -35,6 +35,7 @@
   }
 
   seajs.config({
+    base: ARALE_BASE,
     alias: {
       '$': 'http://static.alipayobjects.com/gallery/jquery/1.7.2/jquery.js',
       '$-debug': 'http://static.alipayobjects.com/gallery/jquery/1.7.2/jquery-debug.js',
