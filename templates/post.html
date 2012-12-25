@@ -22,9 +22,12 @@
 {%- endif %}
 
 <ul id="module-output">
-  {%- for value in config.package.output %}
-  <li><a data-file="{{loop.key}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
-  {%- endfor %}
+  {%- if config.package.output|length > 1 %}
+    <li class="module-multiable">多模块</li>
+    {%- for value in config.package.output %}
+    <li><a data-file="{{loop.key}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
+    {%- endfor %}
+  {%- endif %} 
 </ul>
 <div id="output-card">
     <h3>{{config.package.root}}/{{config.package.name}}/{{config.package.version}}/<a target="_blank" id="output-file"></a></h3>
