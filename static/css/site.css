@@ -40,6 +40,7 @@ pre, code, tt {
     font-size: 14px;
     width: 220px;
     padding-top: 8px;
+    z-index: 1;
 }
 #content-wrapper {
     float: right;
