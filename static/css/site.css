@@ -54,6 +54,9 @@ pre, code, tt {
 #sidebar-wrapper .version {
     font-size: 12px;
 }
+#sidebar-wrapper .version a {
+    color: #9C9277;
+}
 #sidebar-wrapper .source, .source-button {
     display: inline-block;;
     background-color: #5784bf;

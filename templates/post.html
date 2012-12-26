@@ -23,7 +23,7 @@
 
 <ul id="module-output">
   {%- if config.package.output|length > 1 %}
-    <li class="module-multiable">多模块</li>
+  <li class="module-multiable" title="本组件共有{{config.package.output|length}}个子模块">多模块</li>
     {%- for value in config.package.output %}
     <li><a data-file="{{loop.key}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
     {%- endfor %}
