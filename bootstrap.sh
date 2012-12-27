@@ -6,6 +6,13 @@ JSC="https://raw.github.com/lepture/nico/master/scripts/node-jscoverage.rb"
 
 cd $CWD
 
+if ! which nico > /dev/null; then
+    echo "install nico"
+    npm install nico -g
+else
+    echo "you have installed nico"
+fi
+
 if [ ! -d $THEME ]; then
     echo "clone nico arale theme"
     git clone https://github.com/aralejs/nico-arale.git $THEME
