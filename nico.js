@@ -2,6 +2,7 @@ var path = require('path');
 var util = require('util');
 var fs = require('fs');
 var nico = require('nico');
+var _ = require(path.join(path.dirname(require.resolve('nico')), 'node_modules', 'underscore'));
 var urilab = require('nico/lib/utils/uri');
 var pathlib = require('nico/lib/utils/path');
 var Post = nico.Post;
@@ -37,7 +38,7 @@ exports.filters = {
         ret.push(item);
       }
     });
-    ret = nico.underscore.sortBy(ret, function(i) { return i.meta.order || 0});
+    ret = _.sortBy(ret, function(i) { return i.meta.order || 0});
     return ret;
   },
   replace_code: function(content) {
