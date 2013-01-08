@@ -72,12 +72,11 @@ pre, code, tt {
 }
 #sidebar-wrapper .source:hover {
     color: #fff;
-    box-shadow: 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255,255,255, 0.2) inset;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);    
+    box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255,255,255, 0.2) inset;
 }
 #sidebar-wrapper .source:active {
     box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255, 255, 255, 0.2) inset;
-    top: -2px;
+    top: 2px;
     position: relative;
 }
 #sidebar-wrapper .package-root {
