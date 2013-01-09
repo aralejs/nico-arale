@@ -1,4 +1,4 @@
-seajs.use(['$', 'http://static.alipayobjects.com/arale/popup/0.9.11/popup.js'], function($, Popup) {
+seajs.use(['$', 'arale/popup/0.9.11/popup'], function($, Popup) {
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
     // 给 iframe 加链接
@@ -30,7 +30,7 @@ seajs.use(['$', 'http://static.alipayobjects.com/arale/popup/0.9.11/popup.js'], 
 
   // spm install message
   var root = $('#sidebar-wrapper h1 sup a').html();
-  if (root) {
+  if (root && Popup) {
     var name = $('#sidebar-wrapper h1 > a').html().toLowerCase();
     var version = $('#sidebar-wrapper .version a').html();
     new Popup({
@@ -44,7 +44,7 @@ seajs.use(['$', 'http://static.alipayobjects.com/arale/popup/0.9.11/popup.js'], 
   }
 
   // output card
-  if ($('#module-output')[0]) {
+  if ($('#module-output')[0] && Popup) {
       new Popup({
         trigger: '#module-output li a',
         element: '#output-card',

@@ -58,7 +58,7 @@ pre, code, tt {
     display: inline-block;;
     background-color: #5784bf;
     background-image: -webkit-linear-gradient(#669be1, #5784bf);
-    box-shadow: 0 -4px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset;
     font-size: 16px;
     font-family: "Trebuchet MS", sans-serif;
     padding: 8px 16px 12px;
@@ -72,7 +72,12 @@ pre, code, tt {
 }
 #sidebar-wrapper .source:hover {
     color: #fff;
-    box-shadow: 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255,255,255, 0.2) inset;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255,255,255, 0.2) inset;
+}
+#sidebar-wrapper .source:active {
+    box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255, 255, 255, 0.2) inset;
+    top: 2px;
+    position: relative;
 }
 #sidebar-wrapper .package-root {
     position: relative;
