@@ -4,7 +4,12 @@ var static = require('node-static');
 var swig = require('swig');
 
 swig.init({
-    autoescape: false
+    autoescape: false,
+    filters: {
+      debug: function() {
+        return false;
+      }
+    }
 });
 
 var package = require(fs.realpathSync('package.json'));
