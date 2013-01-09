@@ -14,6 +14,8 @@ process.stdin.on('data', function (chunk) {
 });
 
 process.stdin.on('end', function () {
+  // remove unuse log
+  data = data.replace(/^[\s\S]*?({)/, '$1');
   process.stdout.write(fn({
     cov: JSON.parse(data),
     coverageClass: coverageClass
