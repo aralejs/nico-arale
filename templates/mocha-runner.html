@@ -6,6 +6,9 @@
     <title>{% block title %}{{config.package.name|title}} Mocha Runner{% endblock %}</title>
     <link href="{{static_url('css/mocha.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     <script src="http://static.alipayobjects.com/seajs/1.2.1/sea.js"></script>
+    {%- if config.args|debug %}
+    <script>seajs._nicodebug = true</script>
+    {%- endif %}
     <script src="{{static_url('js/arale-helper.js')}}"></script>
     <script src="{{static_url('js/es5-safe.js')}}"></script>
     <script src="{{static_url('js/test-suite.js')}}"></script>
