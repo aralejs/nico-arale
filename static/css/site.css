@@ -256,9 +256,13 @@ pre, code, tt {
 }
 #content .nico-iframe .new-window {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 30px;
+    right: -40px;
     font-size: 12px;
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
 }
 #content .highlight {
     background-color: transparent;
