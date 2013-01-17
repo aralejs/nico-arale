@@ -96,7 +96,6 @@ pre, code, tt {
 }
 #sidebar-wrapper .package-root a:hover {
     color: rgba(0, 0, 0, 0.33);    
-
 }
 #navigation {
     list-style-type: none;
@@ -167,9 +166,6 @@ pre, code, tt {
 .hentry a {
     color: #55A4F2;
     text-decoration: none;
-}
-.hentry a:hover {
-    text-decoration: underline;
 }
 #content h2 {
     margin-top: 40px;
