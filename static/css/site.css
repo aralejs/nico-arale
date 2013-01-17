@@ -164,11 +164,11 @@ pre, code, tt {
 #content li {
     line-height: 1.6;
 }
-#content a {
+.hentry a {
     color: #55A4F2;
     text-decoration: none;
 }
-#content a:hover {
+.hentry a:hover {
     text-decoration: underline;
 }
 #content h2 {
