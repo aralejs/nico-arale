@@ -3,8 +3,8 @@ var util = require('util');
 var fs = require('fs');
 var nico = require('nico');
 var _ = require(path.join(path.dirname(require.resolve('nico')), 'node_modules', 'underscore'));
-var urilab = require('nico/lib/utils/uri');
-var pathlib = require('nico/lib/utils/path');
+var urilib = require('nico/lib/utils/urilib');
+var pathlib = require('nico/lib/utils/pathlib');
 var Post = nico.Post;
 
 
@@ -57,7 +57,7 @@ exports.filters = {
 }
 exports.functions = {
   render_src: function(writer) {
-    var base = urilab.relative(writer.filepath, '');
+    var base = urilib.relative(writer.filepath, '');
     return JSON.stringify(findSrc(base.slice(0, -1)));
   }
 }
@@ -83,8 +83,7 @@ function findSrc(base) {
   base = base || '..';
   var src = path.join(process.cwd(), 'src');
   if (!fs.existsSync(src)) return {};
-  var walker = pathlib.walkdir(src);
-  var files = walker.files;
+  var files = pathlib.walkdirSync(src);
   var key, relative, ret = {};
   files.forEach(function(item) {
     relative = pathlib.relative(src, item);
