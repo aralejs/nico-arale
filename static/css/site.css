@@ -74,27 +74,33 @@ pre, code, tt {
     font-size: 12px;
 }
 #sidebar-wrapper .source, .source-button {
-    display: inline-block;;
-    background-color: #5784bf;
-    background-image: -webkit-linear-gradient(#669be1, #5784bf);
-    box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset;
-    font-size: 16px;
-    font-family: "Trebuchet MS", sans-serif;
-    padding: 8px 16px 12px;
-    border-radius: 6px;
+    background-color: #276195;
+    background-image: linear-gradient(#3C88CC, #276195);
+    background-repeat: repeat-x;
+    border: 0 none;
+    border-radius: 0.25em 0.25em 0.25em 0.25em;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), 0 -4px 0 0 rgba(0, 0, 0, 0.2) inset;
     color: #fff;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
+    display: inline-block;
+    font-family: "Trebuchet MS",sans-serif;
+    font-size: 16px;
+    height: 40px;
+    line-height: 36px;
+    min-width: 100px;
+    padding: 0 20px;
     text-align: center;
-    text-shadow: 0 1px 0 rgba(0,0,0,0.5);
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.25);
+    transition: all 0.25s linear 0s;
+    opacity: 0.92;
 }
 #sidebar-wrapper .source:hover {
     color: #fff;
-    box-shadow: 0 3px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255,255,255, 0.2) inset;
+    opacity: 1;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), 0 -4px 0 0 rgba(0, 0, 0, 0.2) inset, 0 12px 24px 2px #3089D8 inset;
 }
 #sidebar-wrapper .source:active {
-    box-shadow: 0 1px rgba(0, 0, 0, 0.1), 0 -4px rgba(0, 0, 0, 0.1) inset, 0 0 100px rgba(255, 255, 255, 0.2) inset;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.1), 0 -4px 0 0 rgba(0, 0, 0, 0.2) inset, 0 12px 24px 2px #3089D8 inset;
     top: 2px;
     position: relative;
 }
@@ -109,7 +115,6 @@ pre, code, tt {
 }
 #sidebar-wrapper .package-root a:hover {
     color: rgba(0, 0, 0, 0.33);    
-
 }
 #navigation {
     list-style-type: none;
@@ -177,12 +182,9 @@ pre, code, tt {
 #content li {
     line-height: 1.6;
 }
-#content a {
+.hentry a {
     color: #55A4F2;
     text-decoration: none;
-}
-#content a:hover {
-    text-decoration: underline;
 }
 #content h2 {
     margin-top: 40px;
