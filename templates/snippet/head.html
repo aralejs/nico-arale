@@ -21,5 +21,13 @@
     seajs.config({ alias: data.dependencies })
     seajs.config({ alias: data.devDependencies })
     seajs.config({ alias: {{render_src(writer)}} })
+
+    // for alice
+    for(var dep in data.dependencies) {
+        // 如果依赖的是样式模块
+        if (data.dependencies[dep].indexOf('.css') > 0) {
+            seajs.use(dep);
+        }
+    }
   })();
 </script>
