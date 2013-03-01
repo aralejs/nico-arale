@@ -28,8 +28,7 @@
       {%- block body %}
       <aside id="sidebar-wrapper">
       <h1>
-          <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a>
-          <sup class="package-root"><a href="/">{{config.package.root}}{{config.package.family}}</a></sup>
+          <a href="{{content_url('index.html')}}">{{config.package.name|title}}</a><sup class="package-root"><a href="/">{{config.package.root}}{{config.package.family}}</a></sup>
       </h1>
         <p class="version">当前版本：<a href="http://aralejs.org/docs/online-status.html#{{config.package.root}}-{{config.package.name}}" title="点击查看此组件发布情况">{{config.package.version}}</a></p>
         <p class="description">{{config.package.description}}</p>
