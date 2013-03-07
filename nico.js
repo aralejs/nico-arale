@@ -102,7 +102,7 @@ Object.defineProperty(Post.prototype, 'template', {
   configurable: true,
   get: function() {
     if (this.relative_filepath == 'HISTORY.md') return 'history.html';
-    return 'post.html';
+    return this.meta.template || 'post.html';
   }
 });
 
