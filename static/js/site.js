@@ -1,4 +1,4 @@
-seajs.use(['$', 'arale/popup/0.9.11/popup'], function($, Popup) {
+seajs.use(['$', 'http://static.alipayobjects.com/arale/popup/0.9.11/popup'], function($, Popup) {
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
     // 给 iframe 加链接
