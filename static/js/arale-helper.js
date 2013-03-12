@@ -17,7 +17,7 @@
       }
     }
 
-    url = url.replace('http://aralejs.org/source/alipay', 'http://aralejs.alipay.im/source/alipay');
+    url = url.replace('http://aralejs.org/source/alipay', 'http://modules.alipay.im/alipay');
 
     // 如果访问 alipay.im 则从 alipay.im 加载
     if (location.hostname.indexOf('alipay.im') != -1 || location.hash == '#alipay') {
