@@ -22,7 +22,7 @@
     // 如果访问 alipay.im 则从 alipay.im 加载
     if (location.hostname.indexOf('alipay.im') != -1 || location.hash == '#alipay') {
         // 链接转换成 http://arale.alipay.im/source/overlay/0.9.9/overlay.js
-        url = url.replace(ARALE_BASE, 'http://aralejs.alipay.im/source/');
+        url = url.replace(ARALE_BASE, 'http://modules.alipay.im/source/');
         return url;
     } 
     return url;
