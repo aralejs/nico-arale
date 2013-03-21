@@ -19,6 +19,10 @@
       (function() {
         mocha.setup('bdd');
         puerh.use('expect');
+        define('expect', function(require, exports, module) {
+          module.exports = expect;
+        });
+
         var data = {{config.package|json_encode}}
 
         if (data.spm && data.spm.alias) {
