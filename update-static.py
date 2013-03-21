@@ -4,7 +4,7 @@
 import urllib
 import subprocess
 
-MOCHA = "https://raw.github.com/visionmedia/mocha/%s/mocha.js" % "1.7.4"
+MOCHA = "http://modules.spmjs.org/gallery/mocha/1.8.1/mocha.js"
 PUERH = "https://raw.github.com/popomore/puerh/%s/puerh.js" % "0.0.1"
 SINON = "http://sinonjs.org/releases/sinon-%s.js" % "1.5.2"
 
@@ -32,10 +32,17 @@ fetch(
 fetch(PUERH, 'tmp/puerh.js')
 fetch(SINON, 'tmp/sinon.js')
 
+
 subprocess.call(
     [
         'uglifyjs',
         'tmp/mocha.js',
+        '-o', 'static/js/mocha.js'
+    ]
+)
+subprocess.call(
+    [
+        'uglifyjs',
         'tmp/sinon.js',
         'tmp/puerh.js',
         '-o', 'static/js/test-suite.js'
