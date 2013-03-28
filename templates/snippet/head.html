@@ -1,0 +1,37 @@
+{% if config.google -%}
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', '{{config.google}}']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = 'https://ssl.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+{%- endif %}
+<script>
+  (function() {
+    var data;
+    seajs._package = data = {{config.package|json_encode}}
+
+    if (data.spm && data.spm.alias) {
+      delete data.spm.alias['$']
+      seajs.config({ alias: data.spm.alias})
+    } else {
+      data.dependencies && (delete data.dependencies['$'])
+      seajs.config({ alias: data.dependencies })
+    }
+
+    seajs.config({ alias: {{render_src(writer)}} })
+
+    // for alice
+    for(var dep in data.dependencies) {
+        // 如果依赖的是样式模块
+        if (data.dependencies[dep].indexOf('.css') > 0) {
+            seajs.use(dep);
+        }
+    }
+  })();
+</script>

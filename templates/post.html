@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{%- block title -%}{{config.package.name|title}} - {{post.title}}{%- endblock -%}
+
+{% block content %}
+<article class="hentry">
+  <h1 class="entry-title">{{post.title}}</h1>
+  <div class="entry-content">
+    {{ post.html|replace_code }}
+  </div>
+</article>
+{% endblock %}
+
+{%- block subsidebar %}
+{%- set items = resource.pages|find_all(post.category) %}
+{%- if items|length > 1 %}
+<ol id="sidenav">
+  {%- for item in items %}
+  <li><a href="{{permalink_url(item)}}">{{item.title}}</a></li>
+  {%- endfor %}
+</ol>
+{%- endif %}
+
+<ul id="module-output">
+  {%- if config.package.output|length > 1 %}
+  <li class="module-multiable" title="本组件共有{{config.package.output|length}}个子模块">多模块</li>
+    {%- for value in config.package.output %}
+    <li><a data-file="{{loop.key}}" href="{{content_url('dist/')}}{{loop.key}}">■</a></li>
+    {%- endfor %}
+  {%- endif %} 
+</ul>
+<div id="output-card">
+    <h3>{{config.package.root}}/{{config.package.name}}/{{config.package.version}}/<a target="_blank" id="output-file"></a></h3>
+    <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
+</div>
+{%- endblock %}
