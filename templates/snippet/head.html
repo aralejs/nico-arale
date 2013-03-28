@@ -15,11 +15,15 @@
   (function() {
     var data;
     seajs._package = data = {{config.package|json_encode}}
-    data.dependencies && (delete data.dependencies['$'])
-    data.devDependencies && (delete data.devDependencies['$'])
 
-    seajs.config({ alias: data.dependencies })
-    seajs.config({ alias: data.devDependencies })
+    if (data.spm && data.spm.alias) {
+      delete data.spm.alias['$']
+      seajs.config({ alias: data.spm.alias})
+    } else {
+      data.dependencies && (delete data.dependencies['$'])
+      seajs.config({ alias: data.dependencies })
+    }
+
     seajs.config({ alias: {{render_src(writer)}} })
 
     // for alice
