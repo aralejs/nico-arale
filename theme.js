@@ -109,6 +109,18 @@ exports.functions = {
     return ret;
   },
 
+  spec_files: function() {
+    var rootdir = path.join(process.cwd(), 'tests');
+    var ret = [];
+    file.recurse(rootdir, function(fpath) {
+      var fname = path.relative(rootdir, fpath).replace(/\\/g, '/');
+      if (fname.indexOf('-spec') !== -1) {
+        ret.push(fname);
+      }
+    });
+    return ret;
+  },
+
   engines: function() {
     var ret = [];
     if (pkg.spm && pkg.spm.engines) {
