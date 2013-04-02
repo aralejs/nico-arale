@@ -12,7 +12,7 @@
 {% endblock %}
 
 {%- block subsidebar %}
-{%- set items = resource.pages|find_all(post.category) %}
+{%- set items = resource.pages|find_category(post.meta.category) %}
 {%- if items|length > 1 %}
 <ol id="sidenav">
   {%- for item in items %}

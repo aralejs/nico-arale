@@ -14,9 +14,11 @@ function MochaWriter() {}
 util.inherits(MochaWriter, BaseWriter);
 
 MochaWriter.prototype.run = function() {
-  var dest = path.join(nico.option('outputdir'), 'tests', 'runner.html');
+  var option = nico.sdk.option;
+  var dest = path.join(option.get('outputdir'), 'tests', 'runner.html');
   this.render({
     destination: dest,
     template: 'mocha-runner.html'
   });
 }
+exports.MochaWriter = MochaWriter;
