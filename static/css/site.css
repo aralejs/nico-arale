@@ -8,11 +8,11 @@
 /* alipay iconfont */
 @font-face {  
     font-family: "rei";
-    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130123"); /* IE9 */
-    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130123#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("https://i.alipayobjects.com/common/fonts/rei.woff?20130123") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
-    url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130123")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
-    url("https://i.alipayobjects.com/common/fonts/rei.svg?20130123#rei") format("svg"); /* iOS 4.1- */
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130401"); /* IE9 */
+    src: url("https://i.alipayobjects.com/common/fonts/rei.eot?20130401#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("https://i.alipayobjects.com/common/fonts/rei.woff?20130401") format("woff"), /* chrome 6+、firefox 3.6+、Safari5.1+、Opera 11+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.ttf?20130401")  format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("https://i.alipayobjects.com/common/fonts/rei.svg?20130401#rei") format("svg"); /* iOS 4.1- */
 }
 .iconfont {
     font-family:"rei";
