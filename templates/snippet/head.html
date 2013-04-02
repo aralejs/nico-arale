@@ -1,5 +1,5 @@
-{% if config.google -%}
-<script type="text/javascript">
+{%- if config.google %}
+<script>
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '{{config.google}}']);
   _gaq.push(['_trackPageview']);
@@ -11,27 +11,38 @@
   })();
 </script>
 {%- endif %}
+{%- set enginefiles = engines %}
+{%- for file in enginefiles %}
+<script src="{{content_url('')}}/sea-modules/{{file}}"></script>
+<script src="http://static.alipayobjects.com/jquery/jquery/1.7.2/jquery.js"></script>
+{%- endfor %}
+
+{%- set dist = dist_files %}
+{%- for file in dist.css %}
+<link rel="stylesheet" href="{{content_url('')}}/dist/{{file}}" />
+{%- endfor %}
+{%- for file in dist.js %}
+<script src="{{content_url('')}}/dist/{{file}}"></script>
+{%- endfor %}
+
 <script>
-  (function() {
-    var data;
-    seajs._package = data = {{config.package|json_encode}}
+  {%- if config.package.spm -%}
 
-    if (data.spm && data.spm.alias) {
-      delete data.spm.alias['$']
-      seajs.config({ alias: data.spm.alias})
-    } else {
-      data.dependencies && (delete data.dependencies['$'])
-      seajs.config({ alias: data.dependencies })
+    {%- if config.package.spm.alias %}
+      seajs.config({ alias: {{config.package.spm.alias|json_encode}}});
+    {%- endif %}
+
+    {%- if config.package.spm.devAlias %}
+      seajs.config({ alias: {{config.package.spm.devAlias|json_encode}}});
+    {%- endif %}
+
+    seajs.config({ alias: {{config.package|output_alias|json_encode}}});
+
+  {%- endif %}
+
+  seajs.config({
+    alias: {
+      '$': 'jquery/jquery/1.7.2/jquery'
     }
-
-    seajs.config({ alias: {{writer|render_src}} })
-
-    // for alice
-    for(var dep in data.dependencies) {
-        // 如果依赖的是样式模块
-        if (data.dependencies[dep].indexOf('.css') > 0) {
-            seajs.use(dep);
-        }
-    }
-  })();
+  });
 </script>

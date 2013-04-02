@@ -4,6 +4,7 @@ var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var nico = require('nico');
+var file = nico.sdk.file;
 var BaseWriter = nico.BaseWriter;
 
 
@@ -41,7 +42,7 @@ exports.reader = function(post) {
   return post;
 }
 
-exports.package = require(path.join(process.cwd(), 'package.json'))
+var pkg = require(path.join(process.cwd(), 'package.json'))
 
 exports.filters = {
   debug: function(args) {
@@ -56,7 +57,7 @@ exports.filters = {
   replace_code: function(content) {
     var key, value, regex;
     var src = findSrc();
-    var p = exports.package;
+    var p = pkg;
     for (key in src) {
       value = util.format('%s/%s/%s/%s', p.root, p.name, p.version, key);
       var regex = new RegExp(
@@ -66,10 +67,62 @@ exports.filters = {
     }
     return content;
   },
+  output_alias: function(pkg) {
+    if (pkg.spm && pkg.spm.output) {
+      var ret = {};
+      (pkg.spm.output || []).forEach(function(fname) {
+        if (fname.indexOf('*') !== -1) {
+          return;
+        }
+        if (/\.js$/.test(fname)) {
+          fname = fname.replace(/\.js$/, '');
+          ret[fname] = pkg.family + '/' + pkg.name + '/' + pkg.version + '/' + fname;
+        }
+      });
+      return ret;
+    }
+    return {};
+  },
   render_src: function(writer) {
     var base = path.relative(path.dirname(writer.filepath), '');
     var ret = findSrc(base);
     return JSON.stringify(ret);
+  }
+}
+
+exports.functions = {
+  dist_files: function() {
+    var dist = path.join(process.cwd(), 'dist');
+    var ret = {
+      js: [],
+      css: []
+    };
+    file.recurse(dist, function(fpath) {
+      var fname = path.relative(dist, fpath).replace(/\\/g, '/');
+      if (fname.indexOf('-debug') !== -1) return;
+      if (/\.js$/.test(fname)) {
+        ret.js.push(fname);
+      } else if (/\.css$/.test(fname)) {
+        ret.css.push(fname);
+      }
+    });
+    return ret;
+  },
+
+  engines: function() {
+    var ret = [];
+    if (pkg.spm && pkg.spm.engines) {
+      var engines = pkg.spm.engines;
+      Object.keys(engines).forEach(function(key) {
+        var js = engines[key];
+        if (/\.js$/.test(js)) {
+          ret.push(js);
+        } else {
+          ret.push(js + '.js');
+        }
+      });
+    }
+    return ret;
   }
 }
 
