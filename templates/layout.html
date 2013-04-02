@@ -39,10 +39,10 @@
           {%- if example %}
           <li><a href="{{permalink_url(example)}}">演示</a></li>
           {%- endif %}
-          {%- if config.hasHistory %}
+          {%- if theme.hasHistory %}
           <li><a href="{{content_url('history.html')}}">历史</a></li>
           {%- endif %}
-          {%- if config.hasTest %}
+          {%- if theme.hasTest %}
           <li><a class="test-link" href="{{content_url('tests/runner.html')}}" target="_blank">用例</a></li>
           {%- endif %}
           {%- if config.package.bugs %}

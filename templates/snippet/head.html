@@ -24,7 +24,7 @@
       seajs.config({ alias: data.dependencies })
     }
 
-    seajs.config({ alias: {{render_src(writer)}} })
+    seajs.config({ alias: {{writer|render_src}} })
 
     // for alice
     for(var dep in data.dependencies) {
