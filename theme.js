@@ -67,6 +67,14 @@ exports.filters = {
     }
     return content;
   },
+  clean_alias: function(alias) {
+    Object.keys(alias).forEach(function(key) {
+      if (key === alias[key]) {
+        delete alias[key];
+      }
+    });
+    return alias;
+  },
   output_alias: function(pkg) {
     if (pkg.spm && pkg.spm.output) {
       var ret = {};

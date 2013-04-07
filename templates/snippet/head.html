@@ -21,13 +21,7 @@
 {%- endif %}
 {%- endfor %}
 
-{%- set dist = dist_files %}
-{%- for file in dist.js %}
-<script src="{{content_url('')}}/dist/{{file}}"></script>
-{%- endfor %}
-
 {%- set src = src_files %}
-
 <script>
   (function() {
   seajs.config({
@@ -53,11 +47,11 @@
   {%- if config.package.spm -%}
 
     {%- if config.package.spm.alias %}
-      seajs.config({ alias: {{config.package.spm.alias|json_encode}}});
+      seajs.config({ alias: {{config.package.spm.alias|clean_alias|json_encode}}});
     {%- endif %}
 
     {%- if config.package.spm.devAlias %}
-      seajs.config({ alias: {{config.package.spm.devAlias|json_encode}}});
+      seajs.config({ alias: {{config.package.spm.devAlias|clean_alias|json_encode}}});
     {%- endif %}
 
     if (srcdir) {
@@ -70,3 +64,7 @@
   {%- endif %}
   })();
 </script>
+{%- set dist = dist_files %}
+{%- for file in dist.js %}
+<script src="{{content_url('')}}/dist/{{file}}"></script>
+{%- endfor %}

@@ -1,4 +1,4 @@
-seajs.use(['$'], function($, Popup) {
+seajs.use('jquery', function($) {
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
     // 给 iframe 加链接
