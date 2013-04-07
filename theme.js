@@ -9,7 +9,7 @@ var BaseWriter = nico.BaseWriter;
 
 
 exports.name = 'arale';
-exports.version = '0.1';
+exports.version = '1.0';
 exports.lang = 'zh';
 
 function MochaWriter() {}
