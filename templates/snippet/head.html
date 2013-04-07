@@ -26,12 +26,24 @@
 
     seajs.config({ alias: {{render_src(writer)}} })
 
-    // for alice
-    for(var dep in data.dependencies) {
-        // 如果依赖的是样式模块
-        if (data.dependencies[dep].indexOf('.css') > 0) {
-            seajs.use(dep);
-        }
+    var dependencies;
+    if (data.spm && data.spm.alias) {
+        loadCss(data.spm.alias);
+    } else {
+        loadCss(data.dependencies);
     }
+
+    function loadCss(dependencies) {
+        // for alice
+        var array = [];    
+        for(var dep in dependencies) {
+            // 如果依赖的是样式模块
+            if (dependencies[dep].indexOf('.css') > 0) {
+                array.push("http://assets.spmjs.org/" + dependencies[dep]);
+            }
+        }
+        seajs.use(array);    
+    }
+
   })();
 </script>
