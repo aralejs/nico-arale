@@ -59,7 +59,7 @@ exports.filters = {
     var src = findSrc();
     var p = pkg;
     for (key in src) {
-      value = util.format('%s/%s/%s/%s', p.root, p.name, p.version, key);
+      value = util.format('%s/%s/%s/%s', p.family, p.name, p.version, key);
       var regex = new RegExp(
         '<span class="string">(\'|\")' + key + '(\'|\")</span>', 'g'
       );
@@ -104,6 +104,29 @@ exports.functions = {
         ret.js.push(fname);
       } else if (/\.css$/.test(fname)) {
         ret.css.push(fname);
+      }
+    });
+    return ret;
+  },
+
+  src_files: function() {
+    var srcdir = path.join(process.cwd(), 'src');
+    var ret = {
+      js: [],
+      css: [],
+      alias: {}
+    };
+    file.recurse(srcdir, function(fpath) {
+      var fname = path.relative(srcdir, fpath).replace(/\\/g, '/');
+      var key;
+      if (/\.js$/.test(fname)) {
+        ret.js.push(fname);
+        key = fname.replace(/\.js$/, '');
+        ret.alias[key] = fname;
+      } else if (/\.css$/.test(fname)) {
+        ret.css.push(fname);
+        key = fname.replace(/\.css$/, '');
+        ret.alias[key] = fname;
       }
     });
     return ret;
