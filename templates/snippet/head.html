@@ -59,7 +59,10 @@
         seajs.config({alias: {"{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}")}});
       {%- endfor %}
     } else {
-      seajs.config({ alias: {{config.package|output_alias|json_encode}}});
+      {%- set pkg = config.package %}
+      {%- for value in src.alias %}
+        seajs.config({alias: {"{{loop.key}}": "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{value}}"}});
+      {%- endfor %}
     }
   {%- endif %}
   })();

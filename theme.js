@@ -74,22 +74,6 @@ exports.filters = {
     });
     return alias;
   },
-  output_alias: function(pkg) {
-    if (pkg.spm && pkg.spm.output) {
-      var ret = {};
-      (pkg.spm.output || []).forEach(function(fname) {
-        if (fname.indexOf('*') !== -1) {
-          return;
-        }
-        if (/\.js$/.test(fname)) {
-          fname = fname.replace(/\.js$/, '');
-          ret[fname] = pkg.family + '/' + pkg.name + '/' + pkg.version + '/' + fname;
-        }
-      });
-      return ret;
-    }
-    return {};
-  },
   render_src: function(writer) {
     var base = path.relative(path.dirname(writer.filepath), '');
     var ret = findSrc(base);
