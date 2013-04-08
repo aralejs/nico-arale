@@ -13,6 +13,8 @@
 {%- endif %}
 
 {%- set enginefiles = engines %}
+{%- if enginefiles|length %}
+
 {%- for file in enginefiles %}
 {%- if config.debug %}
 <script src="{{content_url('')}}/sea-modules/{{file}}"></script>
@@ -21,13 +23,26 @@
 {%- endif %}
 {%- endfor %}
 
+{%- else %}
+
+{%- if config.debug %}
+<script src="{{content_url('')}}/sea-modules/seajs/seajs/2.0.0/sea.js"></script>
+{%- else %}
+<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/sea.js"></script>
+{%- endif %}
+
+{%- endif %}
+
 {%- set src = src_files %}
 <script>
   (function() {
   seajs.config({
     alias: {
       $: 'jquery/jquery/1.7.2/jquery',
-      jquery: 'jquery/jquery/1.7.2/jquery'
+      jquery: 'jquery/jquery/1.7.2/jquery',
+      mocha: "gallery/mocha/1.9.0/mocha",
+      expect: "gallery/expect/0.2.0/expect",
+      sinon: "gallery/sinon/1.6.0/sinon"
     }
   });
 
