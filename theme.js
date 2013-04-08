@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
 var path = require('path');
 var util = require('util');
 var nico = require('nico');
@@ -100,13 +99,16 @@ exports.filters = {
 
 exports.functions = {
   dist_files: function() {
-    var dist = path.join(process.cwd(), 'dist');
+    var distdir = path.join(process.cwd(), 'dist');
     var ret = {
       js: [],
       css: []
     };
-    file.recurse(dist, function(fpath) {
-      var fname = path.relative(dist, fpath).replace(/\\/g, '/');
+    if (!file.exists(distdir)) {
+      return ret;
+    }
+    file.recurse(distdir, function(fpath) {
+      var fname = path.relative(distdir, fpath).replace(/\\/g, '/');
       if (fname.indexOf('-debug') !== -1) return;
       if (/\.js$/.test(fname)) {
         ret.js.push(fname);
@@ -124,6 +126,9 @@ exports.functions = {
       css: [],
       alias: {}
     };
+    if (!file.exists(srcdir)) {
+      return ret;
+    }
     file.recurse(srcdir, function(fpath) {
       var fname = path.relative(srcdir, fpath).replace(/\\/g, '/');
       var key;
@@ -141,10 +146,13 @@ exports.functions = {
   },
 
   spec_files: function() {
-    var rootdir = path.join(process.cwd(), 'tests');
+    var specdir = path.join(process.cwd(), 'tests');
     var ret = [];
-    file.recurse(rootdir, function(fpath) {
-      var fname = path.relative(rootdir, fpath).replace(/\\/g, '/');
+    if (!file.exists(specdir)) {
+      return ret;
+    }
+    file.recurse(specdir, function(fpath) {
+      var fname = path.relative(specdir, fpath).replace(/\\/g, '/');
       if (fname.indexOf('-spec') !== -1) {
         ret.push(fname);
       }
@@ -169,8 +177,8 @@ exports.functions = {
   }
 }
 
-exports.hasHistory = fs.existsSync(path.join(process.cwd(), 'HISTORY.md'));
-exports.hasTest = fs.existsSync(path.join(process.cwd(), 'tests'));
+exports.hasHistory = file.exists(path.join(process.cwd(), 'HISTORY.md'));
+exports.hasTest = file.exists(path.join(process.cwd(), 'tests'));
 
 
 function findSrc(base) {
@@ -180,12 +188,14 @@ function findSrc(base) {
   if (base === '') {
     base = '.';
   }
-  var src = path.join(process.cwd(), 'src');
-  if (!fs.existsSync(src)) return {};
-
   var ret = {};
-  nico.sdk.file.recurse(src, function(filepath) {
-    var filename = path.relative(src, filepath);
+
+  var srcdir = path.join(process.cwd(), 'src');
+  if (!file.exists(srcdir)) {
+    return ret;
+  }
+  nico.sdk.file.recurse(srcdir, function(filepath) {
+    var filename = path.relative(srcdir, filepath);
     var key = path.basename(filename);
     key = key.replace(/\.js$/, '');
     ret[key] = base + '/src/' + filename;
