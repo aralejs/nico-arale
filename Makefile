@@ -13,6 +13,7 @@ watch:
 	@nico server -C $(THEME)/nico.js --watch
 
 publish-doc: clean build-doc
+	@rm -fr _site/sea-modules
 	@spm publish --doc _site
 
 clean:
@@ -35,7 +36,7 @@ test: test-src test-dist
 coverage:
 	@rm -fr _site/src-cov
 	@jscoverage --encoding=utf8 src _site/src-cov
-	@$(MAKE) test-dist reporter=json-cov url=tests/runner.html?cov | node $(THEME)/html-cov.js > tests/coverage.html
+	@$(MAKE) test-dist reporter=json-cov url=tests/runner.html?cov | node $(THEME)/html-cov.js > _site/tests/coverage.html
 	@echo "Build coverage to tests/coverage.html"
 
 
