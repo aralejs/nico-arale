@@ -48,12 +48,12 @@
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     comboExcludes: {test: function(uri) {
-      return !/\d+\.\d+\.\d+\/\w/.test(uri);
+      return !/\/\/assets\.spmjs\.org/.test(uri);
     }}
   });
 
   var query = location.search;
-  var srcdir = null;
+  var srcdir = 'dist';
   if (query === '?src') {
     srcdir = 'src';
     seajs.use({{src.css|json_encode}});
@@ -64,31 +64,24 @@
     seajs.use({{dist.css|json_encode}});
   }
   var src = {{src|json_encode}};
+  {%- set pkg = config.package %}
 
-  {%- if config.package.spm -%}
+  {%- if pkg.spm -%}
 
-    {%- if config.package.spm.alias %}
-      seajs.config({ alias: {{config.package.spm.alias|clean_alias|json_encode}}});
+    {%- if pkg.spm.alias %}
+      seajs.config({ alias: {{pkg.spm.alias|clean_alias|json_encode}}});
     {%- endif %}
 
-    {%- if config.package.spm.devAlias %}
-      seajs.config({ alias: {{config.package.spm.devAlias|clean_alias|json_encode}}});
+    {%- if pkg.spm.devAlias %}
+      seajs.config({ alias: {{pkg.spm.devAlias|clean_alias|json_encode}}});
     {%- endif %}
 
-    if (srcdir) {
-      {%- for value in src.alias %}
-        seajs.config({alias: {"{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}")}});
-      {%- endfor %}
-    } else {
-      {%- set pkg = config.package %}
-      {%- for value in src.alias %}
-        seajs.config({alias: {"{{loop.key}}": "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{value}}"}});
-      {%- endfor %}
-    }
+    {%- for value in src.alias %}
+      seajs.config({alias: {
+        "{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}"),
+        "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}")
+      }});
+    {%- endfor %}
   {%- endif %}
   })();
 </script>
-{%- set dist = dist_files %}
-{%- for file in dist.js %}
-<script src="{{content_url('')}}/dist/{{file}}"></script>
-{%- endfor %}
