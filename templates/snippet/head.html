@@ -19,30 +19,25 @@
 {%- if enginefiles|length %}
 
 {%- for file in enginefiles %}
-{%- if config.debug %}
 <script src="{{content_url('')}}/sea-modules/{{file}}"></script>
-{%- else %}
-<script src="http://assets.spmjs.org/{{file}}"></script>
-{%- endif %}
 {%- endfor %}
 
 {%- else %}
 
-{%- if config.debug %}
-<script src="{{content_url('')}}/sea-modules/seajs/seajs/2.0.0/sea.js"></script>
-{%- else %}
 <script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js"></script>
-{%- endif %}
 
 {%- endif %}
 
 {%- set src = src_files %}
+{%- set dist = dist_files %}
 <script>
   (function() {
   seajs.config({
     alias: {
-      $: 'jquery/jquery/1.7.2/jquery',
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
       jquery: 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
       mocha: "gallery/mocha/1.9.0/mocha",
       expect: "gallery/expect/0.2.0/expect",
       sinon: "gallery/sinon/1.6.0/sinon"
@@ -54,16 +49,18 @@
 
   var query = location.search;
   var srcdir = 'dist';
+  var srccss = {{src.css|json_encode}};
   if (query === '?src') {
     srcdir = 'src';
-    seajs.use({{src.css|json_encode}});
   } else if (query === '?cov') {
     srcdir = 'src-cov';
-    seajs.use({{src.css|json_encode}});
   } else {
-    seajs.use({{dist.css|json_encode}});
+    srccss = {{dist.css|json_encode}};
   }
-  var src = {{src|json_encode}};
+  for (var i = 0; i < srccss.length; i++) {
+    seajs.use(seajs.resolve('{{content_url('')}}/' + srcdir + '/' + srccss[i]));
+  }
+
   {%- set pkg = config.package %}
 
   {%- if pkg.spm -%}
@@ -81,6 +78,12 @@
         "{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}"),
         "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}")
       }});
+      if (query === '?debug') {
+        seajs.config({alias: {
+          "{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value|debug_file}}"),
+          "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{loop.key}}-debug": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value|debug_file}}")
+        }});
+      }
     {%- endfor %}
   {%- endif %}
   })();

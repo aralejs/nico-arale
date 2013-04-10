@@ -47,6 +47,12 @@ exports.filters = {
   debug: function(args) {
     return args.indexOf('debug') != -1;
   },
+  debug_file: function(val) {
+    if (/\-debug\.(js|css)$/.test(val)) {
+      return val;
+    }
+    return val.replace(/\.(js|css)$/, '-debug.$1');
+  },
   find: function(pages, cat) {
     var ret = findCategory(pages, cat);
     if (ret.length) return ret[0];
