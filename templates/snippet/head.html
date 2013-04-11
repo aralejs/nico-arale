@@ -35,11 +35,11 @@
   (function() {
 
   var query = location.search;
-  var srcdir = 'dist';
+  var srcdir = 'src';
   var srccss = {{src.css|json_encode}};
-  if (query === '?src') {
-    srcdir = 'src';
-  } else if (query === '?cov') {
+  if (query.indexOf('dist') > 0) {
+    srcdir = 'dist';
+  } else if (query.indexOf('cov') > 0) {
     srcdir = 'src-cov';
   } else {
     srccss = {{dist.css|json_encode}};
@@ -72,7 +72,7 @@
   }
 
   function resolve(file) {
-    if (query === '?debug') {
+    if (query.indexOf('debug') > 0) {
       if (file.indexOf('-debug') === -1) {
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
