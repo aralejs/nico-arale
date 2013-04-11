@@ -46,7 +46,7 @@ exports.filters = {
     var src = findSrc();
     var p = exports.package;
     for (key in src) {
-      value = util.format('%s/%s/%s/%s', p.root, p.name, p.version, key);
+      value = util.format('%s/%s/%s/%s', p.root||p.family, p.name, p.version, key);
       var regex = new RegExp(
         '<span class="string">(\'|\")' + key + '(\'|\")</span>', 'g'
       );
