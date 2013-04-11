@@ -30,22 +30,9 @@
 
 {%- set src = src_files %}
 {%- set dist = dist_files %}
+{%- set pkg = config.package %}
 <script>
   (function() {
-  seajs.config({
-    alias: {
-      "$": 'jquery/jquery/1.7.2/jquery',
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      jquery: 'jquery/jquery/1.7.2/jquery',
-      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      mocha: "gallery/mocha/1.9.0/mocha",
-      expect: "gallery/expect/0.2.0/expect",
-      sinon: "gallery/sinon/1.6.0/sinon"
-    },
-    comboExcludes: {test: function(uri) {
-      return !/\/\/assets\.spmjs\.org/.test(uri);
-    }}
-  });
 
   var query = location.search;
   var srcdir = 'dist';
@@ -57,11 +44,41 @@
   } else {
     srccss = {{dist.css|json_encode}};
   }
+
+  seajs.config({
+    alias: {
+      "$": 'jquery/jquery/1.7.2/jquery',
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      jquery: 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      mocha: "gallery/mocha/1.9.0/mocha",
+      expect: "gallery/expect/0.2.0/expect",
+      sinon: "gallery/sinon/1.6.0/sinon"
+    },
+    map: [function(uri) {
+      var m = uri.match(/{{pkg.family}}\/{{pkg.name}}\/{{pkg.version}}\/(.*)/);
+      if (m) {
+        return resolve(m[1]);
+      }
+      return uri;
+    }],
+    comboExcludes: {test: function(uri) {
+      return !/\/\/assets\.spmjs\.org/.test(uri);
+    }}
+  });
+
   for (var i = 0; i < srccss.length; i++) {
     seajs.use(seajs.resolve('{{content_url('')}}/' + srcdir + '/' + srccss[i]));
   }
 
-  {%- set pkg = config.package %}
+  function resolve(file) {
+    if (query === '?debug') {
+      if (file.indexOf('-debug') === -1) {
+        file = file.replace(/\.(\w+)$/, '-debug.$1');
+      }
+    }
+    return seajs.resolve("{{content_url('')}}/" + srcdir + "/" + file);
+  }
 
   {%- if pkg.spm -%}
 
@@ -75,15 +92,8 @@
 
     {%- for value in src.alias %}
       seajs.config({alias: {
-        "{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}"),
-        "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value}}")
+        "{{loop.key}}": resolve("{{value}}")
       }});
-      if (query === '?debug') {
-        seajs.config({alias: {
-          "{{loop.key}}": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value|debug_file}}"),
-          "{{pkg.family}}/{{pkg.name}}/{{pkg.version}}/{{loop.key}}-debug": seajs.resolve("{{content_url('')}}/" + srcdir + "/{{value|debug_file}}")
-        }});
-      }
     {%- endfor %}
   {%- endif %}
   })();
