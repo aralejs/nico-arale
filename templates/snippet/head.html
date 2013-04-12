@@ -53,6 +53,7 @@
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
+      // resolve id
       var m = uri.match(/{{pkg.family}}\/{{pkg.name}}\/{{pkg.version}}\/(.*)/);
       if (m) {
         return resolve(m[1]);
