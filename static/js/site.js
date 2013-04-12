@@ -52,7 +52,7 @@ seajs.use('jquery', function($) {
     if (!isNaN(temp[temp.length - 1])) {
         return;
     }
-    seajs.use(['$', 'http://static.alipayobjects.com/arale/popup/0.9.11/popup'], function($, Popup) {
+    seajs.use(['$', 'arale/popup/1.0.1/popup'], function($, Popup) {
       // spm install message
       var root = $('#sidebar-wrapper h1 sup a').html();
       if (root && Popup) {

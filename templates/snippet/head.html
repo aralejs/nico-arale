@@ -37,12 +37,12 @@
   var query = location.search;
   var srcdir = 'src';
   var srccss = {{src.css|json_encode}};
+
   if (query.indexOf('dist') > 0) {
     srcdir = 'dist';
+    srccss = {{dist.css|json_encode}};
   } else if (query.indexOf('cov') > 0) {
     srcdir = 'src-cov';
-  } else {
-    srccss = {{dist.css|json_encode}};
   }
 
   seajs.config({
