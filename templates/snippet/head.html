@@ -34,12 +34,12 @@
 <script>
   (function() {
 
-  var query = location.search;
+  var query = location.search.substring(1).split('&');
   var srcdir = 'dist';
   var srccss = {{src.css|json_encode}};
-  if (query === '?src') {
+  if (contain(query, 'src')) {
     srcdir = 'src';
-  } else if (query === '?cov') {
+  } else if (contain(query, 'cov')) {
     srcdir = 'src-cov';
   } else {
     srccss = {{dist.css|json_encode}};
@@ -72,12 +72,21 @@
   }
 
   function resolve(file) {
-    if (query === '?debug') {
+    if (contain(query, 'debug')) {
       if (file.indexOf('-debug') === -1) {
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
     return seajs.resolve("{{content_url('')}}/" + srcdir + "/" + file);
+  }
+
+  function contain(arr, value) {
+    for (var i in arr) {
+      if (arr[i] === value) {
+        return true;
+      }
+    }
+    return false;
   }
 
   {%- if pkg.spm -%}
