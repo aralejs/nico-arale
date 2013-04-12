@@ -202,8 +202,8 @@ function findCategory(pages, cat) {
     }
   });
   ret = ret.sort(function(a, b) {
-    a = a || 0;
-    b = b || 0;
+    a = a.meta.order || 10;
+    b = b.meta.order || 10;
     return parseInt(a, 10) - parseInt(b, 10);
   });
   return ret;
