@@ -35,20 +35,17 @@
   (function() {
 
   var query = location.search.substring(1).split('&');
-  var srcdir = 'dist';
-  var srccss = {{src.css|json_encode}};
-  if (contain(query, 'src')) {
-    srcdir = 'src';
+  var srcdir = 'src';
+
+  if (contain(query, 'dist')) {
+    srcdir = 'dist';
   } else if (contain(query, 'cov')) {
     srcdir = 'src-cov';
-  } else {
-    srccss = {{dist.css|json_encode}};
   }
 
   seajs.config({
     alias: {
       "$": 'jquery/jquery/1.7.2/jquery',
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
       jquery: 'jquery/jquery/1.7.2/jquery',
       "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
       mocha: "gallery/mocha/1.9.0/mocha",
@@ -56,6 +53,7 @@
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
+      // resolve id
       var m = uri.match(/{{pkg.family}}\/{{pkg.name}}\/{{pkg.version}}\/(.*)/);
       if (m) {
         return resolve(m[1]);
@@ -66,10 +64,6 @@
       return !/\/\/assets\.spmjs\.org/.test(uri);
     }}
   });
-
-  for (var i = 0; i < srccss.length; i++) {
-    seajs.use(seajs.resolve('{{content_url('')}}/' + srcdir + '/' + srccss[i]));
-  }
 
   function resolve(file) {
     if (contain(query, 'debug')) {
@@ -99,11 +93,12 @@
       seajs.config({ alias: {{pkg.spm.devAlias|clean_alias|json_encode}}});
     {%- endif %}
 
-    {%- for value in src.alias %}
-      seajs.config({alias: {
-        "{{loop.key}}": resolve("{{value}}")
-      }});
-    {%- endfor %}
+    seajs.config({alias: {
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
+      {%- for value in src.alias %}
+        ,"{{loop.key}}": resolve("{{value}}")
+      {%- endfor %}
+    }});
   {%- endif %}
   })();
 </script>
