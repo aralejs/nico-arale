@@ -36,11 +36,9 @@
 
   var query = location.search;
   var srcdir = 'src';
-  var srccss = {{src.css|json_encode}};
 
   if (query.indexOf('dist') > 0) {
     srcdir = 'dist';
-    srccss = {{dist.css|json_encode}};
   } else if (query.indexOf('cov') > 0) {
     srcdir = 'src-cov';
   }
@@ -48,7 +46,6 @@
   seajs.config({
     alias: {
       "$": 'jquery/jquery/1.7.2/jquery',
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug',
       jquery: 'jquery/jquery/1.7.2/jquery',
       "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
       mocha: "gallery/mocha/1.9.0/mocha",
@@ -66,10 +63,6 @@
       return !/\/\/assets\.spmjs\.org/.test(uri);
     }}
   });
-
-  for (var i = 0; i < srccss.length; i++) {
-    seajs.use(seajs.resolve('{{content_url('')}}/' + srcdir + '/' + srccss[i]));
-  }
 
   function resolve(file) {
     if (query.indexOf('debug') > 0) {
@@ -90,11 +83,12 @@
       seajs.config({ alias: {{pkg.spm.devAlias|clean_alias|json_encode}}});
     {%- endif %}
 
-    {%- for value in src.alias %}
-      seajs.config({alias: {
-        "{{loop.key}}": resolve("{{value}}")
-      }});
-    {%- endfor %}
+    seajs.config({alias: {
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
+      {%- for value in src.alias %}
+        ,"{{loop.key}}": resolve("{{value}}")
+      {%- endfor %}
+    }});
   {%- endif %}
   })();
 </script>
