@@ -18,19 +18,24 @@
 {%- set enginefiles = engines %}
 {%- if enginefiles|length %}
 
+{%- set pkg = config.package %}
+
 {%- for file in enginefiles %}
 <script src="{{content_url('')}}/sea-modules/{{file}}"></script>
 {%- endfor %}
 
 {%- else %}
 
+{%- if 'widget' in pkg.keywords %}
 <script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-text.js"></script>
+{%- else %}
+<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea.js,plugin-combo.js"></script>
+{%- endif %}
 
 {%- endif %}
 
 {%- set src = src_files %}
 {%- set dist = dist_files %}
-{%- set pkg = config.package %}
 <script>
   (function() {
 
