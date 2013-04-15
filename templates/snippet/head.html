@@ -16,9 +16,9 @@
 {%- endif %}
 
 {%- set enginefiles = engines %}
-{%- if enginefiles|length %}
-
 {%- set pkg = config.package %}
+
+{%- if enginefiles|length %}
 
 {%- for file in enginefiles %}
 <script src="{{content_url('')}}/sea-modules/{{file}}"></script>
