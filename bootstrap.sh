@@ -2,7 +2,6 @@
 
 CWD=$(dirname "$0")
 THEME="$HOME/.spm/themes/arale"
-JSC="https://raw.github.com/lepture/nico/master/scripts/node-jscoverage.rb"
 
 cd $CWD
 
@@ -26,13 +25,7 @@ fi
 if ! which jscoverage > /dev/null; then
     echo "install jscoverage"
 
-    git clone https://github.com/visionmedia/node-jscoverage.git .jscoverage
-    cd .jscoverage
-    ./configure --prefix=/usr/local
-    make
-    make install
-    cd $CWD
-    rm -fr .jscoverage
+    npm install jscoverage -g
 else
     echo "you have installed jscoverage"
 fi
@@ -51,6 +44,12 @@ else
     echo "you have installed mocha"
 fi
 
+if ! which phantomjs > /dev/null; then
+    echo "install mocha phantomjs"
+    npm install phantomjs -g
+else
+    echo "you have installed phantomjs"
+fi
 
 if ! which mocha-phantomjs > /dev/null; then
     echo "install mocha phantomjs"
