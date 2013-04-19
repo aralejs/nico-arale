@@ -5,7 +5,7 @@ var path = require('path');
 exports.theme = __dirname
 exports.source = process.cwd()
 exports.output = path.join(process.cwd(), '_site')
-exports.permalink = '{{directory}}/{{filename}}'
+exports.permalink = '{{directory}}/{{filename}}.html'
 exports.google = 'UA-36247332-1'
 exports.ignorefilter = function(filepath, subdir) {
   if (/^(_site|_theme|node_modules)/.test(subdir)) {
