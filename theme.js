@@ -29,7 +29,7 @@ exports.reader = function(post) {
   if (filename === 'history.md') {
     post.template = post.meta.template = 'history';
   } else {
-    post.template = post.meta.template = 'post';
+    post.template = post.meta.template = (post.meta.template || 'post');
   }
   if (filename === 'readme.md') {
     post.filename = post.meta.filename = 'index';
