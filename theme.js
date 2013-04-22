@@ -80,6 +80,13 @@ exports.filters = {
     });
     return alias;
   },
+  css_alias: function(alias) {
+    return Object.keys(alias).map(function(key) {
+      return alias[key];
+    }).filter(function(val) {
+      return /\.css$/.test(val);
+    });
+  },
   render_src: function(writer) {
     var base = path.relative(path.dirname(writer.filepath), '');
     var ret = findSrc(base);

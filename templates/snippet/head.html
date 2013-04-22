@@ -94,6 +94,7 @@
     {%- if pkg.spm.alias %}
       seajs.config({ alias: {{pkg.spm.alias|clean_alias|json_encode}}});
     {%- endif %}
+    seajs.use({{pkg.spm.alias|css_alias|json_encode}});
 
     {%- if pkg.spm.devAlias %}
       seajs.config({ alias: {{pkg.spm.devAlias|clean_alias|json_encode}}});
