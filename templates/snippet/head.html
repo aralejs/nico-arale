@@ -67,7 +67,7 @@
       return uri;
     }],
     comboExcludes: {test: function(uri) {
-      return !/\/\/assets\.spmjs\.org/.test(uri);
+      return uri.indexOf('{{config.assets_host}}') === -1;
     }}
   });
 
