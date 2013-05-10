@@ -59,7 +59,6 @@
       "$": 'jquery/jquery/1.7.2/jquery',
       jquery: 'jquery/jquery/1.7.2/jquery',
       "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      mocha: "gallery/mocha/1.9.0/mocha",
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
       'gallery/handlebars': 'gallery/handlebars/1.0.1/handlebars',
@@ -84,7 +83,7 @@
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-    return seajs.resolve("{{content_url('')}}/" + srcdir + "/" + file);
+    return seajs.resolve("{{content_url('')}}" + srcdir + "/" + file);
   }
 
   function contain(arr, value) {
