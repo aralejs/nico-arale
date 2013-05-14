@@ -35,8 +35,8 @@ seajs.use(['jquery', 'arale/popup/1.0.1/popup'], function($, Popup) {
     var version = $('#sidebar-wrapper .version a').html();
     new Popup({
       trigger: '#sidebar-wrapper h1 > a',
-      template: '<div class="popup-install">spm install '
-      +family+'/'+name+'@'+version+'</div>',
+      template: '<div class="popup-install">spm install <a href="https://spmjs.org/'+family+'/'+name+'/">'
+      +family+'/'+name+'@'+version+'</a></div>',
       align: {
         baseXY: [0, '100%+5']
       }

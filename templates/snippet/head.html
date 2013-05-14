@@ -34,6 +34,10 @@
 <script src="{{config.assets_host}}/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
 {%- endif %}
 
+{%- if pkg|is_runtime_handlebars %}
+<script src="{{config.assets_host}}/seajs/plugin-handlebars/0.1.0/plugin-handlebars.js"></script>
+{%- endif %}
+
 {%- endif %}
 
 {%- set src = src_files %}
@@ -55,9 +59,9 @@
       "$": 'jquery/jquery/1.7.2/jquery',
       jquery: 'jquery/jquery/1.7.2/jquery',
       "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
-      mocha: "gallery/mocha/1.9.0/mocha",
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
+      'gallery/handlebars': 'gallery/handlebars/1.0.1/handlebars',
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
@@ -79,7 +83,7 @@
         file = file.replace(/\.(\w+)$/, '-debug.$1');
       }
     }
-    return seajs.resolve("{{content_url('')}}/" + srcdir + "/" + file);
+    return seajs.resolve("{{content_url('')}}" + srcdir + "/" + file);
   }
 
   function contain(arr, value) {

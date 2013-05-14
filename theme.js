@@ -91,6 +91,12 @@ exports.filters = {
     var base = path.relative(path.dirname(writer.filepath), '');
     var ret = findSrc(base);
     return JSON.stringify(ret);
+  },
+  is_runtime_handlebars: function(pkg) {
+    if (!(pkg.spm && pkg.spm.alias && pkg.spm.alias.handlebars)) {
+      return false;
+    }
+    return pkg.spm.alias.handlebars.indexOf('runtime') !== -1;
   }
 }
 
