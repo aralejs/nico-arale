@@ -28,10 +28,10 @@
 
 {%- else %}
 
-{%- if 'widget' in pkg.keywords %}
-<script src="{{config.assets_host}}/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-text.js,plugin-style.js"></script>
-{%- else %}
 <script src="{{config.assets_host}}/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
+
+{%- if pkg|is_plugin_text %}
+<script src="{{config.assets_host}}/seajs/seajs/2.0.0/plugin-text.js"></script>
 {%- endif %}
 
 {%- if pkg|is_runtime_handlebars %}

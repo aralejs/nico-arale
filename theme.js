@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var path = require('path');
+var fs = require('fs');
 var util = require('util');
 var nico = require('nico');
 var file = nico.sdk.file;
@@ -97,6 +98,13 @@ exports.filters = {
       return false;
     }
     return pkg.spm.alias.handlebars.indexOf('runtime') !== -1;
+  },
+  // 有 .tpl 的要插入 plugin-text
+  is_plugin_text: function(pkg) {
+    var src = path.join(process.cwd(), 'src');
+    return fs.readdirSync(src).some(function(el, i) {
+      return /\.tpl$/.test(el);
+    });
   }
 }
 
