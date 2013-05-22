@@ -102,6 +102,7 @@ exports.filters = {
   // 有 .tpl 的要插入 plugin-text
   is_plugin_text: function(pkg) {
     var src = path.join(process.cwd(), 'src');
+    if (!fs.existsSync(src)) return false;
     return fs.readdirSync(src).some(function(el, i) {
       return /\.tpl$/.test(el);
     });
