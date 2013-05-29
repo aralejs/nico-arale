@@ -61,16 +61,20 @@ exports.filters = {
   },
   find_category: findCategory,
   replace_code: function(content) {
+    var srcdir = path.join(process.cwd(), 'src');
+    if (!file.exists(srcdir)) {
+      return content;
+    }
     var key, value, regex;
-    var src = findSrc();
     var p = pkg;
-    for (key in src) {
+    fs.readdirSync(srcdir).forEach(function(key) {
+      key = key.replace(/\.js$/, '');
       value = util.format('%s/%s/%s/%s', p.family, p.name, p.version, key);
       var regex = new RegExp(
         '<span class="string">(\'|\")' + key + '(\'|\")</span>', 'g'
       );
       content = content.replace(regex, '<span class="string">$1' + value + '$2</span>');
-    }
+    });
     return content;
   },
   clean_alias: function(alias) {
