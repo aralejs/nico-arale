@@ -98,18 +98,23 @@ exports.filters = {
     return JSON.stringify(ret);
   },
   is_runtime_handlebars: function(pkg) {
-    if (!(pkg.spm && pkg.spm.alias && pkg.spm.alias.handlebars)) {
-      return false;
+    var src = findSrc();
+    for (var key in src) {
+      if (/\.handlebars$/.test(src[key])) {
+        return true;
+      }
     }
-    return pkg.spm.alias.handlebars.indexOf('runtime') !== -1;
+    return false;
   },
   // 有 .tpl 的要插入 plugin-text
   is_plugin_text: function(pkg) {
-    var src = path.join(process.cwd(), 'src');
-    if (!fs.existsSync(src)) return false;
-    return fs.readdirSync(src).some(function(el, i) {
-      return /\.tpl$/.test(el);
-    });
+    var src = findSrc();
+    for (var key in src) {
+      if (/\.tpl$/.test(src[key])) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
