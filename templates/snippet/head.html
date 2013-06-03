@@ -28,10 +28,10 @@
 
 {%- else %}
 
-{%- if 'widget' in pkg.keywords %}
-<script src="{{config.assets_host}}/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-text.js,plugin-style.js"></script>
-{%- else %}
 <script src="{{config.assets_host}}/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
+
+{%- if pkg|is_plugin_text %}
+<script src="{{config.assets_host}}/seajs/seajs/2.0.0/plugin-text.js"></script>
 {%- endif %}
 
 {%- if pkg|is_runtime_handlebars %}
@@ -42,6 +42,12 @@
 
 {%- set src = src_files %}
 {%- set dist = dist_files %}
+{% for file in dist.js %}
+<script src="{{content_url('')}}dist/{{file}}"></script>
+{%- endfor %}
+{%- for file in dist.css %}
+<link rel="stylesheet" href="{{content_url('')}}dist/{{file}}" />
+{%- endfor %}
 <script>
   (function() {
 
@@ -61,7 +67,6 @@
       "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
-      'gallery/handlebars': 'gallery/handlebars/1.0.1/handlebars',
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var path = require('path');
+var fs = require('fs');
 var util = require('util');
 var nico = require('nico');
 var file = nico.sdk.file;
@@ -60,16 +61,20 @@ exports.filters = {
   },
   find_category: findCategory,
   replace_code: function(content) {
+    var srcdir = path.join(process.cwd(), 'src');
+    if (!file.exists(srcdir)) {
+      return content;
+    }
     var key, value, regex;
-    var src = findSrc();
     var p = pkg;
-    for (key in src) {
+    fs.readdirSync(srcdir).forEach(function(key) {
+      key = key.replace(/\.js$/, '');
       value = util.format('%s/%s/%s/%s', p.family, p.name, p.version, key);
       var regex = new RegExp(
         '<span class="string">(\'|\")' + key + '(\'|\")</span>', 'g'
       );
       content = content.replace(regex, '<span class="string">$1' + value + '$2</span>');
-    }
+    });
     return content;
   },
   clean_alias: function(alias) {
@@ -93,10 +98,23 @@ exports.filters = {
     return JSON.stringify(ret);
   },
   is_runtime_handlebars: function(pkg) {
-    if (!(pkg.spm && pkg.spm.alias && pkg.spm.alias.handlebars)) {
-      return false;
+    var src = findSrc();
+    for (var key in src) {
+      if (/\.handlebars$/.test(src[key])) {
+        return true;
+      }
     }
-    return pkg.spm.alias.handlebars.indexOf('runtime') !== -1;
+    return false;
+  },
+  // 有 .tpl 的要插入 plugin-text
+  is_plugin_text: function(pkg) {
+    var src = findSrc();
+    for (var key in src) {
+      if (/\.tpl$/.test(src[key])) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
