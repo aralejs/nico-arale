@@ -41,7 +41,7 @@ exports.filters = {
   },
   fixIssues: function(html) {
     // format permalink, ends without .html
-    html = html.replace(/#([0-9]+)/ig, '<a href="'+pkg.bugs.url+'/$1">#$1</a>');
+    html = html.replace(/\s#([0-9]+)/ig, '<a href="'+pkg.bugs.url+'/$1">#$1</a>');
     return html;
   }
 }
