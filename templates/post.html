@@ -6,7 +6,7 @@
 <article class="hentry">
   <h1 class="entry-title">{{post.title}}</h1>
   <div class="entry-content">
-    {{ post.html|replace_code }}
+    {{ post.html|replace_code|fixlink }}
   </div>
 </article>
 {% endblock %}

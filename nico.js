@@ -32,3 +32,11 @@ if (['alipay'].indexOf(pkg.family) !== -1) {
   exports.assets_host = 'http://yuan.alipay.im/assets';
 }
 exports.package = pkg;
+
+exports.filters = {
+  fixlink: function(html) {
+    // format permalink, ends without .html
+    html = html.replace(/(href="[^"]+)\.md(">)/ig, "$1.html$2");
+    return html;
+  }
+}
