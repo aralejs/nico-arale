@@ -38,5 +38,10 @@ exports.filters = {
     // format permalink, ends without .html
     html = html.replace(/(href="[^"]+)\.md(">)/ig, "$1.html$2");
     return html;
+  },
+  fixIssues: function(html) {
+    // format permalink, ends without .html
+    html = html.replace(/#([0-9]+)/ig, '<a href="'+pkg.bugs.url+'/$1">#$1</a>');
+    return html;
   }
 }
