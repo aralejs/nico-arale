@@ -464,7 +464,11 @@ table tr th :last-child, table tr td :last-child {
     padding: 6px;
     border: 1px solid #ddd;
     color: #777;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
+}
+
+.popup-install a {
+    text-decoration:none;
+    color: #08c;
 }
 
 #maintainers {
