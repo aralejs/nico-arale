@@ -1,4 +1,4 @@
-seajs.use(['jquery', 'arale/popup/1.0.1/popup'], function($, Popup) {
+seajs.use(['jquery', 'arale/popup/1.0.2/popup'], function($, Popup) {
 
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
@@ -37,11 +37,22 @@ seajs.use(['jquery', 'arale/popup/1.0.1/popup'], function($, Popup) {
       trigger: '#sidebar-wrapper h1 > a',
       template: '<div class="popup-install">spm install <a href="https://spmjs.org/'+family+'/'+name+'/">'
       +family+'/'+name+'@'+version+'</a></div>',
+      effect: 'fade',      
       align: {
         baseXY: [0, '100%+5']
       }
     });
   }
+
+  new Popup({
+    trigger: '#maintainers',
+    template: '<div class="popup-install">强烈建议提交 issue 交流（点击上方[讨论]），您会得到更高质量的反馈。</div>',
+    effect: 'fade',
+    width: 210,
+    align: {
+      baseXY: [0, '100%+5']
+    }
+  });
 
   // output card
   if ($('#module-output')[0] && Popup) {

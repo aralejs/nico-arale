@@ -32,3 +32,20 @@ if (['alipay'].indexOf(pkg.family) !== -1) {
   exports.assets_host = 'http://yuan.alipay.im/assets';
 }
 exports.package = pkg;
+
+exports.filters = {
+  fixlink: function(html) {
+    // format permalink, ends without .html
+    html = html.replace(/(href="[^"]+)\.md(">)/ig, "$1.html$2");
+    return html;
+  },
+  fixIssues: function(html) {
+    // format permalink, ends without .html
+    html = html.replace(/\s#([0-9]+)/ig, '<a href="'+pkg.bugs.url+'/$1">#$1</a>');
+    return html;
+  },
+  getNickName: function(html) {
+    var reg = /^(.*) (.*)$/;
+    return html.match(reg)[1];
+  }
+}
