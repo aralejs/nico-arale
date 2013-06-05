@@ -8,7 +8,7 @@ exports.output = path.join(process.cwd(), '_site')
 exports.permalink = '{{directory}}/{{filename}}.html'
 exports.google = 'UA-36247332-1'
 exports.ignorefilter = function(filepath, subdir) {
-  if (/^(_site|_theme|node_modules)/.test(subdir)) {
+  if (/^(_site|_theme|node_modules|\.idea)/.test(subdir)) {
     return false;
   }
   return true;
