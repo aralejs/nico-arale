@@ -43,5 +43,9 @@ exports.filters = {
     // format permalink, ends without .html
     html = html.replace(/\s#([0-9]+)/ig, '<a href="'+pkg.bugs.url+'/$1">#$1</a>');
     return html;
+  },
+  getNickName: function(html) {
+    var reg = /^(.*) (.*)$/;
+    return html.match(reg)[1];
   }
 }

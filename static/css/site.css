@@ -466,3 +466,23 @@ table tr th :last-child, table tr td :last-child {
     color: #777;
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2) inset;
 }
+
+#maintainers {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+#maintainers a {
+    color: #777;
+    opacity: 0.5;    
+}
+
+#maintainers a:hover {
+    color: #555;    
+    opacity: 1;    
+}
+
+#maintainers img {
+    position: relative;
+    top: 3px;
+}
