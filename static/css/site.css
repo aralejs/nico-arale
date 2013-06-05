@@ -478,7 +478,7 @@ table tr th :last-child, table tr td :last-child {
 
 #maintainers a {
     color: #777;
-    opacity: 0.5;    
+    opacity: 0.7;    
 }
 
 #maintainers a:hover {
