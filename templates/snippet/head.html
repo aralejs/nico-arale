@@ -62,9 +62,10 @@
 
   seajs.config({
     alias: {
-      "$": 'jquery/jquery/1.7.2/jquery',
-      jquery: 'jquery/jquery/1.7.2/jquery',
-      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      "$": 'jquery/jquery/1.10.1/jquery',
+      "$-debug": 'jquery/jquery/1.10.1/jquery-debug',
+      jquery: 'jquery/jquery/1.10.1/jquery',
+      "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
       sinon: "gallery/sinon/1.6.0/sinon"
@@ -112,7 +113,7 @@
     {%- endif %}
 
     seajs.config({alias: {
-      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
+      "$-debug": 'jquery/jquery/1.10.1/jquery-debug'
       {%- for value in src.alias %}
         ,"{{loop.key}}": resolve("{{value}}")
       {%- endfor %}

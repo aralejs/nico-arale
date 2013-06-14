@@ -1,4 +1,4 @@
-seajs.use(['jquery', 'arale/popup/1.0.2/popup'], function($, Popup) {
+seajs.use(['jquery', 'arale/popup/1.1.0/popup'], function($, Popup) {
 
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
