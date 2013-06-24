@@ -1,4 +1,4 @@
-seajs.use(['jquery', 'arale/popup/1.1.0/popup'], function($, Popup) {
+seajs.use(['$', 'arale/popup/1.1.0/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
 
   $(function(){
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
@@ -17,6 +17,7 @@ seajs.use(['jquery', 'arale/popup/1.1.0/popup'], function($, Popup) {
       }
     });
   });
+
   $('.highlight').on('click', '.code-toggle', function() {
     var pre = $(this).parents('.highlight')
     if (pre.hasClass('collapse')) {
@@ -30,19 +31,8 @@ seajs.use(['jquery', 'arale/popup/1.1.0/popup'], function($, Popup) {
   });
 
   var family = $('#sidebar-wrapper h1 sup a').html();
-  if (family && Popup) {
-    var name = $('#sidebar-wrapper h1 > a').html().toLowerCase();
-    var version = $('#sidebar-wrapper .version a').html();
-    new Popup({
-      trigger: '#sidebar-wrapper h1 > a',
-      template: '<div class="popup-install">spm install <a href="https://spmjs.org/'+family+'/'+name+'/">'
-      +family+'/'+name+'@'+version+'</a></div>',
-      effect: 'fade',      
-      align: {
-        baseXY: [0, '100%+5']
-      }
-    });
-  }
+  var name = $('#sidebar-wrapper h1 > a').html().toLowerCase();
+  var version = $('#sidebar-wrapper .version a').html();
 
   new Popup({
     trigger: '#maintainers',
@@ -69,9 +59,42 @@ seajs.use(['jquery', 'arale/popup/1.1.0/popup'], function($, Popup) {
     });
   }
 
+  // version document link
+  var versionJsonLink;
+  if (family === 'arale') {
+    versionJsonLink = 'https://spmjs.org/repository/' + family + '/' + name + '/?define';
+    versionDocLink = 'http://aralejs.org/+/' + name + '/';
+  } else {
+    versionJsonLink = 'http://yuan.alipay.im/repository/'+family+'/'+name+'/?define';
+    versionDocLink = 'http://yuan.alipay.im/+/' + family +'/' + name + '/';    
+  }
+
+  seajs.use(versionJsonLink, function(package) {
+    var versions = _.keys(package.packages);
+    versions = _.without(versions, version);
+
+    if (versions.length > 0) { 
+      var template = '<ul class="other-versions">';
+      template += '<li class="other-versions-title">历史版本</li>';
+      for (var i=0; i<versions.length; i++) {
+        template += '<li><a href="' + versionDocLink + versions[i] +'/">'
+          + versions[i] + '</a></li>';
+      }
+      template += '</ul>';
+
+      new Popup({
+        trigger: '.version a',
+        template: template,
+        effect: 'fade',      
+        align: {
+          baseXY: [0, '100%+8']
+        }
+      });
+    };
+  });
 
   // google analytics
-  var project = $('#sidebar-wrapper h1 > a').text();
+  var project = $('#sidebar-wrapper h1 > a').text();  
   $('#footer-wrapper a').click(function() {
     _gaq.push(['_trackEvent', 'Link', 'Footer', $(this).text()]);
   });

@@ -490,3 +490,36 @@ table tr th :last-child, table tr td :last-child {
     position: relative;
     top: 3px;
 }
+
+.other-versions {
+    margin: 0;
+    padding: 3px 8px;
+    font-size: 12px;
+    background: #fff;
+    list-style: none;
+    line-height: 1.8;
+    display: none;
+    border: 1px solid #bbb;
+}
+
+.other-versions li {
+    padding-left: 3px;
+}
+
+.other-versions li.other-versions-title {
+    color: #777;
+    padding-left: 0;
+    margin-bottom: 5px;
+    padding-bottom: 2px;
+    border-bottom: 1px dashed #ddd;
+    text-align: center;
+}
+
+.other-versions a {
+    text-decoration:none;
+    color: #08c;
+}
+
+.other-versions a:hover {
+    text-decoration:underline;
+}
