@@ -30,6 +30,10 @@ seajs.use(['$', 'arale/popup/1.1.0/popup', 'gallery/underscore/1.4.4/underscore'
     return false
   });
 
+  if ($('#sidebar-wrapper').length === 0) {
+    return;
+  }
+
   var family = $('#sidebar-wrapper h1 sup a').html();
   var name = $('#sidebar-wrapper h1 > a').html().toLowerCase();
   var version = $('#sidebar-wrapper .version a').html();
