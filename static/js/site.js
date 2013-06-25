@@ -68,9 +68,11 @@ seajs.use(['$', 'arale/popup/1.1.0/popup', 'gallery/underscore/1.4.4/underscore'
   if (family === 'arale') {
     versionJsonLink = 'https://spmjs.org/repository/' + family + '/' + name + '/?define';
     versionDocLink = 'http://aralejs.org/+/' + name + '/';
+    lastestLink = 'http://aralejs.org/' + name + '/';
   } else {
     versionJsonLink = 'http://yuan.alipay.im/repository/'+family+'/'+name+'/?define';
-    versionDocLink = 'http://yuan.alipay.im/+/' + family +'/' + name + '/';    
+    versionDocLink = 'http://yuan.alipay.im/+/' + family +'/' + name + '/';
+    lastestLink = 'http://yuan.alipay.im/' + family +'/' + name + '/';    
   }
 
   seajs.use(versionJsonLink, function(package) {
@@ -79,7 +81,7 @@ seajs.use(['$', 'arale/popup/1.1.0/popup', 'gallery/underscore/1.4.4/underscore'
 
     if (versions.length > 0) { 
       var template = '<ul class="other-versions">';
-      template += '<li class="other-versions-title">历史版本</li>';
+      template += '<li class="other-versions-title"><a href="'+lastestLink+'">最新版本</a></li>';
       for (var i=0; i<versions.length; i++) {
         template += '<li><a href="' + versionDocLink + versions[i] +'/">'
           + versions[i] + '</a></li>';
