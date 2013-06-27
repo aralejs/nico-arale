@@ -76,6 +76,8 @@ seajs.use(['$', 'arale/popup/1.1.0/popup', 'gallery/underscore/1.4.4/underscore'
   }
 
   seajs.use(versionJsonLink, function(package) {
+    if (!(package && package.packages)) return;
+
     var versions = _.keys(package.packages);
     versions = _.without(versions, version);
 
