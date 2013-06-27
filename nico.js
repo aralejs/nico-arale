@@ -17,7 +17,7 @@ exports.writers = [
   'nico.PageWriter',
   'nico.StaticWriter',
   'nico.FileWriter',
-  require('./theme').MochaWriter
+  'nico.MochaWriter'
 ]
 // end settings }}
 
