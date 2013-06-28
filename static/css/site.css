@@ -5,6 +5,13 @@
     src: local("Marcellus"), local("Marcellus-Regular"), url("marcellus.woff") format("woff");
 }
 
+@font-face {
+    font-family: 'Actor';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Actor Regular'), local('Actor-Regular'), url(Actor.woff) format('woff');
+}
+
 /* alipay iconfont */
 @font-face {
     font-family: "rei";
