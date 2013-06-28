@@ -42,9 +42,6 @@
 
 {%- set src = src_files %}
 {%- set dist = dist_files %}
-{% for file in dist.js %}
-<script src="{{content_url('')}}dist/{{file}}"></script>
-{%- endfor %}
 {%- for file in dist.css %}
 <link rel="stylesheet" href="{{content_url('')}}dist/{{file}}" />
 {%- endfor %}
@@ -56,6 +53,9 @@
 
   if (contain(query, 'dist')) {
     srcdir = 'dist';
+    {% for file in dist.js %}
+      seajs.use("{{content_url('')}}dist/{{file}}");
+    {%- endfor %}
   } else if (contain(query, 'cov')) {
     srcdir = 'src-cov';
   }
