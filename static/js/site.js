@@ -64,7 +64,8 @@ seajs.use(['$', 'arale/popup/1.1.0/popup', 'gallery/underscore/1.4.4/underscore'
   }
 
   // version document link
-  var versionJsonLink;
+  var versionJsonLink,
+    versionDocLink, lastestLink;
   if (family === 'arale') {
     versionJsonLink = 'https://spmjs.org/repository/' + family + '/' + name + '/?define';
     versionDocLink = 'http://aralejs.org/+/' + name + '/';
