@@ -28,14 +28,10 @@
 
 {%- else %}
 
-<script src="{{config.assets_host}}/seajs/seajs/2.0.0/??sea.js,plugin-combo.js,plugin-debug.js,plugin-style.js"></script>
+<script src="{{config.assets_host}}/seajs/??seajs/2.1.0/sea.js,seajs-combo/1.0.0/seajs-combo.js,seajs-debug/1.0.0/seajs-debug.js,seajs-style/1.0.0/seajs-style.js"></script>
 
-{%- if pkg|is_plugin_text %}
-<script src="{{config.assets_host}}/seajs/seajs/2.0.0/plugin-text.js"></script>
-{%- endif %}
-
-{%- if pkg|is_runtime_handlebars %}
-<script src="{{config.assets_host}}/seajs/plugin-handlebars/0.1.0/plugin-handlebars.js"></script>
+{%- if pkg|is_plugin_text or pkg|is_runtime_handlebars %}
+<script src="{{config.assets_host}}/seajs/seajs-text/1.0.0/seajs-text.js"></script>
 {%- endif %}
 
 {%- endif %}
@@ -68,6 +64,7 @@
       "jquery-debug": 'jquery/jquery/1.10.1/jquery-debug',
       expect: "gallery/expect/0.2.0/expect",
       puerh: "popomore/puerh/0.1.0/puerh",
+      handlebars: "gallery/handlebars/1.0.2/handlebars",
       sinon: "gallery/sinon/1.6.0/sinon"
     },
     map: [function(uri) {
