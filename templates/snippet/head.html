@@ -43,9 +43,6 @@ seajs-health/0.1.0/seajs-health.js"></script>
 
 {%- set src = src_files %}
 {%- set dist = dist_files %}
-{%- for file in dist.css %}
-<link rel="stylesheet" href="{{content_url('')}}dist/{{file}}" />
-{%- endfor %}
 <script>
   (function() {
 
@@ -119,6 +116,19 @@ seajs-health/0.1.0/seajs-health.js"></script>
         ,"{{loop.key}}": resolve("{{value}}")
       {%- endfor %}
     }});
+
+    // 加载依赖的 css 文件
+    var aliasArray = [], cssArray = [];
+    {%- for value in pkg.spm.alias %}
+    aliasArray.push('{{value}}');
+    {%- endfor %}
+
+    for (var i=0; i<aliasArray; i++) {
+      if (aliasArray[i].indexOf('.css') > 0) {
+        cssArray.push(aliasArray[i]);
+      }
+    }
+    seajs.use(aliasArray);
   {%- endif %}
   })();
 </script>
