@@ -162,7 +162,7 @@ module.exports = function(nico) {
           ret.alias[key] = fname;
         } else if (/\.css$/.test(fname)) {
           ret.css.push(fname);
-          key = fname.replace(/\.css$/, '');
+          key = fname
           ret.alias[key] = fname;
         }
       });
