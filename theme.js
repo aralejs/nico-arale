@@ -121,7 +121,11 @@ module.exports = function(nico) {
     },
 
     add_anchor: function(content) {
-      return content.replace(/(<h\d\s*id="([^<]*)">.*?)<\//g, '$1<a href="#$2" class="anchor">¶</a></');
+      for (var i = 1; i <= 6; i++) {
+        var reg = new RegExp('(<h' + i + '\\sid="(.*?)">.*?)(<\/h' + i + '>)', 'g');
+        content = content.replace(reg, '$1<a href="#$2" class="anchor">¶</a>$3');
+      }
+      return content;
     }
   };
 
