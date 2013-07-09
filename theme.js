@@ -121,7 +121,7 @@ module.exports = function(nico) {
     },
 
     add_anchor: function(content) {
-      return content.replace(/(<h\d\s*id="(.*)">.*?)</g, '$1<a href="#$2" class="iconfont">¶</a><');
+      return content.replace(/(<h\d\s*id="([^<]*)">.*?)<\//g, '$1<a href="#$2" class="iconfont">¶</a></');
     }
   };
 
