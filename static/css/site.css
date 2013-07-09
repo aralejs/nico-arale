@@ -342,6 +342,27 @@ table tr th :last-child, table tr td :last-child {
     line-height: 1;
 }
 
+.entry-content h1 a,
+.entry-content h2 a,
+.entry-content h3 a,
+.entry-content h4 a,
+.entry-content h5 a,
+.entry-content h6 a {
+    margin-left: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    vertical-align: top;
+    visibility: hidden;
+}
+.entry-content h1:hover a,
+.entry-content h2:hover a,
+.entry-content h3:hover a,
+.entry-content h4:hover a,
+.entry-content h5:hover a,
+.entry-content h6:hover a {
+    visibility: visible;
+}
+
 #sidenav {
     padding-top: 10px;
     margin-top: 0;

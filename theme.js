@@ -118,8 +118,12 @@ module.exports = function(nico) {
         }
       }
       return false;
+    },
+
+    add_anchor: function(content) {
+      return content.replace(/(<h\d\s*id="(.*)">.*?)</g, '$1<a href="#$2" class="iconfont">¶</a><');
     }
-  }
+  };
 
   exports.functions = {
     dist_files: function() {
