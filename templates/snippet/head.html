@@ -118,17 +118,17 @@ seajs-health/0.1.0/seajs-health.js"></script>
     }});
 
     // 加载依赖的 css 文件
-    var aliasArray = [], cssArray = [];
+    var cssArray = [];
     {%- for value in pkg.spm.alias %}
-    aliasArray.push('{{value}}');
+    cssArray.push('{{value}}');
     {%- endfor %}
-
-    for (var i=0; i<aliasArray; i++) {
-      if (aliasArray[i].indexOf('.css') > 0) {
-        cssArray.push(aliasArray[i]);
+    for (var i=0; i<cssArray.length; i++) {
+      if (cssArray[i].indexOf('.css') < 0) {
+        cssArray.splice(i, 1);
       }
     }
     seajs.use(cssArray);
+
   {%- endif %}
   })();
 </script>
