@@ -235,11 +235,11 @@ table tr th :last-child, table tr td :last-child {
 }
 #content pre {
     margin: 6px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #eee;
     padding: 6px 10px;
     overflow: auto;
-    border-radius: 3px;
-    background-color: #F8F8F8;
+    border-radius: 2px;
+    background-color: #f8f8f9;
     line-height: 19px;
     font-size: 13px;
     white-space: pre;
