@@ -12,6 +12,13 @@
     src: local('Actor Regular'), local('Actor-Regular'), url(Actor.woff) format('woff');
 }
 
+@font-face {
+  font-family: 'Marmelad';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Marmelad'), local('Marmelad-Regular'), url(http://themes.googleusercontent.com/static/fonts/marmelad/v3/HM9p0JaHv5-HhbhN_csF8nYhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+
 /* alipay iconfont */
 @font-face {
     font-family: "rei";
@@ -102,7 +109,7 @@ table tr th :last-child, table tr td :last-child {
 }
 #sidebar-wrapper h1 {
     margin: 0;
-    font-family: "Marcellus", sans-serif;
+    font-family: "Marmelad", sans-serif;
 }
 #sidebar-wrapper .version {
     font-size: 12px;
@@ -199,7 +206,7 @@ table tr th :last-child, table tr td :last-child {
 }
 #content .entry-title {
     margin-bottom: 12px;
-    font-family: "Marcellus", sans-serif;
+    font-family: "Marmelad", sans-serif;
 }
 #content .meta {
     color: #BCBCBD;
@@ -224,7 +231,7 @@ table tr th :last-child, table tr td :last-child {
     margin-top: 40px;
     padding-bottom: 4px;
     border-bottom: 1px solid #ccc;
-    font-family: "Marcellus", sans-serif;
+    font-family: "Marmelad", sans-serif;
 }
 #content hr {
     display: block;
