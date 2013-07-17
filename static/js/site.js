@@ -1,7 +1,19 @@
-seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
+seajs.use(['$'], function($) {
+
+  $('.highlight').on('click', '.code-toggle', function() {
+    var pre = $(this).parents('.highlight')
+    if (pre.hasClass('collapse')) {
+      pre.removeClass('collapse')
+      $(this).text('收起')
+    } else {
+      pre.addClass('collapse')
+      $(this).text('展开')
+    }
+    return false
+  });
 
   $(function(){
-    $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api')
+    $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api');
     // 给 iframe 加链接
     $('.nico-iframe').each(function(i, item) {
       var src = $(item).find('iframe').attr('src')
@@ -18,17 +30,9 @@ seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'
     });
   });
 
-  $('.highlight').on('click', '.code-toggle', function() {
-    var pre = $(this).parents('.highlight')
-    if (pre.hasClass('collapse')) {
-      pre.removeClass('collapse')
-      $(this).text('收起')
-    } else {
-      pre.addClass('collapse')
-      $(this).text('展开')
-    }
-    return false
-  });
+});
+
+seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
 
   if ($('#sidebar-wrapper').length === 0) {
     return;
