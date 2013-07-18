@@ -1,18 +1,18 @@
 seajs.use(['$'], function($) {
 
-  $('.highlight').on('click', '.code-toggle', function() {
-    var pre = $(this).parents('.highlight')
-    if (pre.hasClass('collapse')) {
-      pre.removeClass('collapse')
-      $(this).text('收起')
-    } else {
-      pre.addClass('collapse')
-      $(this).text('展开')
-    }
-    return false
-  });
-
   $(function(){
+    $('.highlight').on('click', '.code-toggle', function() {
+      var pre = $(this).parents('.highlight')
+      if (pre.hasClass('collapse')) {
+        pre.removeClass('collapse')
+        $(this).text('收起')
+      } else {
+        pre.addClass('collapse')
+        $(this).text('展开')
+      }
+      return false
+    });
+
     $('h4 em, h3 em, h3 code, h4 code').parent().addClass('doc-api');
     // 给 iframe 加链接
     $('.nico-iframe').each(function(i, item) {
