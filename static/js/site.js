@@ -100,7 +100,7 @@ seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'
         template: template,
         effect: 'fade',      
         align: {
-          baseXY: [0, '100%+8']
+          baseXY: [0, '100%']
         }
       });
     };
