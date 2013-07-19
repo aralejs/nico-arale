@@ -67,6 +67,11 @@ seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'
     });
   }
 
+  // 本地调试时直接返回
+  if (location.port) {
+    return;
+  }
+
   // version document link
   var versionJsonLink,
     versionDocLink, lastestLink;
