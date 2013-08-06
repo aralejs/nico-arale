@@ -76,6 +76,13 @@ jquery/jquery/1.7.2/jquery.js"></script>
         return resolve(m[1]);
       }
       return uri;
+    }, function(uri) {
+      var m = uri.match(/([A-Za-z\-]*)\/[A-Za-z\-]*\/[\.0-9]*\/.*/);
+      console.log(uri, m);
+      if (m && !/seajs|jquery|gallery|arale|alice/.test(m[1])) {
+        return 'http://yuan.alipay.im/assets/' + m[0];
+      }
+      return uri;
     }],
     comboExcludes: {test: function(uri) {
       return uri.indexOf('{{config.assets_host}}') === -1;

@@ -32,7 +32,7 @@ seajs.use(['$'], function($) {
 
 });
 
-seajs.use(['$', 'arale/popup/1.1.1/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
+seajs.use(['$', 'arale/popup/1.1.3/popup', 'gallery/underscore/1.4.4/underscore'], function($, Popup, _) {
 
   if ($('#sidebar-wrapper').length === 0) {
     return;
