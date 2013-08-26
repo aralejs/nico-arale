@@ -14,17 +14,17 @@
 seajs.use('$', function($) {
     $('#content code').each(function(index, item) {
         item = $(item);
-        var matcher = item.html().match(/^tag:(.+)/i);
+        var matcher = item.html().match(/^(tag:)?(NEW|FIXED|IMPROVED|CHANGED|UNRESOLVED)/i);
         if (matcher) {
             item.parent().css('padding-left', '150px');
-            item.replaceWith('<span class="history-tag history-tag-'+matcher[1]+'">'+matcher[1]+'</span>');
+            item.replaceWith('<span class="history-tag history-tag-'+matcher[2].toLowerCase()+'">'+matcher[2]+'</span>');
         }
     });
 });
 </script>
 <style>
 #content p {
-    border-top: 1px dashed #CCCCCC;
+    border-top: 1px dashed #ccc;
     font-size: 16px;
     margin: 12px 0;
     padding: 12px 0 0 0;
