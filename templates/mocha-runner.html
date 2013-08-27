@@ -7,6 +7,10 @@
     <link href="{{static_url('css/mocha.css')}}" type="text/css" rel="stylesheet" charset="utf-8">
     {%- include "snippet/head.html" %}
     <script src="{{config.assets_host}}/gallery/mocha/1.9.0/mocha.js"></script>
+    <script src="{{config.assets_host}}/gallery/sinon/1.6.0/sinon.js"></script>
+    <!--[if lte IE 8]>
+    <script src="{{config.assets_host}}/gallery/sinon/1.6.0/sinon-ie.js"></script>
+    <![endif]--> 
   </head>
   <body>
     <div id="mocha"></div>
