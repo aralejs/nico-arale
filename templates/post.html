@@ -35,7 +35,7 @@
     <p>这是模块的输出文件，请 require 或 seajs.use 以上 ID 来使用本文件，具体 API 请阅读文档。</p>
 </div>
 
-{%- if config.package.maintainers|length > 1 %}
+{%- if config.package.maintainers|length > 0 %}
 <div id="maintainers">
     {%- for value in config.package.maintainers %}
     <a target="_blank" href="http://www.taobao.com/webww/ww.php?ver=3&touid={{value|getNickName}}&siteid=cntaobao&status=2&charset=utf-8">
