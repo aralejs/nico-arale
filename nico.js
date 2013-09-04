@@ -40,6 +40,7 @@ exports.filters = {
   },
   getNickName: function(html) {
     var reg = /^(.*) (.*)$/;
-    return html.match(reg)[1];
+    var m = html.match(reg);
+    return m ? m[1] : '';
   }
 }
