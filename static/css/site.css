@@ -117,6 +117,7 @@ table tr th :last-child, table tr td :last-child {
     font-size: 12px;
     line-height: 1.5;
     padding: 4px;
+    color: #888;
 }
 #sidebar-wrapper .source, .source-button {
     background-color: #276195;
